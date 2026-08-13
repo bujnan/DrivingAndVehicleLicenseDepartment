@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="DrivingAndVehicleLicenseDepartment/DrivingAndVehicleLicenseDepartment.csproj" />
+  <Project Path="DrivingAndVehicleLicenseDepartment/DrivingAndVehicleLicenseDepartment.csproj" Id="70609bf9-7bbe-4abd-9db5-fd83a570aef6" />
+  <Project Path="DVLD_DataAccess/DVLD_DataAccess.csproj" Id="9d4a6706-fe2a-4e97-9e83-b08c7a05d860" />
 </Solution>
