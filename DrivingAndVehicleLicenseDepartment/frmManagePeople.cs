@@ -7,10 +7,10 @@ namespace DrivingAndVehicleLicenseDepartment
 {
     public partial class frmManagePeople : Form
     {
-        private static DataTable _allPeopleTable = clsPerson.GetAllPeople();
+        private static DataTable _peopleTableAllColumns = clsPerson.GetAllPeople();
 
         // only select the columns that you want to show in the grid
-        private DataTable _peopleTable = _allPeopleTable.DefaultView.ToTable(false, "PersonID", "NationalNo",
+        private DataTable _peopleTableSelectedColumns = _peopleTableAllColumns.DefaultView.ToTable(false, "PersonID", "NationalNo",
                                                        "FirstName", "SecondName", "ThirdName", "LastName",
                                                        "GendorCaption", "DateOfBirth", "CountryName",
                                                        "Phone", "Email");
@@ -23,8 +23,8 @@ namespace DrivingAndVehicleLicenseDepartment
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
             cbFilterBy.SelectedItem = "None";
-            dgvManagePeople.DataSource = _peopleTable;
-            lblTotalRecords.Text = _peopleTable.DefaultView.Count.ToString();
+            dgvManagePeople.DataSource = _peopleTableSelectedColumns;
+            lblTotalRecords.Text = _peopleTableSelectedColumns.DefaultView.Count.ToString();
             if (dgvManagePeople.Rows.Count > 0)
             {
                 dgvManagePeople.Columns[0].HeaderText = "Person ID";
@@ -129,20 +129,20 @@ namespace DrivingAndVehicleLicenseDepartment
             //Reset the filters in case nothing selected or filter value conains nothing.
             if (txbFilterBy.Text == "" || selectedColumnName == "None")
             {
-                _peopleTable.DefaultView.RowFilter = "";
-                lblTotalRecords.Text = _peopleTable.DefaultView.Count.ToString();
+                _peopleTableSelectedColumns.DefaultView.RowFilter = "";
+                lblTotalRecords.Text = _peopleTableSelectedColumns.DefaultView.Count.ToString();
                 return;
             }
 
             if (selectedColumnName == "PersonID")
             {
-                _peopleTable.DefaultView.RowFilter = string.Format("{0} = {1}", selectedColumnName, txbFilterBy.Text.Trim());
+                _peopleTableSelectedColumns.DefaultView.RowFilter = string.Format("{0} = {1}", selectedColumnName, txbFilterBy.Text.Trim());
             }
             else
             {
-                _peopleTable.DefaultView.RowFilter = $"{selectedColumnName} LIKE '{txbFilterBy.Text.Trim()}%'";
+                _peopleTableSelectedColumns.DefaultView.RowFilter = $"{selectedColumnName} LIKE '{txbFilterBy.Text.Trim()}%'";
             }
-            lblTotalRecords.Text = _peopleTable.DefaultView.Count.ToString();
+            lblTotalRecords.Text = _peopleTableSelectedColumns.DefaultView.Count.ToString();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
