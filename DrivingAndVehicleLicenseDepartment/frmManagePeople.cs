@@ -144,5 +144,10 @@ namespace DrivingAndVehicleLicenseDepartment
             }
             lblTotalRecords.Text = _peopleTable.DefaultView.Count.ToString();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
