@@ -22,6 +22,7 @@ namespace DrivingAndVehicleLicenseDepartment
 
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
+            cbFilterBy.SelectedItem = "None";
             dgvManagePeople.DataSource = _peopleTable;
             if (dgvManagePeople.Rows.Count > 0)
             {
@@ -58,6 +59,82 @@ namespace DrivingAndVehicleLicenseDepartment
                 dgvManagePeople.Columns[10].HeaderText = "Email";
                 dgvManagePeople.Columns[10].Width = 170;
             }
+        }
+
+        private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txbFilterBy.Visible = (cbFilterBy.SelectedItem.ToString() != "None");
+            if (txbFilterBy.Visible)
+            {
+                txbFilterBy.Text = "";
+                txbFilterBy.Focus();
+            }
+        }
+
+        private void txbFilterBy_TextChanged(object sender, EventArgs e)
+        {
+            string selectedColumnName = "";
+            switch (cbFilterBy.Text)
+            {
+                case "Person ID":
+                    selectedColumnName = "PersonID";
+                    break;
+
+                case "National No":
+                    selectedColumnName = "NationalNo";
+                    break;
+
+                case "First Name":
+                    selectedColumnName = "FirstName";
+                    break;
+
+                case "Second Name":
+                    selectedColumnName = "SecondName";
+                    break;
+
+                case "Third Name":
+                    selectedColumnName = "ThirdName";
+                    break;
+
+                case "Last Name":
+                    selectedColumnName = "LastName";
+                    break;
+
+                case "Gender":
+                    selectedColumnName = "GendorCaption";
+                    break;
+
+                case "Date of Birth":
+                    selectedColumnName = "DateOfBirth";
+                    break;
+
+                case "Nationality":
+                    selectedColumnName = "CountryName";
+                    break;
+
+                case "Phone":
+                    selectedColumnName = "Phone";
+                    break;
+
+                case "Email":
+                    selectedColumnName = "Email";
+                    break;
+
+                default:
+                    selectedColumnName = "None";
+                    break;
+            }
+
+            if (txbFilterBy.Text == "" || selectedColumnName == "None")
+            {
+                _peopleTable.DefaultView.RowFilter = "";
+                return;
+            }
+
+            if (selectedColumnName == "PersonID")
+                _peopleTable.DefaultView.RowFilter = string.Format("{0} = {1}", selectedColumnName, txbFilterBy.Text.Trim());
+            else
+                _peopleTable.DefaultView.RowFilter = $"{selectedColumnName} LIKE '{txbFilterBy.Text.Trim()}%'";
         }
     }
 }
