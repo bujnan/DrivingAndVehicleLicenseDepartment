@@ -149,5 +149,12 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             this.Close();
         }
+
+        private void txbFilterBy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow number in case Person ID is selected.
+            if (cbFilterBy.Text == "Person ID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }
