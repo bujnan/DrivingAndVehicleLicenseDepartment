@@ -24,6 +24,7 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             cbFilterBy.SelectedItem = "None";
             dgvManagePeople.DataSource = _peopleTable;
+            lblTotalRecords.Text = _peopleTable.DefaultView.Count.ToString();
             if (dgvManagePeople.Rows.Count > 0)
             {
                 dgvManagePeople.Columns[0].HeaderText = "Person ID";
@@ -125,16 +126,23 @@ namespace DrivingAndVehicleLicenseDepartment
                     break;
             }
 
+            //Reset the filters in case nothing selected or filter value conains nothing.
             if (txbFilterBy.Text == "" || selectedColumnName == "None")
             {
                 _peopleTable.DefaultView.RowFilter = "";
+                lblTotalRecords.Text = _peopleTable.DefaultView.Count.ToString();
                 return;
             }
 
             if (selectedColumnName == "PersonID")
+            {
                 _peopleTable.DefaultView.RowFilter = string.Format("{0} = {1}", selectedColumnName, txbFilterBy.Text.Trim());
+            }
             else
+            {
                 _peopleTable.DefaultView.RowFilter = $"{selectedColumnName} LIKE '{txbFilterBy.Text.Trim()}%'";
+            }
+            lblTotalRecords.Text = _peopleTable.DefaultView.Count.ToString();
         }
     }
 }
