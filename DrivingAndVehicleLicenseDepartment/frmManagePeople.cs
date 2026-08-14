@@ -1,0 +1,63 @@
+﻿using DVLD_Business;
+using System;
+using System.Windows.Forms;
+using System.Data;
+
+namespace DrivingAndVehicleLicenseDepartment
+{
+    public partial class frmManagePeople : Form
+    {
+        private static DataTable _allPeopleTable = clsPerson.GetAllPeople();
+
+        // only select the columns that you want to show in the grid
+        private DataTable _peopleTable = _allPeopleTable.DefaultView.ToTable(false, "PersonID", "NationalNo",
+                                                       "FirstName", "SecondName", "ThirdName", "LastName",
+                                                       "GendorCaption", "DateOfBirth", "CountryName",
+                                                       "Phone", "Email");
+
+        public frmManagePeople()
+        {
+            InitializeComponent();
+        }
+
+        private void frmManagePeople_Load(object sender, EventArgs e)
+        {
+            dgvManagePeople.DataSource = _peopleTable;
+            if (dgvManagePeople.Rows.Count > 0)
+            {
+                dgvManagePeople.Columns[0].HeaderText = "Person ID";
+                dgvManagePeople.Columns[0].Width = 110;
+
+                dgvManagePeople.Columns[1].HeaderText = "National No";
+                dgvManagePeople.Columns[1].Width = 120;
+
+                dgvManagePeople.Columns[2].HeaderText = "First Name";
+                dgvManagePeople.Columns[2].Width = 120;
+
+                dgvManagePeople.Columns[3].HeaderText = "Second Name";
+                dgvManagePeople.Columns[3].Width = 140;
+
+                dgvManagePeople.Columns[4].HeaderText = "Third Name";
+                dgvManagePeople.Columns[4].Width = 120;
+
+                dgvManagePeople.Columns[5].HeaderText = "Last Name";
+                dgvManagePeople.Columns[5].Width = 120;
+
+                dgvManagePeople.Columns[6].HeaderText = "Gender";
+                dgvManagePeople.Columns[6].Width = 120;
+
+                dgvManagePeople.Columns[7].HeaderText = "Date of Birth";
+                dgvManagePeople.Columns[7].Width = 140;
+
+                dgvManagePeople.Columns[8].HeaderText = "Nationality";
+                dgvManagePeople.Columns[8].Width = 120;
+
+                dgvManagePeople.Columns[9].HeaderText = "Phone";
+                dgvManagePeople.Columns[9].Width = 120;
+
+                dgvManagePeople.Columns[10].HeaderText = "Email";
+                dgvManagePeople.Columns[10].Width = 170;
+            }
+        }
+    }
+}

@@ -16,5 +16,11 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             InitializeComponent();
         }
+
+        private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManagePeople managePeople = new frmManagePeople();
+            managePeople.ShowDialog();
+        }
     }
 }

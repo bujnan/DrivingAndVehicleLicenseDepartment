@@ -19,17 +19,17 @@ namespace DVLD_DataAccess
                 "       LastName," +
                 "       DateOfBirth," +
                 "       Gendor," +
-                "       GendorType =" +
+                "       GendorCaption =" +
                 "           CASE" +
-                "               WHEN Gendor = 0 THEN 'Male'" +
+                "               WHEN Gendor = 0 THEN 'Male'"  +
                 "               WHEN Gendor = 1 THEN 'Female'" +
                 "           END," +
                 "       Address," +
                 "       Phone," +
                 "       Email," +
-                "       NationalityCountryID," +
-                "       ImagePath" +
-                "FROM People P" +
+                "       CountryName," +
+                "       ImagePath " +
+                "FROM People P " +
                 "INNER JOIN Countries C" +
                 "   ON P.NationalityCountryID = C.CountryID";
 
@@ -40,13 +40,13 @@ namespace DVLD_DataAccess
                 SqlDataReader reader = command.ExecuteReader();
                 while(reader.Read())
                 {
-                    peopleTable.Rows.Add(reader);
+                    peopleTable.Load(reader);
                 }
                 reader.Close();
             } 
             catch(Exception ex)
             {
-
+               
             }
             finally
             {

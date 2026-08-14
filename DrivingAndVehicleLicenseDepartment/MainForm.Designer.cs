@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.msPeople = new System.Windows.Forms.MenuStrip();
-            this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pbMainFormBackgound = new System.Windows.Forms.PictureBox();
+            this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msPeople.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMainFormBackgound)).BeginInit();
             this.SuspendLayout();
@@ -47,14 +47,6 @@
             this.msPeople.TabIndex = 1;
             this.msPeople.Text = "menuStrip1";
             // 
-            // peopleToolStripMenuItem
-            // 
-            this.peopleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.peopleToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.People_64;
-            this.peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
-            this.peopleToolStripMenuItem.Size = new System.Drawing.Size(137, 64);
-            this.peopleToolStripMenuItem.Text = "People";
-            // 
             // pbMainFormBackgound
             // 
             this.pbMainFormBackgound.BackColor = System.Drawing.Color.Black;
@@ -66,6 +58,15 @@
             this.pbMainFormBackgound.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMainFormBackgound.TabIndex = 0;
             this.pbMainFormBackgound.TabStop = false;
+            // 
+            // peopleToolStripMenuItem
+            // 
+            this.peopleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.peopleToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.People_64;
+            this.peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
+            this.peopleToolStripMenuItem.Size = new System.Drawing.Size(137, 64);
+            this.peopleToolStripMenuItem.Text = "People";
+            this.peopleToolStripMenuItem.Click += new System.EventHandler(this.peopleToolStripMenuItem_Click);
             // 
             // MainForm
             // 
