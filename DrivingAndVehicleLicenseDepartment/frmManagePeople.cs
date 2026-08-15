@@ -156,5 +156,11 @@ namespace DrivingAndVehicleLicenseDepartment
             if (cbFilterBy.Text == "Person ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+        private void btnAddNewPerson_Click(object sender, EventArgs e)
+        {
+            frmAddEditPerson addEditPerson = new frmAddEditPerson();
+            addEditPerson.ShowDialog();
+        }
     }
 }
