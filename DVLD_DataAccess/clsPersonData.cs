@@ -39,7 +39,7 @@ namespace DVLD_DataAccess
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                while(reader.Read())
+                if (reader.HasRows)
                 {
                     peopleTable.Load(reader);
                 }
@@ -62,8 +62,8 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
             string query = 
-                @"INSERT INTO People (NationalNo, FirstName, SecondName, ThirdName, LastName, DateOfBirth, Gendor, Address, Phone, Email, NationalityCountryID, ImagePath)\n" +
-                "VALUES ('@nationalId', '@fistName', '@secondName', '@thirdName', '@lastName', '@dateOfBirth', '@gender', '@address', '@phone', '@email', '@nationalityId', '@imagePath');" +
+                @"INSERT INTO People (NationalNo, FirstName, SecondName, ThirdName, LastName, DateOfBirth, Gendor, Address, Phone, Email, NationalityCountryID, ImagePath)" +
+                "\nVALUES (@nationalNo, @firstName, @secondName, @thirdName, @lastName, @dateOfBirth, @gender, @address, @phone, @email, @nationalityId, @imagePath); " +
                 "\nSELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);

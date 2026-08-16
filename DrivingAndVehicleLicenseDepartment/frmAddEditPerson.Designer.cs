@@ -31,7 +31,6 @@
             this.lblFormTitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblPersonId = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -70,7 +69,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -82,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFormTitle
@@ -114,15 +114,6 @@
             this.lblPersonId.Size = new System.Drawing.Size(40, 20);
             this.lblPersonId.TabIndex = 1;
             this.lblPersonId.Text = "N/A";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Number_32;
-            this.pictureBox6.Location = new System.Drawing.Point(173, 97);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(37, 36);
-            this.pictureBox6.TabIndex = 2;
-            this.pictureBox6.TabStop = false;
             // 
             // groupBox1
             // 
@@ -179,6 +170,7 @@
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -190,6 +182,7 @@
             this.btnClose.TabIndex = 15;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // llSetImage
             // 
@@ -212,28 +205,34 @@
             this.rbFemale.TabStop = true;
             this.rbFemale.Text = "Female";
             this.rbFemale.UseVisualStyleBackColor = true;
+            this.rbFemale.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
             // 
             // rbMale
             // 
             this.rbMale.AutoSize = true;
-            this.rbMale.Location = new System.Drawing.Point(175, 140);
+            this.rbMale.Location = new System.Drawing.Point(178, 140);
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(58, 20);
             this.rbMale.TabIndex = 7;
             this.rbMale.TabStop = true;
             this.rbMale.Text = "Male";
             this.rbMale.UseVisualStyleBackColor = true;
+            this.rbMale.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
             // 
             // cbCountry
             // 
+            this.cbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCountry.FormattingEnabled = true;
+            this.cbCountry.IntegralHeight = false;
             this.cbCountry.Location = new System.Drawing.Point(537, 176);
+            this.cbCountry.MaxDropDownItems = 7;
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(158, 24);
             this.cbCountry.TabIndex = 11;
             // 
             // dtpDateOfBirth
             // 
+            this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateOfBirth.Location = new System.Drawing.Point(537, 96);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(161, 22);
@@ -244,6 +243,7 @@
             this.pbPicture.Location = new System.Drawing.Point(720, 89);
             this.pbPicture.Name = "pbPicture";
             this.pbPicture.Size = new System.Drawing.Size(158, 150);
+            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPicture.TabIndex = 39;
             this.pbPicture.TabStop = false;
             // 
@@ -325,7 +325,7 @@
             // pictureBox11
             // 
             this.pictureBox11.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Woman_32;
-            this.pictureBox11.Location = new System.Drawing.Point(253, 133);
+            this.pictureBox11.Location = new System.Drawing.Point(255, 133);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(35, 39);
             this.pictureBox11.TabIndex = 28;
@@ -505,6 +505,15 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Name:";
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Number_32;
+            this.pictureBox6.Location = new System.Drawing.Point(173, 97);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(37, 36);
+            this.pictureBox6.TabIndex = 2;
+            this.pictureBox6.TabStop = false;
+            // 
             // frmAddEditPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -519,7 +528,7 @@
             this.Name = "frmAddEditPerson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAddEditPerson";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.Load += new System.EventHandler(this.frmAddEditPerson_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
@@ -532,6 +541,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
