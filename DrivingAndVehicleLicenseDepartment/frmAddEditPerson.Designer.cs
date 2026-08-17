@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblFormTitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblPersonId = new System.Windows.Forms.Label();
@@ -70,6 +71,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -82,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFormTitle
@@ -156,7 +159,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(41, 139);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(891, 383);
+            this.groupBox1.Size = new System.Drawing.Size(902, 383);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
@@ -253,6 +256,7 @@
             this.txbLastName.Name = "txbLastName";
             this.txbLastName.Size = new System.Drawing.Size(162, 22);
             this.txbLastName.TabIndex = 4;
+            this.txbLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txbLastName_Validating);
             // 
             // txbThirdName
             // 
@@ -267,6 +271,7 @@
             this.txbSecondName.Name = "txbSecondName";
             this.txbSecondName.Size = new System.Drawing.Size(162, 22);
             this.txbSecondName.TabIndex = 2;
+            this.txbSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.txbSecondName_Validating);
             // 
             // txbAddress
             // 
@@ -275,6 +280,7 @@
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.Size = new System.Drawing.Size(522, 94);
             this.txbAddress.TabIndex = 12;
+            this.txbAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txbAddress_Validating);
             // 
             // txbEmail
             // 
@@ -282,6 +288,7 @@
             this.txbEmail.Name = "txbEmail";
             this.txbEmail.Size = new System.Drawing.Size(162, 22);
             this.txbEmail.TabIndex = 10;
+            this.txbEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txbEmail_Validating);
             // 
             // txbPhone
             // 
@@ -289,6 +296,7 @@
             this.txbPhone.Name = "txbPhone";
             this.txbPhone.Size = new System.Drawing.Size(162, 22);
             this.txbPhone.TabIndex = 9;
+            this.txbPhone.Validating += new System.ComponentModel.CancelEventHandler(this.txbPhone_Validating);
             // 
             // txbNationalNo
             // 
@@ -296,6 +304,7 @@
             this.txbNationalNo.Name = "txbNationalNo";
             this.txbNationalNo.Size = new System.Drawing.Size(162, 22);
             this.txbNationalNo.TabIndex = 5;
+            this.txbNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.txbNationalNo_Validating);
             // 
             // txbFirstName
             // 
@@ -303,6 +312,7 @@
             this.txbFirstName.Name = "txbFirstName";
             this.txbFirstName.Size = new System.Drawing.Size(162, 22);
             this.txbFirstName.TabIndex = 1;
+            this.txbFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txbFirstName_Validating);
             // 
             // pictureBox4
             // 
@@ -514,6 +524,10 @@
             this.pictureBox6.TabIndex = 2;
             this.pictureBox6.TabStop = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmAddEditPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -542,6 +556,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,5 +606,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

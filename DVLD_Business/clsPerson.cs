@@ -196,5 +196,10 @@ namespace DVLD_Business
             return clsPersonData.GetAllPeople();
         }
 
+        public static bool IsExist(string nationalNo)
+        {
+            return clsPersonData.IsExist(nationalNo);
+        }
+
     }
 }

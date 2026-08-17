@@ -110,5 +110,35 @@ namespace DVLD_DataAccess
             return personId;
         }
 
+        public static bool IsExist(string nationalNo)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT Found = 1
+                             FROM People
+                             WHERE NationalNo = @nationalNo";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@nationalNo", nationalNo);
+
+            try
+            {
+                connection.Open();
+                object returnedResult = command.ExecuteScalar();
+                if (returnedResult != null)
+                    isFound = true;
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
     }
 }

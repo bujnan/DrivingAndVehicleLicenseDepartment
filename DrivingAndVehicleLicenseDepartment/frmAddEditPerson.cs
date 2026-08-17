@@ -51,9 +51,8 @@ namespace DrivingAndVehicleLicenseDepartment
             _person.Phone = txbPhone.Text.Trim();
             _person.Email = txbEmail.Text.Trim();
 
-            _person.ImagePath = "";
-            //_person.NationalityId = clsCountry.Find(cbCountry.Text).Id;
-            _person.NationalityId = 1; 
+            _person.ImagePath = "";  // to handle later
+            _person.NationalityId = clsCountry.Find(cbCountry.Text).CountryId;
 
             if (rbMale.Checked)
                 _person.Gender = (short)_enGender.Male;
@@ -132,6 +131,115 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             if (rbFemale.Checked)
                 pbPicture.Image = Properties.Resources.female_512;
+        }
+
+        private void txbFirstName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbFirstName.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txbFirstName, "First Name Can NOT be Empty!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txbFirstName, "");
+            }
+        }
+
+        private void txbSecondName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbSecondName.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txbSecondName, "Second Name Can NOT be Empty!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txbSecondName ,"");
+            }
+        }
+
+        private void txbLastName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbLastName.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txbLastName, "Last Name Can NOT be Empty");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txbLastName, "");
+            }
+        }
+
+        private void txbPhone_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbPhone.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txbPhone, "Phone Can NOT be Empty");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txbPhone, "");
+            }
+        }
+
+        private void txbAddress_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbAddress.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txbAddress, "Address Can NOT be Empty");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txbAddress, "");
+            }
+        }
+
+        private void txbNationalNo_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbNationalNo.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txbNationalNo, "The National No Can NOT be Empty!");
+            }
+            else
+            {
+                if (clsPerson.IsExist(txbNationalNo.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txbNationalNo, "This National No Already Used!");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txbNationalNo, "");
+                }
+            }
+        }
+
+        private void txbEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txbEmail.Text))
+            {
+                if (!txbEmail.Text.Contains("@"))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txbEmail, "Invalid Email!");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txbEmail, "");
+                }
+            }
         }
     }
 }
