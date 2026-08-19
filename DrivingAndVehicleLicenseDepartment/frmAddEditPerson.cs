@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DrivingAndVehicleLicenseDepartment.Properties;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,24 +41,16 @@ namespace DrivingAndVehicleLicenseDepartment
             dtpDateOfBirth.MinDate = DateTime.Now.AddYears(-100);
         }
 
-        private void _SetPersonObject()
+        private void _SetDefaultImageProfile()
         {
-            _person.FirstName = txbFirstName.Text.Trim();
-            _person.SecondName = txbSecondName.Text.Trim();
-            _person.ThirdName = txbThirdName.Text.Trim();
-            _person.LastName = txbLastName.Text.Trim();
-            _person.DateOfBirth = dtpDateOfBirth.Value;
-            _person.Address = txbAddress.Text.Trim();
-            _person.Phone = txbPhone.Text.Trim();
-            _person.Email = txbEmail.Text.Trim();
+            if (rbMale.Checked && pbPicture.ImageLocation == null)
+            {
+                pbPicture.Image = Resources.male_512;
+                return;
+            }
 
-            _person.ImagePath = "";  // to handle later
-            _person.NationalityId = clsCountry.Find(cbCountry.Text).CountryId;
-
-            if (rbMale.Checked)
-                _person.Gender = (short)_enGender.Male;
-            else
-                _person.Gender = (short)_enGender.Female;
+            if (rbFemale.Checked && pbPicture.ImageLocation == null)
+                pbPicture.Image = Resources.female_512;
         }
 
         private void _ResetDefaultValues()
@@ -76,7 +69,6 @@ namespace DrivingAndVehicleLicenseDepartment
 
             _FillCountriesInComboBox();
             _SetMaxAndMinDateInDateTimePicker();
-            rbMale.Checked = true;
             txbFirstName.Text = "";
             txbSecondName.Text = "";
             txbThirdName.Text = "";
@@ -85,6 +77,9 @@ namespace DrivingAndVehicleLicenseDepartment
             txbPhone.Text = "";
             txbEmail.Text = "";
             txbAddress.Text = "";
+            rbMale.Checked = true;
+            llRemove.Visible = false;
+            _SetDefaultImageProfile();
         }
         public frmAddEditPerson()
         {
@@ -103,9 +98,34 @@ namespace DrivingAndVehicleLicenseDepartment
             this.Close();
         }
 
+        private void _SetPersonObject()
+        {
+            _person.FirstName = txbFirstName.Text.Trim();
+            _person.SecondName = txbSecondName.Text.Trim();
+            _person.ThirdName = txbThirdName.Text.Trim();
+            _person.LastName = txbLastName.Text.Trim();
+            _person.DateOfBirth = dtpDateOfBirth.Value;
+            _person.Address = txbAddress.Text.Trim();
+            _person.Phone = txbPhone.Text.Trim();
+            _person.Email = txbEmail.Text.Trim();
+
+            _person.NationalityId = clsCountry.Find(cbCountry.Text).CountryId;
+
+            if (pbPicture.ImageLocation != null)
+                _person.ImagePath = pbPicture.ImageLocation.ToString();
+            else
+                _person.ImagePath = "";
+
+            if (rbMale.Checked)
+                _person.Gender = (short)_enGender.Male;
+            else
+                _person.Gender = (short)_enGender.Female;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             _SetPersonObject();
+            _HandleProfileImage();
            
             if(_person.Save())
             {
@@ -119,18 +139,6 @@ namespace DrivingAndVehicleLicenseDepartment
             {
                 MessageBox.Show("Operation Failed!");
             }
-        }
-
-        private void rbMale_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbMale.Checked)
-                pbPicture.Image = Properties.Resources.male_512;
-        }
-
-        private void rbFemale_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbFemale.Checked)
-                pbPicture.Image = Properties.Resources.female_512;
         }
 
         private void txbFirstName_Validating(object sender, CancelEventArgs e)
@@ -240,6 +248,57 @@ namespace DrivingAndVehicleLicenseDepartment
                     errorProvider1.SetError(txbEmail, "");
                 }
             }
+        }
+
+        private void llRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pbPicture.ImageLocation = null;
+          
+            _SetDefaultImageProfile();
+
+            llRemove.Visible = false;
+            llSetImage.Text = "Set Image";
+        }
+
+
+        private bool _HandleProfileImage()
+        {
+            if (_person.ImagePath != "")
+            {
+                string sourceFile = pbPicture.ImageLocation.ToString();
+                if (clsUtil.CopyImageProfileIntoProjectImages(ref sourceFile))
+                {
+                    _person.ImagePath = sourceFile;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openFileDialog1.Filter = "Image Files | *.jpg; *.jpeg; *.png";
+            openFileDialog1.FileName = "";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pbPicture.Load(openFileDialog1.FileName);
+                llRemove.Visible = true;
+                llSetImage.Text = "Change Image";
+            }
+        }
+
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            _SetDefaultImageProfile();
+        }
+
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            _SetDefaultImageProfile();
         }
     }
 }

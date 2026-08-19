@@ -35,6 +35,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.llRemove = new System.Windows.Forms.LinkLabel();
             this.llSetImage = new System.Windows.Forms.LinkLabel();
             this.rbFemale = new System.Windows.Forms.RadioButton();
             this.rbMale = new System.Windows.Forms.RadioButton();
@@ -72,6 +73,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -122,6 +124,7 @@
             // 
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnClose);
+            this.groupBox1.Controls.Add(this.llRemove);
             this.groupBox1.Controls.Add(this.llSetImage);
             this.groupBox1.Controls.Add(this.rbFemale);
             this.groupBox1.Controls.Add(this.rbMale);
@@ -187,6 +190,18 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // llRemove
+            // 
+            this.llRemove.AutoSize = true;
+            this.llRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llRemove.Location = new System.Drawing.Point(764, 284);
+            this.llRemove.Name = "llRemove";
+            this.llRemove.Size = new System.Drawing.Size(70, 20);
+            this.llRemove.TabIndex = 13;
+            this.llRemove.TabStop = true;
+            this.llRemove.Text = "Remove";
+            this.llRemove.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llRemove_LinkClicked);
+            // 
             // llSetImage
             // 
             this.llSetImage.AutoSize = true;
@@ -197,6 +212,7 @@
             this.llSetImage.TabIndex = 13;
             this.llSetImage.TabStop = true;
             this.llSetImage.Text = "Set Image";
+            this.llSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llSetImage_LinkClicked);
             // 
             // rbFemale
             // 
@@ -528,6 +544,10 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmAddEditPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -607,5 +627,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.LinkLabel llRemove;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
