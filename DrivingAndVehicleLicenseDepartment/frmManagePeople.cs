@@ -160,7 +160,20 @@ namespace DrivingAndVehicleLicenseDepartment
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
             frmAddEditPerson addEditPerson = new frmAddEditPerson();
+            addEditPerson.formClosed += RefrechPeopleList;
             addEditPerson.ShowDialog();
+        }
+
+        private void RefrechPeopleList()
+        {
+            _peopleTableAllColumns = clsPerson.GetAllPeople();
+            _peopleTableSelectedColumns = _peopleTableAllColumns.DefaultView.ToTable(false, "PersonID", "NationalNo",
+                                                       "FirstName", "SecondName", "ThirdName", "LastName",
+                                                       "GendorCaption", "DateOfBirth", "CountryName",
+                                                       "Phone", "Email");
+
+            dgvManagePeople.DataSource = _peopleTableSelectedColumns;
+            lblTotalRecords.Text = _peopleTableSelectedColumns.DefaultView.Count.ToString();
         }
     }
 }

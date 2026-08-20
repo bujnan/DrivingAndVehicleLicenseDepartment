@@ -562,6 +562,7 @@
             this.Name = "frmAddEditPerson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAddEditPerson";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddEditPerson_FormClosed);
             this.Load += new System.EventHandler(this.frmAddEditPerson_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

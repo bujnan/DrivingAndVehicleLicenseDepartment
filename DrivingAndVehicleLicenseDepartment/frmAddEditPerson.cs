@@ -19,6 +19,9 @@ namespace DrivingAndVehicleLicenseDepartment
         clsPerson _person;
         private enum _enGender { Male = 0, Female = 1 };
 
+        public delegate void FormClosedEventHandler();
+        public event FormClosedEventHandler formClosed;
+
         private void _FillCountriesInComboBox()
         {
             DataTable countriesTable = clsCountry.GetAllCountries();
@@ -299,6 +302,11 @@ namespace DrivingAndVehicleLicenseDepartment
         private void rbMale_CheckedChanged(object sender, EventArgs e)
         {
             _SetDefaultImageProfile();
+        }
+
+        private void frmAddEditPerson_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            formClosed.Invoke();
         }
     }
 }
