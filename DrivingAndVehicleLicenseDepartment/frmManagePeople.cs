@@ -157,11 +157,16 @@ namespace DrivingAndVehicleLicenseDepartment
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void btnAddNewPerson_Click(object sender, EventArgs e)
+        private void _ShowAddEditFormAndSubscribeItsCloseEvent()
         {
             frmAddEditPerson addEditPerson = new frmAddEditPerson();
             addEditPerson.formClosed += RefrechPeopleList;
             addEditPerson.ShowDialog();
+        }
+
+        private void btnAddNewPerson_Click(object sender, EventArgs e)
+        {
+            _ShowAddEditFormAndSubscribeItsCloseEvent();
         }
 
         private void RefrechPeopleList()
@@ -186,6 +191,11 @@ namespace DrivingAndVehicleLicenseDepartment
             }
             else
                 MessageBox.Show("Deleted Failed");
+        }
+
+        private void addNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ShowAddEditFormAndSubscribeItsCloseEvent();
         }
     }
 }
