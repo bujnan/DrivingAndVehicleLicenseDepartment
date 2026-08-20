@@ -140,5 +140,116 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
+        public static bool IsExist(int personId)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT Found = 1
+                             FROM People
+                             WHERE PersonID = @personId";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@personId", personId);
+
+            try
+            {
+                connection.Open();
+                object returnedResult = command.ExecuteScalar();
+                if (returnedResult != null)
+                    isFound = true;
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+        public static bool Find(int personId, ref string firstName, ref string secondName, ref string thirdName, ref string lastName, ref DateTime dateOfBirth, ref short gender, ref string address, ref string phone, ref string email, ref int nationalityId, ref string imagePath)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT * FROM People 
+                             WHERE PersonID = @personId";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@personId", personId);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    firstName = reader["FirstName"].ToString();
+                    secondName = reader["SecondName"].ToString();
+
+                    if (reader["ThirdName"] == DBNull.Value)
+                        thirdName = "";
+                    else
+                        thirdName = reader["ThirdName"].ToString();
+                    lastName = reader["LastName"].ToString();
+
+                    dateOfBirth = (DateTime)reader["DateOfBirth"];
+                    gender = Convert.ToInt16(reader["Gendor"]);
+                    address = reader["Address"].ToString();
+                    phone = reader["Phone"].ToString();
+
+                    if (reader["Email"] == DBNull.Value)
+                        email = "";
+                    else
+                        email = reader["Email"].ToString();
+
+                    nationalityId = Convert.ToInt32(reader["NationalityCountryID"]);
+
+                    if (reader["ImagePath"] == DBNull.Value)
+                        imagePath = "";
+                    else
+                        imagePath = reader["ImagePath"].ToString();
+                }
+                else
+                    return false;
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return true;
+        }
+
+        public static bool Delete(int personId)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"DELETE FROM People 
+                             WHERE PersonID = @personId";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@personId", personId);
+
+            try
+            {
+                connection.Open();
+                if (command.ExecuteNonQuery() < 0)
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return true;
+        }
     }
 }

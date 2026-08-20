@@ -175,5 +175,17 @@ namespace DrivingAndVehicleLicenseDepartment
             dgvManagePeople.DataSource = _peopleTableSelectedColumns;
             lblTotalRecords.Text = _peopleTableSelectedColumns.DefaultView.Count.ToString();
         }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsPerson person = clsPerson.Find(Convert.ToInt32(dgvManagePeople.SelectedRows[0].Cells[0].Value));
+            if (person.Delete())
+            {
+                MessageBox.Show("Deleted Successfully");
+                RefrechPeopleList();
+            }
+            else
+                MessageBox.Show("Deleted Failed");
+        }
     }
 }

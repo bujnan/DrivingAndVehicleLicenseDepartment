@@ -1,6 +1,7 @@
 ﻿using DVLD_DataAccess;
 using System.Data;
 using System;
+using System.Net.Sockets;
 
 namespace DVLD_Business
 {
@@ -171,6 +172,8 @@ namespace DVLD_Business
             _email = "";
             _nationalityId = -1;
             _imagePath = "";
+
+            _Mode = enMode.Update;
         }
 
         // Non-Static Methods
@@ -190,6 +193,11 @@ namespace DVLD_Business
             return false;
         }
 
+        public bool Delete()
+        {
+            return (clsPersonData.Delete(this.PersonId));
+        }
+
         // Static Methods
         public static DataTable GetAllPeople()
         {
@@ -199,6 +207,46 @@ namespace DVLD_Business
         public static bool IsExist(string nationalNo)
         {
             return clsPersonData.IsExist(nationalNo);
+        }
+
+        public static bool IsExist(int personId)
+        {
+            return clsPersonData.IsExist(personId);
+        }
+
+        public static clsPerson Find(int personId)
+        {
+            string firtName = "";
+            string secondName = "";
+            string thirdName = "";
+            string lastName = "";
+            DateTime dateOfBirth = DateTime.Now;
+            short gender = 0;
+            string address = "";
+            string phone = "";
+            string email = "";
+            int nationalityId = -1;
+            string imagePath = "";
+
+
+            if (clsPersonData.Find(personId, ref firtName, ref secondName, ref thirdName, ref lastName, ref dateOfBirth, ref gender, ref address, ref phone, ref email, ref nationalityId, ref imagePath))
+            {
+                clsPerson person = new clsPerson(personId);
+                person.FirstName = firtName;
+                person.SecondName = secondName;
+                person.ThirdName = thirdName;
+                person.LastName = lastName;
+                person.DateOfBirth = DateTime.Now;
+                person.Gender = gender;
+                person.Address = address;
+                person.Email = email;
+                person.Phone = phone;
+                person.NationalityId = nationalityId;
+                person.ImagePath = imagePath;
+                return person;
+            }
+
+            return null;
         }
 
     }
