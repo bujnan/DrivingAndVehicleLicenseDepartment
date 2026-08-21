@@ -179,6 +179,12 @@ namespace DrivingAndVehicleLicenseDepartment
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!this.ValidateChildren())
+            {
+                MessageBox.Show("Some Fields Are requiered!");
+                return;
+            }
+
             _SetPersonObject();
             _HandleProfileImage();
            
@@ -271,14 +277,14 @@ namespace DrivingAndVehicleLicenseDepartment
             if (string.IsNullOrWhiteSpace(txbNationalNo.Text))
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txbNationalNo, "The National No Can NOT be Empty!");
+                errorProvider1.SetError(txbNationalNo, "The National_No Can NOT be Empty!");
             }
             else
             {
-                if (clsPerson.IsExist(txbNationalNo.Text.Trim()))
+                if (clsPerson.IsExist(txbNationalNo.Text.Trim()) && txbNationalNo.Text.Trim() != _person.NationalNo)
                 {
                     e.Cancel = true;
-                    errorProvider1.SetError(txbNationalNo, "This National No Already Used!");
+                    errorProvider1.SetError(txbNationalNo, "This National_No Already Used!");
                 }
                 else
                 {
