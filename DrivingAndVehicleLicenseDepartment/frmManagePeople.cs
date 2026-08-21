@@ -205,5 +205,11 @@ namespace DrivingAndVehicleLicenseDepartment
             addEditPerson.formClosed += RefrechPeopleList;
             addEditPerson.ShowDialog();
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPersonDetails personDetail = new frmPersonDetails();
+            personDetail.ShowDialog();
+        }
     }
 }
