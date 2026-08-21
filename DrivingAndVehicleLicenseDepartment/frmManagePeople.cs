@@ -197,5 +197,13 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             _ShowAddEditFormAndSubscribeItsCloseEvent();
         }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int personId = Convert.ToInt32(dgvManagePeople.SelectedRows[0].Cells[0].Value);
+            frmAddEditPerson addEditPerson = new frmAddEditPerson(personId);
+            addEditPerson.formClosed += RefrechPeopleList;
+            addEditPerson.ShowDialog();
+        }
     }
 }

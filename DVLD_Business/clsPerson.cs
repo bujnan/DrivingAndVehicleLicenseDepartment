@@ -182,12 +182,31 @@ namespace DVLD_Business
             _personId = clsPersonData.AddNew(_nationalNo, _firstName, _secondName, _thirdName, _lastName, _dateOfBirth, _gender, _address, _phone, _email, _nationalityId, _imagePath);
             return (_personId != -1);
         }
+
+        private bool _Update()
+        {
+            return clsPersonData.Update(this.PersonId, this.FirstName, this.SecondName, this.ThirdName, this.LastName, this.NationalNo, this.DateOfBirth, this.Gender, this.Address, this.Phone, this.Email, this.NationalityId, this.ImagePath);
+        }
         public bool Save()
         {
-            if (_AddNew())
+            switch (_Mode)
             {
-                _Mode = enMode.Update;
-                return true;
+                case enMode.AddNew:
+                    if (_AddNew())
+                    {
+                        _Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                        return false;
+
+                case enMode.Update:
+                    if (_Update())
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
             }
 
             return false;
@@ -220,6 +239,7 @@ namespace DVLD_Business
             string secondName = "";
             string thirdName = "";
             string lastName = "";
+            string nationalNo = "";
             DateTime dateOfBirth = DateTime.Now;
             short gender = 0;
             string address = "";
@@ -229,14 +249,15 @@ namespace DVLD_Business
             string imagePath = "";
 
 
-            if (clsPersonData.Find(personId, ref firtName, ref secondName, ref thirdName, ref lastName, ref dateOfBirth, ref gender, ref address, ref phone, ref email, ref nationalityId, ref imagePath))
+            if (clsPersonData.Find(personId, ref firtName, ref secondName, ref thirdName, ref lastName, ref nationalNo,ref dateOfBirth, ref gender, ref address, ref phone, ref email, ref nationalityId, ref imagePath))
             {
                 clsPerson person = new clsPerson(personId);
                 person.FirstName = firtName;
                 person.SecondName = secondName;
                 person.ThirdName = thirdName;
                 person.LastName = lastName;
-                person.DateOfBirth = DateTime.Now;
+                person.NationalNo = nationalNo;
+                person.DateOfBirth = dateOfBirth;
                 person.Gender = gender;
                 person.Address = address;
                 person.Email = email;

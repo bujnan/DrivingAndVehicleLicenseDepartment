@@ -170,7 +170,7 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
-        public static bool Find(int personId, ref string firstName, ref string secondName, ref string thirdName, ref string lastName, ref DateTime dateOfBirth, ref short gender, ref string address, ref string phone, ref string email, ref int nationalityId, ref string imagePath)
+        public static bool Find(int personId, ref string firstName, ref string secondName, ref string thirdName, ref string lastName, ref string nationalNo, ref DateTime dateOfBirth, ref short gender, ref string address, ref string phone, ref string email, ref int nationalityId, ref string imagePath)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
             string query = @"SELECT * FROM People 
@@ -192,7 +192,9 @@ namespace DVLD_DataAccess
                         thirdName = "";
                     else
                         thirdName = reader["ThirdName"].ToString();
+
                     lastName = reader["LastName"].ToString();
+                    nationalNo = reader["NationalNo"].ToString();
 
                     dateOfBirth = (DateTime)reader["DateOfBirth"];
                     gender = Convert.ToInt16(reader["Gendor"]);
@@ -250,6 +252,74 @@ namespace DVLD_DataAccess
                 connection.Close();
             }
             return true;
+        }
+
+        public static bool Update(int personId, string firstName, string secondName, string thirdName, string lastName, string nationalNo, DateTime dateOfBirth, short gender, string address, string phone, string email, int nationalityId, string imagePath)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"UPDATE People
+                             SET 
+                             	FirstName = @firstName,
+                             	SecondName = @secondName,
+                             	ThirdName = @thirdName,
+                             	LastName = @lastName,
+                             	NationalNo = @nationalNo,
+                             	DateOfBirth = @dateOfBirth,
+                             	Gendor = @gender,
+                             	Address = @address,
+                             	Phone = @phone,
+                             	Email = @email,
+                             	NationalityCountryID = @nationalityId,
+                             	ImagePath = @imagePath
+                             WHERE PersonID = @personId";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@personId", personId);
+            command.Parameters.AddWithValue("@firstName", firstName);
+            command.Parameters.AddWithValue("@secondName", secondName);
+            command.Parameters.AddWithValue("@lastName", lastName);
+            command.Parameters.AddWithValue("@nationalNo", nationalNo);
+            command.Parameters.AddWithValue("@dateOfBirth", dateOfBirth);
+            command.Parameters.AddWithValue("@gender", gender);
+            command.Parameters.AddWithValue("@address", address);
+            command.Parameters.AddWithValue("@phone", phone);
+            command.Parameters.AddWithValue("@nationalityId", nationalityId);
+
+            // handle null value in database
+            if (thirdName != "")
+                command.Parameters.AddWithValue("@thirdName", thirdName);
+            else
+                command.Parameters.AddWithValue("@thirdName", DBNull.Value);
+
+            if (email != "")
+                command.Parameters.AddWithValue("@email", email);
+            else
+                command.Parameters.AddWithValue("@email", DBNull.Value);
+
+            if (imagePath != "")
+                command.Parameters.AddWithValue("@imagePath", imagePath);
+            else
+                command.Parameters.AddWithValue("@imagePath", DBNull.Value);
+
+
+            try
+            {
+                connection.Open();
+                if (command.ExecuteNonQuery() > 0)
+                    isFound = true;
+
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isFound;
         }
     }
 }

@@ -84,16 +84,67 @@ namespace DrivingAndVehicleLicenseDepartment
             llRemove.Visible = false;
             _SetDefaultImageProfile();
         }
+
+        private void _LoadPersonInfo(clsPerson person)
+        {
+            this.Text = "Update Person Info";
+            lblFormTitle.Text = "Update Person Info";
+
+            lblPersonId.Text = person.PersonId.ToString();
+            txbFirstName.Text = person.FirstName;
+            txbSecondName.Text = person.SecondName;
+            txbThirdName.Text = person.ThirdName;
+            txbLastName.Text = person.LastName;
+            txbNationalNo.Text = person.NationalNo;
+            txbAddress.Text = person.Address;
+            txbPhone.Text = person.Phone;
+            txbEmail.Text = person.Email;
+
+            dtpDateOfBirth.Value = person.DateOfBirth;
+
+            _FillCountriesInComboBox();
+            cbCountry.SelectedItem = clsCountry.Find(person.NationalityId).CountryName;
+
+            if (person.Gender == 0)
+                rbMale.Checked = true;
+            else
+                rbFemale.Checked = true;
+
+            if (person.ImagePath != "" && person.ImagePath != null)
+                pbPicture.ImageLocation = person.ImagePath;
+            else
+            {
+                if (rbMale.Checked)
+                    pbPicture.Image = Resources.male_512;
+                else
+                    pbPicture.Image = Resources.female_512;
+
+                llRemove.Visible = false;
+            }
+        }
         public frmAddEditPerson()
         {
             InitializeComponent();
             _Mode = enMode.AddNew;
         }
 
+        public frmAddEditPerson(int personId)
+        {
+            InitializeComponent();
+            _person = clsPerson.Find(personId);
+            if (_person == null)
+                MessageBox.Show("Empty object");
+            else
+                _LoadPersonInfo(_person);
+
+            _Mode = enMode.Update;
+        }
+
 
         private void frmAddEditPerson_Load(object sender, EventArgs e)
         {
-            _ResetDefaultValues();
+            if (_Mode == enMode.AddNew)
+                _ResetDefaultValues();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -107,6 +158,7 @@ namespace DrivingAndVehicleLicenseDepartment
             _person.SecondName = txbSecondName.Text.Trim();
             _person.ThirdName = txbThirdName.Text.Trim();
             _person.LastName = txbLastName.Text.Trim();
+            _person.NationalNo = txbNationalNo.Text.Trim();
             _person.DateOfBirth = dtpDateOfBirth.Value;
             _person.Address = txbAddress.Text.Trim();
             _person.Phone = txbPhone.Text.Trim();
