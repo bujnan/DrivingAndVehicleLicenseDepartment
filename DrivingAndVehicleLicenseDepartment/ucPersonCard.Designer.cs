@@ -38,6 +38,15 @@
             this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.lblNationalNo = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
+            this.pbProfile = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,15 +57,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pbProfile = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbPersonInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -79,6 +79,7 @@
             this.llEditPersonInfo.TabIndex = 82;
             this.llEditPersonInfo.TabStop = true;
             this.llEditPersonInfo.Text = "Edit Person Info";
+            this.llEditPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditPersonInfo_LinkClicked);
             // 
             // gbPersonInformation
             // 
@@ -206,6 +207,88 @@
             this.lblFullName.TabIndex = 74;
             this.lblFullName.Text = "???";
             // 
+            // pbProfile
+            // 
+            this.pbProfile.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.male_512;
+            this.pbProfile.Location = new System.Drawing.Point(710, 77);
+            this.pbProfile.Name = "pbProfile";
+            this.pbProfile.Size = new System.Drawing.Size(158, 150);
+            this.pbProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbProfile.TabIndex = 73;
+            this.pbProfile.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Address_32;
+            this.pictureBox4.Location = new System.Drawing.Point(139, 225);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox4.TabIndex = 71;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Email_32;
+            this.pictureBox3.Location = new System.Drawing.Point(139, 185);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(37, 34);
+            this.pictureBox3.TabIndex = 72;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Man_32;
+            this.pictureBox2.Location = new System.Drawing.Point(531, 145);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(37, 34);
+            this.pictureBox2.TabIndex = 65;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Person_32;
+            this.pictureBox5.Location = new System.Drawing.Point(139, 65);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(39, 34);
+            this.pictureBox5.TabIndex = 70;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Country_32;
+            this.pictureBox10.Location = new System.Drawing.Point(531, 186);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(39, 41);
+            this.pictureBox10.TabIndex = 69;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Phone_32;
+            this.pictureBox9.Location = new System.Drawing.Point(139, 145);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(39, 34);
+            this.pictureBox9.TabIndex = 68;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Calendar_32;
+            this.pictureBox8.Location = new System.Drawing.Point(531, 104);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(39, 34);
+            this.pictureBox8.TabIndex = 67;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Number_32;
+            this.pictureBox1.Location = new System.Drawing.Point(139, 105);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 34);
+            this.pictureBox1.TabIndex = 66;
+            this.pictureBox1.TabStop = false;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -305,88 +388,6 @@
             this.label2.Size = new System.Drawing.Size(99, 20);
             this.label2.TabIndex = 55;
             this.label2.Text = "Person ID:";
-            // 
-            // pbProfile
-            // 
-            this.pbProfile.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.male_512;
-            this.pbProfile.Location = new System.Drawing.Point(710, 77);
-            this.pbProfile.Name = "pbProfile";
-            this.pbProfile.Size = new System.Drawing.Size(158, 150);
-            this.pbProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbProfile.TabIndex = 73;
-            this.pbProfile.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Address_32;
-            this.pictureBox4.Location = new System.Drawing.Point(139, 225);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox4.TabIndex = 71;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Email_32;
-            this.pictureBox3.Location = new System.Drawing.Point(139, 185);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(37, 34);
-            this.pictureBox3.TabIndex = 72;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Man_32;
-            this.pictureBox2.Location = new System.Drawing.Point(531, 145);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(37, 34);
-            this.pictureBox2.TabIndex = 65;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Person_32;
-            this.pictureBox5.Location = new System.Drawing.Point(139, 65);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(39, 34);
-            this.pictureBox5.TabIndex = 70;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Country_32;
-            this.pictureBox10.Location = new System.Drawing.Point(531, 186);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(39, 41);
-            this.pictureBox10.TabIndex = 69;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Phone_32;
-            this.pictureBox9.Location = new System.Drawing.Point(139, 145);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(39, 34);
-            this.pictureBox9.TabIndex = 68;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Calendar_32;
-            this.pictureBox8.Location = new System.Drawing.Point(531, 104);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(39, 34);
-            this.pictureBox8.TabIndex = 67;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Number_32;
-            this.pictureBox1.Location = new System.Drawing.Point(139, 105);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 34);
-            this.pictureBox1.TabIndex = 66;
-            this.pictureBox1.TabStop = false;
             // 
             // ucPersonCard
             // 

@@ -210,6 +210,7 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             int personId = Convert.ToInt32(dgvManagePeople.SelectedRows[0].Cells[0].Value);
             frmPersonDetails personDetail = new frmPersonDetails(personId);
+            personDetail.formClosed += RefrechPeopleList;
             personDetail.ShowDialog();
         }
     }

@@ -6,6 +6,7 @@ namespace DrivingAndVehicleLicenseDepartment
 {
     public partial class ucPersonCard : UserControl
     {
+        private int _personId = -1;
         private clsPerson _person;
 
         public ucPersonCard()
@@ -53,6 +54,37 @@ namespace DrivingAndVehicleLicenseDepartment
             }
 
             lblPersonId.Text = personId.ToString();
+            lblFullName.Text = _person.FullName;
+            lblNationalNo.Text = _person.NationalNo;
+            lblPhone.Text = _person.Phone;
+            lblEmail.Text = _person.Email;
+            lblAddress.Text = _person.Address;
+            lblDateOfBirth.Text = _person.DateOfBirth.ToString("MMM dd, yyyy");
+            lblCountry.Text = clsCountry.Find(_person.NationalityId).CountryName;
+            _HandleGender();
+            _HandleImage();
+        }
+
+        private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAddEditPerson addEditPerson = new frmAddEditPerson(_person.PersonId);
+            _personId = _person.PersonId;
+            addEditPerson.formClosed += RefreshPersonCard_Closed;
+            addEditPerson.ShowDialog();
+        }
+
+        void RefreshPersonCard_Closed()
+        {
+            _person = clsPerson.Find(_personId);
+
+            if (_person == null)
+            {
+                _ResetPersonInfo();
+                MessageBox.Show("Select Person to Show its Info");
+                return;
+            }
+
+            lblPersonId.Text = _personId.ToString();
             lblFullName.Text = _person.FullName;
             lblNationalNo.Text = _person.NationalNo;
             lblPhone.Text = _person.Phone;

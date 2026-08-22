@@ -56,7 +56,7 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ucPersonDetailscs1
+            // ucPersonCard1
             // 
             this.ucPersonCard1.Location = new System.Drawing.Point(12, 61);
             this.ucPersonCard1.Name = "ucPersonCard1";
@@ -76,6 +76,7 @@
             this.Name = "frmPersonDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Person Details";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPersonDetails_FormClosed);
             this.ResumeLayout(false);
 
         }
