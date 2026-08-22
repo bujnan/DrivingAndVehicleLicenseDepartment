@@ -1,6 +1,6 @@
 ﻿namespace DrivingAndVehicleLicenseDepartment
 {
-    partial class ucPersonDetailscs
+    partial class ucPersonCard
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbPersonInformation = new System.Windows.Forms.GroupBox();
             this.llEditPersonInfo = new System.Windows.Forms.LinkLabel();
+            this.gbPersonInformation = new System.Windows.Forms.GroupBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
@@ -69,6 +69,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
+            // llEditPersonInfo
+            // 
+            this.llEditPersonInfo.AutoSize = true;
+            this.llEditPersonInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llEditPersonInfo.Location = new System.Drawing.Point(725, 33);
+            this.llEditPersonInfo.Name = "llEditPersonInfo";
+            this.llEditPersonInfo.Size = new System.Drawing.Size(128, 20);
+            this.llEditPersonInfo.TabIndex = 82;
+            this.llEditPersonInfo.TabStop = true;
+            this.llEditPersonInfo.Text = "Edit Person Info";
+            // 
             // gbPersonInformation
             // 
             this.gbPersonInformation.Controls.Add(this.llEditPersonInfo);
@@ -100,23 +111,12 @@
             this.gbPersonInformation.Controls.Add(this.label5);
             this.gbPersonInformation.Controls.Add(this.label2);
             this.gbPersonInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPersonInformation.Location = new System.Drawing.Point(8, 8);
+            this.gbPersonInformation.Location = new System.Drawing.Point(3, 3);
             this.gbPersonInformation.Name = "gbPersonInformation";
             this.gbPersonInformation.Size = new System.Drawing.Size(888, 273);
-            this.gbPersonInformation.TabIndex = 53;
+            this.gbPersonInformation.TabIndex = 54;
             this.gbPersonInformation.TabStop = false;
             this.gbPersonInformation.Text = "Person Information";
-            // 
-            // llEditPersonInfo
-            // 
-            this.llEditPersonInfo.AutoSize = true;
-            this.llEditPersonInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llEditPersonInfo.Location = new System.Drawing.Point(725, 33);
-            this.llEditPersonInfo.Name = "llEditPersonInfo";
-            this.llEditPersonInfo.Size = new System.Drawing.Size(128, 20);
-            this.llEditPersonInfo.TabIndex = 82;
-            this.llEditPersonInfo.TabStop = true;
-            this.llEditPersonInfo.Text = "Edit Person Info";
             // 
             // lblAddress
             // 
@@ -388,13 +388,13 @@
             this.pictureBox1.TabIndex = 66;
             this.pictureBox1.TabStop = false;
             // 
-            // ucPersonDetailscs
+            // ucPersonCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbPersonInformation);
-            this.Name = "ucPersonDetailscs";
-            this.Size = new System.Drawing.Size(906, 295);
+            this.Name = "ucPersonCard";
+            this.Size = new System.Drawing.Size(895, 284);
             this.gbPersonInformation.ResumeLayout(false);
             this.gbPersonInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).EndInit();
@@ -411,8 +411,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox gbPersonInformation;
+
         private System.Windows.Forms.LinkLabel llEditPersonInfo;
+        private System.Windows.Forms.GroupBox gbPersonInformation;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPhone;

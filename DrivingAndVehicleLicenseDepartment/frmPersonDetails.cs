@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace DrivingAndVehicleLicenseDepartment
 {
     public partial class frmPersonDetails : Form
     {
-        public frmPersonDetails()
+
+        public frmPersonDetails(int personId)
         {
             InitializeComponent();
+            ucPersonCard1.LoadPersonInfo(personId);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

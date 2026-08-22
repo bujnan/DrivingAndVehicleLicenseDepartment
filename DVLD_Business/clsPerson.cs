@@ -95,6 +95,11 @@ namespace DVLD_Business
             }
         }
 
+        public string FullName
+        {
+            get { return _firstName + " " + _secondName + " " + _thirdName + " " + _lastName; }
+        }
+
         public DateTime DateOfBirth
         {
             set { _dateOfBirth = value; }

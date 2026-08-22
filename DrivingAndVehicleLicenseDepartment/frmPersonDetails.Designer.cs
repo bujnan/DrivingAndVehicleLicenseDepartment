@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ucPersonDetailscs1 = new DrivingAndVehicleLicenseDepartment.ucPersonDetailscs();
+            this.ucPersonCard1 = new DrivingAndVehicleLicenseDepartment.ucPersonCard();
             this.SuspendLayout();
             // 
             // label1
@@ -58,10 +58,10 @@
             // 
             // ucPersonDetailscs1
             // 
-            this.ucPersonDetailscs1.Location = new System.Drawing.Point(12, 61);
-            this.ucPersonDetailscs1.Name = "ucPersonDetailscs1";
-            this.ucPersonDetailscs1.Size = new System.Drawing.Size(906, 295);
-            this.ucPersonDetailscs1.TabIndex = 2;
+            this.ucPersonCard1.Location = new System.Drawing.Point(12, 61);
+            this.ucPersonCard1.Name = "ucPersonCard1";
+            this.ucPersonCard1.Size = new System.Drawing.Size(906, 295);
+            this.ucPersonCard1.TabIndex = 2;
             // 
             // frmPersonDetails
             // 
@@ -69,7 +69,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 403);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.ucPersonDetailscs1);
+            this.Controls.Add(this.ucPersonCard1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MinimizeBox = false;
@@ -83,7 +83,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private ucPersonDetailscs ucPersonDetailscs1;
+        private ucPersonCard ucPersonCard1;
         private System.Windows.Forms.Button btnClose;
     }
 }
