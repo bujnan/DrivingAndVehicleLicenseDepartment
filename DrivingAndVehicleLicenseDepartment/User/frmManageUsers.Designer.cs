@@ -38,6 +38,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.lblTotalRecords = new System.Windows.Forms.Label();
+            this.cbIsActive = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
@@ -79,10 +80,18 @@
             this.cbFilterBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFilterBy.FormattingEnabled = true;
             this.cbFilterBy.IntegralHeight = false;
+            this.cbFilterBy.Items.AddRange(new object[] {
+            "None",
+            "User Id",
+            "Person Id",
+            "Username",
+            "Full Name",
+            "Is Active"});
             this.cbFilterBy.Location = new System.Drawing.Point(101, 219);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(179, 24);
             this.cbFilterBy.TabIndex = 0;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // txbFilterBy
             // 
@@ -90,6 +99,7 @@
             this.txbFilterBy.Name = "txbFilterBy";
             this.txbFilterBy.Size = new System.Drawing.Size(217, 22);
             this.txbFilterBy.TabIndex = 1;
+            this.txbFilterBy.TextChanged += new System.EventHandler(this.txbFilterBy_TextChanged);
             // 
             // btnAddUser
             // 
@@ -136,6 +146,7 @@
             this.dgvUsers.Location = new System.Drawing.Point(23, 260);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
+            this.dgvUsers.RowHeadersVisible = false;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 24;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -152,11 +163,26 @@
             this.lblTotalRecords.TabIndex = 3;
             this.lblTotalRecords.Text = "???";
             // 
+            // cbIsActive
+            // 
+            this.cbIsActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbIsActive.FormattingEnabled = true;
+            this.cbIsActive.Items.AddRange(new object[] {
+            "All",
+            "Yes",
+            "No"});
+            this.cbIsActive.Location = new System.Drawing.Point(295, 219);
+            this.cbIsActive.Name = "cbIsActive";
+            this.cbIsActive.Size = new System.Drawing.Size(94, 24);
+            this.cbIsActive.TabIndex = 4;
+            this.cbIsActive.SelectedIndexChanged += new System.EventHandler(this.cbIsActive_SelectedIndexChanged);
+            // 
             // frmManageUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 517);
+            this.Controls.Add(this.cbIsActive);
             this.Controls.Add(this.lblTotalRecords);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.txbFilterBy);
@@ -192,5 +218,6 @@
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Label lblTotalRecords;
+        private System.Windows.Forms.ComboBox cbIsActive;
     }
 }

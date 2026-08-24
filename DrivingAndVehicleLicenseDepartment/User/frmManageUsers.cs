@@ -23,6 +23,8 @@ namespace DrivingAndVehicleLicenseDepartment.User
         {
             _AllUsersTable = clsUser.GetAllUsers();
             dgvUsers.DataSource = _AllUsersTable;
+            cbFilterBy.SelectedIndex = 0;
+            cbIsActive.SelectedIndex = 0;
 
             if (_AllUsersTable.Rows.Count > 0)
             {
@@ -44,6 +46,80 @@ namespace DrivingAndVehicleLicenseDepartment.User
                 lblTotalRecords.Text = _AllUsersTable.Rows.Count.ToString();
             }
 
+        }
+
+        private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txbFilterBy.Visible = (cbFilterBy.SelectedItem != "None" && cbFilterBy.SelectedItem != "Is Active");
+            cbIsActive.Visible = (cbFilterBy.SelectedItem == "Is Active");
+
+            if (txbFilterBy.Visible)
+            {
+                txbFilterBy.Text = "";
+                txbFilterBy.Focus();
+            }
+
+            if (!cbIsActive.Visible)
+            {
+                cbIsActive.SelectedIndex = 0;
+            }
+        }
+
+        private void txbFilterBy_TextChanged(object sender, EventArgs e)
+        {
+            string selectedFilter = "";          
+            switch (cbFilterBy.Text)
+            {
+                case "User Id":
+                    selectedFilter = "UserID";
+                    break;
+
+                case "Person Id":
+                    selectedFilter = "PersonID";
+                    break;
+
+                case "Username":
+                    selectedFilter = "UserName";
+                    break;
+
+                case "Full Name":
+                    selectedFilter = "FullName";
+                    break;
+
+                default:
+                    selectedFilter = "None";
+                    break;
+            }
+
+            if (selectedFilter == "None" || txbFilterBy.Text == "")
+            {
+                _AllUsersTable.DefaultView.RowFilter = "";
+                lblTotalRecords.Text = _AllUsersTable.DefaultView.Count.ToString();
+                return;
+            }
+            if (selectedFilter == "UserID" || selectedFilter == "PersonID")
+                _AllUsersTable.DefaultView.RowFilter = string.Format("{0} = {1}", selectedFilter, txbFilterBy.Text.Trim());
+            else
+                _AllUsersTable.DefaultView.RowFilter = $"{selectedFilter} LIKE '{txbFilterBy.Text.Trim()}%'";
+
+            lblTotalRecords.Text = _AllUsersTable.DefaultView.Count.ToString();
+            
+        }
+
+        private void cbIsActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbIsActive.Text == "Yes")
+                _AllUsersTable.DefaultView.RowFilter = $"IsActive = 1";
+            else if (cbIsActive.Text == "No")
+                _AllUsersTable.DefaultView.RowFilter = $"IsActive = 0";
+            else
+            {
+                _AllUsersTable.DefaultView.RowFilter = "";
+                lblTotalRecords.Text = _AllUsersTable.DefaultView.Count.ToString();
+                return;
+            }
+
+            lblTotalRecords.Text = _AllUsersTable.DefaultView.Count.ToString();
         }
     }
 }
