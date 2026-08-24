@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DrivingAndVehicleLicenseDepartment.User;
 using System.Windows.Forms;
 
 namespace DrivingAndVehicleLicenseDepartment
@@ -21,6 +15,12 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             frmManagePeople managePeople = new frmManagePeople();
             managePeople.ShowDialog();
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageUsers manageUsers = new frmManageUsers();
+            manageUsers.ShowDialog();
         }
     }
 }

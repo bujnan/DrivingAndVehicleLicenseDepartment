@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.msPeople = new System.Windows.Forms.MenuStrip();
-            this.pbMainFormBackgound = new System.Windows.Forms.PictureBox();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pbMainFormBackgound = new System.Windows.Forms.PictureBox();
             this.msPeople.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMainFormBackgound)).BeginInit();
             this.SuspendLayout();
@@ -40,12 +41,31 @@
             this.msPeople.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.msPeople.ImageScalingSize = new System.Drawing.Size(60, 60);
             this.msPeople.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.peopleToolStripMenuItem});
+            this.peopleToolStripMenuItem,
+            this.usersToolStripMenuItem});
             this.msPeople.Location = new System.Drawing.Point(0, 0);
             this.msPeople.Name = "msPeople";
             this.msPeople.Size = new System.Drawing.Size(1112, 68);
             this.msPeople.TabIndex = 1;
             this.msPeople.Text = "menuStrip1";
+            // 
+            // peopleToolStripMenuItem
+            // 
+            this.peopleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.peopleToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.People_64;
+            this.peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
+            this.peopleToolStripMenuItem.Size = new System.Drawing.Size(142, 64);
+            this.peopleToolStripMenuItem.Text = "People ";
+            this.peopleToolStripMenuItem.Click += new System.EventHandler(this.peopleToolStripMenuItem_Click);
+            // 
+            // usersToolStripMenuItem
+            // 
+            this.usersToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.usersToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Users_2_64;
+            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(131, 64);
+            this.usersToolStripMenuItem.Text = "Users ";
+            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // pbMainFormBackgound
             // 
@@ -58,15 +78,6 @@
             this.pbMainFormBackgound.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMainFormBackgound.TabIndex = 0;
             this.pbMainFormBackgound.TabStop = false;
-            // 
-            // peopleToolStripMenuItem
-            // 
-            this.peopleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.peopleToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.People_64;
-            this.peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
-            this.peopleToolStripMenuItem.Size = new System.Drawing.Size(137, 64);
-            this.peopleToolStripMenuItem.Text = "People";
-            this.peopleToolStripMenuItem.Click += new System.EventHandler(this.peopleToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -94,6 +105,7 @@
         private System.Windows.Forms.PictureBox pbMainFormBackgound;
         private System.Windows.Forms.MenuStrip msPeople;
         private System.Windows.Forms.ToolStripMenuItem peopleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
     }
 }
 
