@@ -275,5 +275,42 @@ namespace DVLD_Business
             return null;
         }
 
+        public static clsPerson Find(string nationalNo)
+        {
+            int personId = -1;
+            string firtName = "";
+            string secondName = "";
+            string thirdName = "";
+            string lastName = "";
+            DateTime dateOfBirth = DateTime.Now;
+            short gender = 0;
+            string address = "";
+            string phone = "";
+            string email = "";
+            int nationalityId = -1;
+            string imagePath = "";
+
+
+            if (clsPersonData.Find(ref personId, ref firtName, ref secondName, ref thirdName, ref lastName, nationalNo, ref dateOfBirth, ref gender, ref address, ref phone, ref email, ref nationalityId, ref imagePath))
+            {
+                clsPerson person = new clsPerson(personId);
+                person.FirstName = firtName;
+                person.SecondName = secondName;
+                person.ThirdName = thirdName;
+                person.LastName = lastName;
+                person.NationalNo = nationalNo;
+                person.DateOfBirth = dateOfBirth;
+                person.Gender = gender;
+                person.Address = address;
+                person.Email = email;
+                person.Phone = phone;
+                person.NationalityId = nationalityId;
+                person.ImagePath = imagePath;
+                return person;
+            }
+
+            return null;
+        }
+
     }
 }

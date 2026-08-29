@@ -49,11 +49,34 @@ namespace DrivingAndVehicleLicenseDepartment
             if (_person == null)
             {
                 _ResetPersonInfo();
-                MessageBox.Show("Select Person to Show its Info");
+                MessageBox.Show("No Person Info Found");
                 return;
             }
 
             lblPersonId.Text = personId.ToString();
+            lblFullName.Text = _person.FullName;
+            lblNationalNo.Text = _person.NationalNo;
+            lblPhone.Text = _person.Phone;
+            lblEmail.Text = _person.Email;
+            lblAddress.Text = _person.Address;
+            lblDateOfBirth.Text = _person.DateOfBirth.ToString("MMM dd, yyyy");
+            lblCountry.Text = clsCountry.Find(_person.NationalityId).CountryName;
+            _HandleGender();
+            _HandleImage();
+        }
+
+        public void LoadPersonInfo(string nationalNo)
+        {
+            _person = clsPerson.Find(nationalNo);
+
+            if (_person == null)
+            {
+                _ResetPersonInfo();
+                MessageBox.Show("No Person Info Found!");
+                return;
+            }
+
+            lblPersonId.Text = _person.PersonId.ToString();
             lblFullName.Text = _person.FullName;
             lblNationalNo.Text = _person.NationalNo;
             lblPhone.Text = _person.Phone;
@@ -80,7 +103,7 @@ namespace DrivingAndVehicleLicenseDepartment
             if (_person == null)
             {
                 _ResetPersonInfo();
-                MessageBox.Show("Select Person to Show its Info");
+                MessageBox.Show("No Person Info Found");
                 return;
             }
 

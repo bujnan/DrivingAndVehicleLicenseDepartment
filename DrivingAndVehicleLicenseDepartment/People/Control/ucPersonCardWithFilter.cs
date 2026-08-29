@@ -16,5 +16,40 @@ namespace DrivingAndVehicleLicenseDepartment.People.Control
         {
             InitializeComponent();
         }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txbFindBy.Text))
+            {
+                switch (cbFindBy.Text)
+                {
+                    case "National No":
+                        ucPersonCard1.LoadPersonInfo(txbFindBy.Text);
+                        break;
+
+                    case "Person Id":
+                        ucPersonCard1.LoadPersonInfo(Convert.ToInt32(txbFindBy.Text));
+                        break;
+
+                    default:
+                        ucPersonCard1.LoadPersonInfo(txbFindBy.Text);
+                        break;
+                }
+                errorProvider1.SetError(txbFindBy, null);
+            }
+            else
+                errorProvider1.SetError(txbFindBy, "This Field Can NOT be Empty!");
+        }
+
+        private void ucPersonCardWithFilter_Load(object sender, EventArgs e)
+        {
+            cbFindBy.SelectedIndex = 1;
+        }
+
+        private void txbFindBy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cbFindBy.Text == "Person Id")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }

@@ -228,6 +228,65 @@ namespace DVLD_DataAccess
             return true;
         }
 
+        public static bool Find(ref int personId, ref string firstName, ref string secondName, ref string thirdName, ref string lastName, string nationalNo, ref DateTime dateOfBirth, ref short gender, ref string address, ref string phone, ref string email, ref int nationalityId, ref string imagePath)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT * FROM People 
+                             WHERE NationalNo = @nationalNo";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@nationalNo", nationalNo);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    personId = Convert.ToInt32(reader["PersonID"]);
+
+                    firstName = reader["FirstName"].ToString();
+                    secondName = reader["SecondName"].ToString();
+
+                    if (reader["ThirdName"] == DBNull.Value)
+                        thirdName = "";
+                    else
+                        thirdName = reader["ThirdName"].ToString();
+
+                    lastName = reader["LastName"].ToString();
+
+                    dateOfBirth = (DateTime)reader["DateOfBirth"];
+                    gender = Convert.ToInt16(reader["Gendor"]);
+                    address = reader["Address"].ToString();
+                    phone = reader["Phone"].ToString();
+
+                    if (reader["Email"] == DBNull.Value)
+                        email = "";
+                    else
+                        email = reader["Email"].ToString();
+
+                    nationalityId = Convert.ToInt32(reader["NationalityCountryID"]);
+
+                    if (reader["ImagePath"] == DBNull.Value)
+                        imagePath = "";
+                    else
+                        imagePath = reader["ImagePath"].ToString();
+                }
+                else
+                    return false;
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return true;
+        }
+
         public static bool Delete(int personId)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);

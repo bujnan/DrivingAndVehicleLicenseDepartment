@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ucPersonCard1 = new DrivingAndVehicleLicenseDepartment.ucPersonCard();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
             this.txbFindBy = new System.Windows.Forms.TextBox();
             this.cbFindBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnFind = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // ucPersonCard1
@@ -59,12 +62,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.White;
+            this.btnAdd.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.addPerson;
+            this.btnAdd.Location = new System.Drawing.Point(452, 16);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(37, 37);
+            this.btnAdd.TabIndex = 7;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            // 
+            // btnFind
+            // 
+            this.btnFind.BackColor = System.Drawing.Color.White;
+            this.btnFind.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.search_person;
+            this.btnFind.Location = new System.Drawing.Point(408, 16);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(37, 37);
+            this.btnFind.TabIndex = 8;
+            this.btnFind.UseVisualStyleBackColor = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
             // txbFindBy
             // 
             this.txbFindBy.Location = new System.Drawing.Point(215, 30);
             this.txbFindBy.Name = "txbFindBy";
             this.txbFindBy.Size = new System.Drawing.Size(154, 22);
             this.txbFindBy.TabIndex = 6;
+            this.txbFindBy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbFindBy_KeyPress);
             // 
             // cbFindBy
             // 
@@ -88,36 +113,22 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Find By:";
             // 
-            // btnAdd
+            // errorProvider1
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.White;
-            this.btnAdd.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.addPerson;
-            this.btnAdd.Location = new System.Drawing.Point(452, 16);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(37, 37);
-            this.btnAdd.TabIndex = 7;
-            this.btnAdd.UseVisualStyleBackColor = false;
+            this.errorProvider1.ContainerControl = this;
             // 
-            // btnFind
-            // 
-            this.btnFind.BackColor = System.Drawing.Color.White;
-            this.btnFind.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.search_person;
-            this.btnFind.Location = new System.Drawing.Point(408, 16);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(37, 37);
-            this.btnFind.TabIndex = 8;
-            this.btnFind.UseVisualStyleBackColor = false;
-            // 
-            // UserControl1
+            // ucPersonCardWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ucPersonCard1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "UserControl1";
+            this.Name = "ucPersonCardWithFilter";
             this.Size = new System.Drawing.Size(898, 352);
+            this.Load += new System.EventHandler(this.ucPersonCardWithFilter_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -131,5 +142,6 @@
         private System.Windows.Forms.TextBox txbFindBy;
         private System.Windows.Forms.ComboBox cbFindBy;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
