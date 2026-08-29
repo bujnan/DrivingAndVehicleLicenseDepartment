@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global\clsUtil.cs" />
+    <Compile Include="People\Control\ucPersonCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="People\Control\ucPersonCardWithFilter.Designer.cs">
+      <DependentUpon>ucPersonCardWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="People\frmAddEditPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,11 +82,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="People\ucPersonCard.cs">
+    <Compile Include="People\Control\ucPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="People\ucPersonCard.Designer.cs">
+    <Compile Include="People\Control\ucPersonCard.Designer.cs">
       <DependentUpon>ucPersonCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\frmAddNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmAddNewUser.Designer.cs">
+      <DependentUpon>frmAddNewUser.cs</DependentUpon>
     </Compile>
     <Compile Include="User\frmManageUsers.cs">
       <SubType>Form</SubType>
@@ -88,6 +100,9 @@
     <Compile Include="User\frmManageUsers.Designer.cs">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="People\Control\ucPersonCardWithFilter.resx">
+      <DependentUpon>ucPersonCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="People\frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,8 +120,11 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\ucPersonCard.resx">
+    <EmbeddedResource Include="People\Control\ucPersonCard.resx">
       <DependentUpon>ucPersonCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\frmAddNewUser.resx">
+      <DependentUpon>frmAddNewUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\frmManageUsers.resx">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
@@ -210,6 +228,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Add New User 72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addPerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Next 32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

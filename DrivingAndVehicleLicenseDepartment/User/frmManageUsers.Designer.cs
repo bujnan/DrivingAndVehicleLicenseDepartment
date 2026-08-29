@@ -111,6 +111,7 @@
             this.btnAddUser.Size = new System.Drawing.Size(71, 70);
             this.btnAddUser.TabIndex = 2;
             this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // btnClose
             // 

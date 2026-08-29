@@ -121,5 +121,11 @@ namespace DrivingAndVehicleLicenseDepartment.User
 
             lblTotalRecords.Text = _AllUsersTable.DefaultView.Count.ToString();
         }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            frmAddNewUser addNewUser = new frmAddNewUser();
+            addNewUser.ShowDialog();
+        }
     }
 }
