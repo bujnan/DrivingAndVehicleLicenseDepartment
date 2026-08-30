@@ -51,5 +51,17 @@ namespace DrivingAndVehicleLicenseDepartment.People.Control
             if (cbFindBy.Text == "Person Id")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+        private void _RefreshPersonInfo(int personId)
+        {
+            ucPersonCard1.LoadPersonInfo(personId);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmAddEditPerson addEditPerson = new frmAddEditPerson();
+            addEditPerson.personSaved += _RefreshPersonInfo;
+            addEditPerson.ShowDialog();
+        }
     }
 }

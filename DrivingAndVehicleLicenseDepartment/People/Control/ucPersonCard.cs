@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DrivingAndVehicleLicenseDepartment.Properties;
+using DVLD_Business;
 using System;
 using System.Windows.Forms;
 
@@ -25,7 +26,7 @@ namespace DrivingAndVehicleLicenseDepartment
             lblDateOfBirth.Text = "???";
             lblCountry.Text = "???";
             lblGender.Text = "???";
-            pbProfile.ImageLocation = "";
+            pbProfile.Image = Resources.male_512;
         }
 
         private void _HandleGender()
@@ -90,10 +91,13 @@ namespace DrivingAndVehicleLicenseDepartment
 
         private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmAddEditPerson addEditPerson = new frmAddEditPerson(_person.PersonId);
-            _personId = _person.PersonId;
-            addEditPerson.formClosed += RefreshPersonCard_Closed;
-            addEditPerson.ShowDialog();
+            if (_person != null)
+            {
+                frmAddEditPerson addEditPerson = new frmAddEditPerson(_person.PersonId);
+                _personId = _person.PersonId;
+                addEditPerson.formClosed += RefreshPersonCard_Closed;
+                addEditPerson.ShowDialog();
+            }
         }
 
         void RefreshPersonCard_Closed()

@@ -22,6 +22,9 @@ namespace DrivingAndVehicleLicenseDepartment
         public delegate void FormClosedEventHandler();
         public event FormClosedEventHandler formClosed;
 
+        public delegate void PersonSavedEventHandler(int personId);
+        public event PersonSavedEventHandler personSaved;
+
         private void _FillCountriesInComboBox()
         {
             DataTable countriesTable = clsCountry.GetAllCountries();
@@ -194,6 +197,7 @@ namespace DrivingAndVehicleLicenseDepartment
                 _Mode = enMode.Update;
                 this.Text = "Update Person Info";
                 lblFormTitle.Text = "Edit Person Info";
+                personSaved?.Invoke(_person.PersonId);
                 MessageBox.Show("Added Succeffully");
             }
             else
@@ -364,7 +368,7 @@ namespace DrivingAndVehicleLicenseDepartment
 
         private void frmAddEditPerson_FormClosed(object sender, FormClosedEventArgs e)
         {
-            formClosed.Invoke();
+            formClosed?.Invoke();
         }
     }
 }

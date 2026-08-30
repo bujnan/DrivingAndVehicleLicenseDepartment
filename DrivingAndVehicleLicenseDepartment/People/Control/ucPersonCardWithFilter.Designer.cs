@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ucPersonCard1 = new DrivingAndVehicleLicenseDepartment.ucPersonCard();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
@@ -37,16 +36,10 @@
             this.cbFindBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ucPersonCard1 = new DrivingAndVehicleLicenseDepartment.ucPersonCard();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ucPersonCard1
-            // 
-            this.ucPersonCard1.Location = new System.Drawing.Point(3, 72);
-            this.ucPersonCard1.Name = "ucPersonCard1";
-            this.ucPersonCard1.Size = new System.Drawing.Size(898, 283);
-            this.ucPersonCard1.TabIndex = 8;
             // 
             // groupBox1
             // 
@@ -71,6 +64,7 @@
             this.btnAdd.Size = new System.Drawing.Size(37, 37);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnFind
             // 
@@ -116,6 +110,13 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // ucPersonCard1
+            // 
+            this.ucPersonCard1.Location = new System.Drawing.Point(3, 72);
+            this.ucPersonCard1.Name = "ucPersonCard1";
+            this.ucPersonCard1.Size = new System.Drawing.Size(898, 283);
+            this.ucPersonCard1.TabIndex = 8;
             // 
             // ucPersonCardWithFilter
             // 
