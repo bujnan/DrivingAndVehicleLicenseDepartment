@@ -17,7 +17,7 @@ namespace DVLD_DataAccess
             string query = @"SELECT 
 	                            U.UserID,
 	                            U.PersonID,
-	                            FullName = P.FirstName + ' ' + P.SecondName + ' ' + P.ThirdName + ' ' + P.LastName,
+	                            FullName = P.FirstName + ' ' + P.SecondName + ' ' + IsNULL(P.ThirdName, '') + ' ' + P.LastName,
 	                            U.UserName,
 	                            U.IsActive
                              FROM Users U
@@ -45,6 +45,38 @@ namespace DVLD_DataAccess
             }
 
             return _allUsersTable;
+        }
+
+        public static int Save(string username, string password, bool isActive, int personId)
+        {
+            int userId = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"INSERT INTO Users (UserName, Password, IsActive, PersonID)
+                             VALUES (@username, @password, @isActive, @personId);
+                             SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@password", password);
+            command.Parameters.AddWithValue("@isActive", isActive);
+            command.Parameters.AddWithValue("@personId", personId);
+
+            try
+            {
+                connection.Open();
+                object newUserId = command.ExecuteScalar();
+                if (newUserId != null)
+                    userId = Convert.ToInt32(newUserId);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return userId;
         }
 
     }

@@ -10,6 +10,17 @@ namespace DrivingAndVehicleLicenseDepartment
         private int _personId = -1;
         private clsPerson _person;
 
+        public int PersonId
+        {
+            set { _personId = value; }
+            get { return _person.PersonId; }
+        }
+
+        public clsPerson SelectedPerson
+        {
+            get { return _person; }
+        }
+
         public ucPersonCard()
         {
             InitializeComponent();

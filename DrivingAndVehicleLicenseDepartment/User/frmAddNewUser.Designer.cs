@@ -37,7 +37,7 @@
             this.txbUsername = new System.Windows.Forms.TextBox();
             this.txbConfirmPassword = new System.Windows.Forms.TextBox();
             this.txbPassword = new System.Windows.Forms.TextBox();
-            this.lblFullName = new System.Windows.Forms.Label();
+            this.lblUserId = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
@@ -114,7 +114,7 @@
             this.tpLoginInfo.Controls.Add(this.txbUsername);
             this.tpLoginInfo.Controls.Add(this.txbConfirmPassword);
             this.tpLoginInfo.Controls.Add(this.txbPassword);
-            this.tpLoginInfo.Controls.Add(this.lblFullName);
+            this.tpLoginInfo.Controls.Add(this.lblUserId);
             this.tpLoginInfo.Controls.Add(this.pictureBox3);
             this.tpLoginInfo.Controls.Add(this.pictureBox5);
             this.tpLoginInfo.Controls.Add(this.pictureBox9);
@@ -161,16 +161,16 @@
             this.txbPassword.Size = new System.Drawing.Size(223, 24);
             this.txbPassword.TabIndex = 84;
             // 
-            // lblFullName
+            // lblUserId
             // 
-            this.lblFullName.AutoSize = true;
-            this.lblFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.lblFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFullName.Location = new System.Drawing.Point(250, 76);
-            this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(39, 20);
-            this.lblFullName.TabIndex = 83;
-            this.lblFullName.Text = "???";
+            this.lblUserId.AutoSize = true;
+            this.lblUserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.lblUserId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblUserId.Location = new System.Drawing.Point(250, 76);
+            this.lblUserId.Name = "lblUserId";
+            this.lblUserId.Size = new System.Drawing.Size(39, 20);
+            this.lblUserId.TabIndex = 83;
+            this.lblUserId.Text = "???";
             // 
             // pictureBox3
             // 
@@ -259,6 +259,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -314,7 +315,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.TabPage tpLoginInfo;
-        private System.Windows.Forms.Label lblFullName;
+        private System.Windows.Forms.Label lblUserId;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox9;

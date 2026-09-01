@@ -12,6 +12,12 @@ namespace DrivingAndVehicleLicenseDepartment.People.Control
 {
     public partial class ucPersonCardWithFilter : UserControl
     {
+        private int _personId = -1;
+
+        public int PersonId
+        {
+            get { return ucPersonCard1.SelectedPerson.PersonId; }
+        }
         public ucPersonCardWithFilter()
         {
             InitializeComponent();
@@ -43,7 +49,7 @@ namespace DrivingAndVehicleLicenseDepartment.People.Control
 
         private void ucPersonCardWithFilter_Load(object sender, EventArgs e)
         {
-            cbFindBy.SelectedIndex = 1;
+            cbFindBy.SelectedIndex = 0;
         }
 
         private void txbFindBy_KeyPress(object sender, KeyPressEventArgs e)
@@ -54,6 +60,7 @@ namespace DrivingAndVehicleLicenseDepartment.People.Control
 
         private void _RefreshPersonInfo(int personId)
         {
+            ucPersonCard1.PersonId = personId;
             ucPersonCard1.LoadPersonInfo(personId);
         }
 
