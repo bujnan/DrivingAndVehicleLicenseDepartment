@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpPersonInfo = new System.Windows.Forms.TabPage();
+            this.ucPersonCardWithFilter1 = new DrivingAndVehicleLicenseDepartment.People.Control.ucPersonCardWithFilter();
             this.btnNext = new System.Windows.Forms.Button();
             this.tpLoginInfo = new System.Windows.Forms.TabPage();
             this.chbIsActive = new System.Windows.Forms.CheckBox();
@@ -48,7 +50,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ucPersonCardWithFilter1 = new DrivingAndVehicleLicenseDepartment.People.Control.ucPersonCardWithFilter();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tpPersonInfo.SuspendLayout();
             this.tpLoginInfo.SuspendLayout();
@@ -56,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -91,6 +94,13 @@
             this.tpPersonInfo.Size = new System.Drawing.Size(1017, 454);
             this.tpPersonInfo.TabIndex = 0;
             this.tpPersonInfo.Text = "Person Information";
+            // 
+            // ucPersonCardWithFilter1
+            // 
+            this.ucPersonCardWithFilter1.Location = new System.Drawing.Point(3, 6);
+            this.ucPersonCardWithFilter1.Name = "ucPersonCardWithFilter1";
+            this.ucPersonCardWithFilter1.Size = new System.Drawing.Size(1009, 395);
+            this.ucPersonCardWithFilter1.TabIndex = 1;
             // 
             // btnNext
             // 
@@ -146,6 +156,7 @@
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(223, 24);
             this.txbUsername.TabIndex = 84;
+            this.txbUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txbUsername_Validating);
             // 
             // txbConfirmPassword
             // 
@@ -153,6 +164,7 @@
             this.txbConfirmPassword.Name = "txbConfirmPassword";
             this.txbConfirmPassword.Size = new System.Drawing.Size(223, 24);
             this.txbConfirmPassword.TabIndex = 84;
+            this.txbConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txbConfirmPassword_Validating);
             // 
             // txbPassword
             // 
@@ -160,6 +172,7 @@
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(223, 24);
             this.txbPassword.TabIndex = 84;
+            this.txbPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txbPassword_Validating);
             // 
             // lblUserId
             // 
@@ -273,12 +286,9 @@
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // ucPersonCardWithFilter1
+            // errorProvider1
             // 
-            this.ucPersonCardWithFilter1.Location = new System.Drawing.Point(3, 6);
-            this.ucPersonCardWithFilter1.Name = "ucPersonCardWithFilter1";
-            this.ucPersonCardWithFilter1.Size = new System.Drawing.Size(1009, 395);
-            this.ucPersonCardWithFilter1.TabIndex = 1;
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmAddNewUser
             // 
@@ -301,6 +311,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -328,5 +339,6 @@
         private System.Windows.Forms.TextBox txbConfirmPassword;
         private System.Windows.Forms.TextBox txbPassword;
         private System.Windows.Forms.CheckBox chbIsActive;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

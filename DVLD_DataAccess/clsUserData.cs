@@ -79,5 +79,33 @@ namespace DVLD_DataAccess
             return userId;
         }
 
+        public static bool IsExist(string username)
+        {
+            bool found = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT Found = 1
+                             FROM Users
+                             WHERE UserName = @username;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@username", username);
+
+            try
+            {
+                connection.Open();
+                if (command.ExecuteScalar() != null)
+                    found = true;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return found;
+        }
+
     }
 }

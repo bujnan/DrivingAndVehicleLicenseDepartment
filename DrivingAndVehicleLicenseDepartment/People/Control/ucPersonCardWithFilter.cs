@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,12 @@ namespace DrivingAndVehicleLicenseDepartment.People.Control
 
         public int PersonId
         {
-            get { return ucPersonCard1.SelectedPerson.PersonId; }
+            get { return ucPersonCard1.PersonId; }
+        }
+
+        public clsPerson SelectedPersonInfo
+        {
+            get { return ucPersonCard1.SelectedPerson; }
         }
         public ucPersonCardWithFilter()
         {

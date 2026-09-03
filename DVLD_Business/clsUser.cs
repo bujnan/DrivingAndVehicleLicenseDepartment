@@ -55,10 +55,15 @@ namespace DVLD_Business
             return (_userId != -1);
         }
 
+
         // Static Methods
         public static DataTable GetAllUsers()
         {
             return clsUserData.GetAllUsers();
+        }
+        public static bool IsExist(string username)
+        {
+            return clsUserData.IsExist(username);
         }
 
     }

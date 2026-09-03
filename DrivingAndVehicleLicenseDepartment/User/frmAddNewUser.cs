@@ -27,28 +27,96 @@ namespace DrivingAndVehicleLicenseDepartment.User
 
         private void _SetUserInfo()
         {
-            _user = new clsUser();
-            _user.PersonId = ucPersonCardWithFilter1.PersonId;
-            _user.Username = txbUsername.Text.Trim();
-
-            // this logic should be inside error provider 
-            if (txbPassword.Text == txbConfirmPassword.Text)
+            if (ucPersonCardWithFilter1.SelectedPersonInfo != null)
+            {
+                _user = new clsUser();
+                _user.PersonId = ucPersonCardWithFilter1.PersonId;
+                _user.Username = txbUsername.Text.Trim();
                 _user.Password = txbPassword.Text.Trim();
 
-            _user.IsActive = chbIsActive.Checked;
+                _user.IsActive = chbIsActive.Checked;
+            }
+            else
+            {
+                MessageBox.Show("No Person Is Selected!");
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _SetUserInfo();
-            if (_user.Save())
+           
+            if (!this.ValidateChildren())
             {
-                lblUserId.Text = _user.UserId.ToString();
-                MessageBox.Show("User Saved Successfully");
+                MessageBox.Show("Some Fields are NOT valid!");
+                return;
+            }
+
+            _SetUserInfo();
+            if (_user != null)
+            {
+                if (_user.Save())
+                {
+                    lblUserId.Text = _user.UserId.ToString();
+                    MessageBox.Show("User Saved Successfully");
+                }
+                else
+                {
+                    MessageBox.Show("Operation Failed! User NOT Saved");
+                }
+            }
+        }
+
+        private void txbUsername_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbUsername.Text))
+            {
+                errorProvider1.SetError(txbUsername, "this field can't be empty");
+                e.Cancel = true;
+                return;
+            }
+
+            if (clsUser.IsExist(txbUsername.Text))
+            {
+                errorProvider1.SetError(txbUsername, "this Username already Exist!");
+                e.Cancel = true;
             }
             else
             {
-                MessageBox.Show("Operation Failed! User NOT Saved");
+                errorProvider1.SetError(txbUsername, null);
+            }
+        }
+
+        private void txbPassword_Validating(object sender, CancelEventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(txbPassword.Text))
+            {
+                errorProvider1.SetError(txbPassword, "this field can't be empty");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(txbPassword, null);
+            }
+        }
+
+        private void txbConfirmPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbConfirmPassword.Text))
+            {
+                errorProvider1.SetError(txbConfirmPassword, "this field can't be empty");
+                e.Cancel = true;
+                return;
+            }
+            
+            if (txbPassword.Text != txbConfirmPassword.Text && !string.IsNullOrWhiteSpace(txbPassword.Text))
+            {
+                errorProvider1.SetError(txbConfirmPassword, "password Does NOT Match!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(txbConfirmPassword, null);
             }
         }
     }
