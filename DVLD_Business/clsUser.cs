@@ -48,6 +48,25 @@ namespace DVLD_Business
             get { return _personId; }
         }
 
+        // Constructors
+        public clsUser()
+        {
+            _userId = -1;
+            _username = "";
+            _password = "";
+            _isActive = false;
+            _personId = -1;
+        }
+
+        private clsUser(int userId, string username, string password, bool isActive, int personId)
+        {
+            _userId = userId;
+            _username = username;
+            _password = password;
+            _isActive = isActive;
+            _personId = personId;
+        }
+
         // Non-Static Methods
         public bool Save()
         {
@@ -66,5 +85,19 @@ namespace DVLD_Business
             return clsUserData.IsExist(username);
         }
 
+        public static clsUser Find(int personId)
+        {
+            int userId = -1;
+            string username = "";
+            string password = "";
+            bool isActive = false;
+
+            if (clsUserData.Find(ref userId, ref username, ref password, ref isActive, personId))
+            {
+                return new clsUser(userId, username, password, isActive, personId);
+            }
+            else
+                return null;
+        }
     }
 }

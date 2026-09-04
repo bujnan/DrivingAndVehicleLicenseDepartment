@@ -19,7 +19,7 @@ namespace DrivingAndVehicleLicenseDepartment.User
             InitializeComponent();
         }
 
-        private void frmManageUsers_Load(object sender, EventArgs e)
+        private void _LoadUsersList()
         {
             _AllUsersTable = clsUser.GetAllUsers();
             dgvUsers.DataSource = _AllUsersTable;
@@ -45,7 +45,11 @@ namespace DrivingAndVehicleLicenseDepartment.User
 
                 lblTotalRecords.Text = _AllUsersTable.Rows.Count.ToString();
             }
+        }
 
+        private void frmManageUsers_Load(object sender, EventArgs e)
+        {
+            _LoadUsersList();
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -125,7 +129,13 @@ namespace DrivingAndVehicleLicenseDepartment.User
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             frmAddNewUser addNewUser = new frmAddNewUser();
+            addNewUser.OnFormClosed += _LoadUsersList;
             addNewUser.ShowDialog();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

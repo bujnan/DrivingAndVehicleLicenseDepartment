@@ -14,6 +14,9 @@ namespace DrivingAndVehicleLicenseDepartment.User
     public partial class frmAddNewUser : Form
     {
 
+        public delegate void CloseFormEventHandler();
+        public event CloseFormEventHandler OnFormClosed;
+
         private clsUser _user;
         public frmAddNewUser()
         {
@@ -22,6 +25,26 @@ namespace DrivingAndVehicleLicenseDepartment.User
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            if (ucPersonCardWithFilter1.SelectedPersonInfo == null)
+            {
+                MessageBox.Show("No Person Is Selected!");
+                return;
+            }
+
+            if ((_user = clsUser.Find(ucPersonCardWithFilter1.SelectedPersonInfo.PersonId)) != null)
+            {
+                MessageBox.Show("Selected Person Already has a User!");
+
+                lblUserId.Text = _user.UserId.ToString();
+                txbUsername.Text = _user.Username;
+                txbPassword.Text = _user.Password;
+                txbConfirmPassword.Text = _user.Password;
+                chbIsActive.Checked = _user.IsActive;
+
+                tpLoginInfo.Enabled = false;
+                btnSave.Enabled = false;
+            }
+          
             tabControl1.SelectedTab = tpLoginInfo;
         }
 
@@ -118,6 +141,16 @@ namespace DrivingAndVehicleLicenseDepartment.User
             {
                 errorProvider1.SetError(txbConfirmPassword, null);
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmAddNewUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            OnFormClosed.Invoke();
         }
     }
 }
