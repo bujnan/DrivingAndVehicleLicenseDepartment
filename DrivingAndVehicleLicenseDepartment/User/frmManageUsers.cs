@@ -137,5 +137,18 @@ namespace DrivingAndVehicleLicenseDepartment.User
         {
             this.Close();
         }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (clsUser.Delete(Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[0].Value)))
+            {
+                MessageBox.Show("User Deleted Successfully");
+                _LoadUsersList();
+            }
+            else
+            {
+                MessageBox.Show("No User Is Selected");
+            }
+        }
     }
 }

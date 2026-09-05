@@ -146,5 +146,32 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
+        public static bool Delete(int userId)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"DELETE FROM Users 
+                             WHERE UserID = @userId;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@userId", userId);
+
+            try
+            {
+                connection.Open();
+                if (command.ExecuteNonQuery() > 0)
+                    isFound = true;
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isFound;
+        }
+
     }
 }

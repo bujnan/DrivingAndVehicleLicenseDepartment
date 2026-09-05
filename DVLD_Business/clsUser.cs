@@ -99,5 +99,10 @@ namespace DVLD_Business
             else
                 return null;
         }
+
+        public static bool Delete(int userId)
+        {
+            return clsUserData.Delete(userId);
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace DrivingAndVehicleLicenseDepartment.User
         {
             if (ucPersonCardWithFilter1.SelectedPersonInfo == null)
             {
-                MessageBox.Show("No Person Is Selected!");
+                MessageBox.Show("You Have to Select Or Add a Person!");
                 return;
             }
 
@@ -42,10 +42,22 @@ namespace DrivingAndVehicleLicenseDepartment.User
                 chbIsActive.Checked = _user.IsActive;
 
                 tpLoginInfo.Enabled = false;
+                tabControl1.SelectedTab = tpLoginInfo;
                 btnSave.Enabled = false;
             }
-          
-            tabControl1.SelectedTab = tpLoginInfo;
+            else
+            {
+                tabControl1.SelectedTab = tpLoginInfo;
+
+                lblUserId.Text = "???";
+                txbUsername.Text = "";
+                txbPassword.Text = "";
+                txbConfirmPassword.Text = "";
+                chbIsActive.Checked = false;
+
+                tpLoginInfo.Enabled = true;
+                btnSave.Enabled = true;
+            }  
         }
 
         private void _SetUserInfo()
