@@ -74,6 +74,10 @@ namespace DVLD_Business
             return (_userId != -1);
         }
 
+        public  bool Delete()
+        {
+            return clsUserData.Delete(this._userId);
+        }
 
         // Static Methods
         public static DataTable GetAllUsers()
@@ -85,14 +89,29 @@ namespace DVLD_Business
             return clsUserData.IsExist(username);
         }
 
-        public static clsUser Find(int personId)
+        public static clsUser FindUserByPersonId(int personId)
         {
             int userId = -1;
             string username = "";
             string password = "";
             bool isActive = false;
 
-            if (clsUserData.Find(ref userId, ref username, ref password, ref isActive, personId))
+            if (clsUserData.FindUserByPersonId(ref userId, ref username, ref password, ref isActive, personId))
+            {
+                return new clsUser(userId, username, password, isActive, personId);
+            }
+            else
+                return null;
+        }
+
+        public static clsUser Find(int userId)
+        {
+            string username = "";
+            string password = "";
+            int personId = -1;
+            bool isActive = false;
+
+            if (clsUserData.Find(userId, ref username, ref password, ref isActive, ref personId))
             {
                 return new clsUser(userId, username, password, isActive, personId);
             }

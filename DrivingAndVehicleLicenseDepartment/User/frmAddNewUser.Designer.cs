@@ -146,7 +146,7 @@
             this.chbIsActive.Location = new System.Drawing.Point(250, 228);
             this.chbIsActive.Name = "chbIsActive";
             this.chbIsActive.Size = new System.Drawing.Size(84, 22);
-            this.chbIsActive.TabIndex = 85;
+            this.chbIsActive.TabIndex = 87;
             this.chbIsActive.Text = "Is Active";
             this.chbIsActive.UseVisualStyleBackColor = true;
             // 
@@ -162,16 +162,18 @@
             // 
             this.txbConfirmPassword.Location = new System.Drawing.Point(250, 188);
             this.txbConfirmPassword.Name = "txbConfirmPassword";
+            this.txbConfirmPassword.PasswordChar = '•';
             this.txbConfirmPassword.Size = new System.Drawing.Size(223, 24);
-            this.txbConfirmPassword.TabIndex = 84;
+            this.txbConfirmPassword.TabIndex = 86;
             this.txbConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txbConfirmPassword_Validating);
             // 
             // txbPassword
             // 
             this.txbPassword.Location = new System.Drawing.Point(250, 149);
             this.txbPassword.Name = "txbPassword";
+            this.txbPassword.PasswordChar = '•';
             this.txbPassword.Size = new System.Drawing.Size(223, 24);
-            this.txbPassword.TabIndex = 84;
+            this.txbPassword.TabIndex = 85;
             this.txbPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txbPassword_Validating);
             // 
             // lblUserId

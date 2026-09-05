@@ -14,6 +14,8 @@ namespace DrivingAndVehicleLicenseDepartment.User
     public partial class frmManageUsers : Form
     {
         DataTable _AllUsersTable;
+
+        private clsUser _user;
         public frmManageUsers()
         {
             InitializeComponent();
@@ -136,6 +138,21 @@ namespace DrivingAndVehicleLicenseDepartment.User
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _user = clsUser.Find(Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[0].Value));
+            if (_user.Delete())
+            {
+                _user = null;
+                MessageBox.Show("User Deleted Successfully");
+                _LoadUsersList();
+            }
+            else
+            {
+                MessageBox.Show("Deletion Failed!");
+            }
         }
     }
 }

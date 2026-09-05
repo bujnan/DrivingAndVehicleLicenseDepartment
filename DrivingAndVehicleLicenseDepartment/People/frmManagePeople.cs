@@ -186,6 +186,7 @@ namespace DrivingAndVehicleLicenseDepartment
             clsPerson person = clsPerson.Find(Convert.ToInt32(dgvManagePeople.SelectedRows[0].Cells[0].Value));
             if (person.Delete())
             {
+                person = null;
                 MessageBox.Show("Deleted Successfully");
                 RefrechPeopleList();
             }
