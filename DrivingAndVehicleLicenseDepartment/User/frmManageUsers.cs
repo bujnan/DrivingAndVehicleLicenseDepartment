@@ -154,5 +154,12 @@ namespace DrivingAndVehicleLicenseDepartment.User
                 MessageBox.Show("Deletion Failed!");
             }
         }
+
+        private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddNewUser addNewUser = new frmAddNewUser();
+            addNewUser.OnFormClosed += _LoadUsersList;
+            addNewUser.ShowDialog();
+        }
     }
 }
