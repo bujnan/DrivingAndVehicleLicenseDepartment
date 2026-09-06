@@ -1,6 +1,6 @@
 ﻿namespace DrivingAndVehicleLicenseDepartment.User
 {
-    partial class frmAddNewUser
+    partial class frmAddEditUser
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblFormTitle = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpPersonInfo = new System.Windows.Forms.TabPage();
             this.ucPersonCardWithFilter1 = new DrivingAndVehicleLicenseDepartment.People.Control.ucPersonCardWithFilter();
@@ -61,16 +61,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblFormTitle
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(236, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(560, 36);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Add New User";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFormTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFormTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblFormTitle.Location = new System.Drawing.Point(236, 21);
+            this.lblFormTitle.Name = "lblFormTitle";
+            this.lblFormTitle.Size = new System.Drawing.Size(560, 36);
+            this.lblFormTitle.TabIndex = 0;
+            this.lblFormTitle.Text = "?????";
+            this.lblFormTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabControl1
             // 
@@ -293,7 +293,7 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // frmAddNewUser
+            // frmAddEditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -301,12 +301,13 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblFormTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmAddNewUser";
+            this.Name = "frmAddEditUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add New User";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddNewUser_FormClosed);
+            this.Load += new System.EventHandler(this.frmAddEditUser_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpPersonInfo.ResumeLayout(false);
             this.tpLoginInfo.ResumeLayout(false);
@@ -322,7 +323,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblFormTitle;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tpPersonInfo;
         private System.Windows.Forms.Button btnNext;

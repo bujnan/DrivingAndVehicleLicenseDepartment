@@ -130,7 +130,7 @@ namespace DrivingAndVehicleLicenseDepartment.User
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            frmAddNewUser addNewUser = new frmAddNewUser();
+            frmAddUpdateUser addNewUser = new frmAddUpdateUser();
             addNewUser.OnFormClosed += _LoadUsersList;
             addNewUser.ShowDialog();
         }
@@ -157,7 +157,14 @@ namespace DrivingAndVehicleLicenseDepartment.User
 
         private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddNewUser addNewUser = new frmAddNewUser();
+            frmAddUpdateUser addNewUser = new frmAddUpdateUser();
+            addNewUser.OnFormClosed += _LoadUsersList;
+            addNewUser.ShowDialog();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateUser addNewUser = new frmAddUpdateUser(Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[0].Value));
             addNewUser.OnFormClosed += _LoadUsersList;
             addNewUser.ShowDialog();
         }

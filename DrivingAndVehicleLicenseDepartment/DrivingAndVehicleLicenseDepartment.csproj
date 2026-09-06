@@ -88,11 +88,11 @@
     <Compile Include="People\Control\ucPersonCard.Designer.cs">
       <DependentUpon>ucPersonCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\frmAddNewUser.cs">
+    <Compile Include="User\frmAddUpdateUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\frmAddNewUser.Designer.cs">
-      <DependentUpon>frmAddNewUser.cs</DependentUpon>
+    <Compile Include="User\frmAddUpdateUser.Designer.cs">
+      <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="User\frmManageUsers.cs">
       <SubType>Form</SubType>
@@ -123,8 +123,8 @@
     <EmbeddedResource Include="People\Control\ucPersonCard.resx">
       <DependentUpon>ucPersonCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\frmAddNewUser.resx">
-      <DependentUpon>frmAddNewUser.cs</DependentUpon>
+    <EmbeddedResource Include="User\frmAddUpdateUser.resx">
+      <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\frmManageUsers.resx">
       <DependentUpon>frmManageUsers.cs</DependentUpon>

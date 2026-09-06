@@ -11,16 +11,28 @@ using System.Windows.Forms;
 
 namespace DrivingAndVehicleLicenseDepartment.User
 {
-    public partial class frmAddNewUser : Form
+    public partial class frmAddEditUser : Form
     {
+        private enum enMode { AddNew = 0, Update = 1 };
+        private enMode _Mode;
+        private clsUser _user;
 
+        private int _userId = -1;
         public delegate void CloseFormEventHandler();
         public event CloseFormEventHandler OnFormClosed;
 
-        private clsUser _user;
-        public frmAddNewUser()
+        public frmAddEditUser()
         {
             InitializeComponent();
+            _Mode = enMode.AddNew;
+        }
+
+        public frmAddEditUser(int userId)
+        {
+            InitializeComponent();
+
+            _Mode = enMode.Update;
+            _userId = userId;
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -92,6 +104,7 @@ namespace DrivingAndVehicleLicenseDepartment.User
                 if (_user.Save())
                 {
                     lblUserId.Text = _user.UserId.ToString();
+                    _Mode = enMode.Update;
                     MessageBox.Show("User Saved Successfully");
                 }
                 else
@@ -163,6 +176,60 @@ namespace DrivingAndVehicleLicenseDepartment.User
         private void frmAddNewUser_FormClosed(object sender, FormClosedEventArgs e)
         {
             OnFormClosed.Invoke();
+        }
+
+        private void _ResetDefaultValues()
+        {
+            if (_Mode == enMode.AddNew)
+            {
+                lblFormTitle.Text = "Add New User";
+                this.Text = "Add New User";
+                _user = new clsUser();
+                tpLoginInfo.Enabled = false;
+            }
+            else
+            {
+                lblFormTitle.Text = "Update User";
+                this.Text = "Update User";
+
+                tpLoginInfo.Enabled = true;
+                btnSave.Enabled = true;
+            }
+
+            txbUsername.Text = "";
+            txbPassword.Text = "";
+            txbConfirmPassword.Text = "";
+            chbIsActive.Checked = true;
+        }
+
+        private void _LoadData()
+        {
+
+            _user = clsUser.Find(_userId);
+            ucPersonCardWithFilter1.FilterEnabled = false;
+
+            if (_user == null)
+            {
+                MessageBox.Show("No User with ID = " + _user, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.Close();
+
+                return;
+            }
+
+            //the following code will not be executed if the person was not found
+            lblUserId.Text = _user.UserId.ToString();
+            txbUsername.Text = _user.Username;
+            txbPassword.Text = _user.Password;
+            txbConfirmPassword.Text = _user.Password;
+            chbIsActive.Checked = _user.IsActive;
+            ucPersonCardWithFilter1.LoadPersonInfo(_user.PersonId);
+        }
+
+        private void frmAddEditUser_Load(object sender, EventArgs e)
+        {
+            _ResetDefaultValues();
+            if (_Mode == enMode.Update)
+                _LoadData();
         }
     }
 }

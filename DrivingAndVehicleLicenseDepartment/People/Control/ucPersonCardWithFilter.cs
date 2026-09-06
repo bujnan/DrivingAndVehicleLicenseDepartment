@@ -24,6 +24,19 @@ namespace DrivingAndVehicleLicenseDepartment.People.Control
         {
             get { return ucPersonCard1.SelectedPerson; }
         }
+
+        private bool _filtersEnabled = true;
+
+        public bool FiltersEnabled
+        {
+            set 
+            {
+                _filtersEnabled = value; 
+                groupBox1.Enabled = _filtersEnabled;
+            }
+            get { return _filtersEnabled; }
+        }
+
         public ucPersonCardWithFilter()
         {
             InitializeComponent();
@@ -75,6 +88,11 @@ namespace DrivingAndVehicleLicenseDepartment.People.Control
             frmAddEditPerson addEditPerson = new frmAddEditPerson();
             addEditPerson.personSaved += _RefreshPersonInfo;
             addEditPerson.ShowDialog();
+        }
+
+        public void LoadPersonInfo(int personId)
+        {
+            ucPersonCard1.LoadPersonInfo(personId);
         }
     }
 }
