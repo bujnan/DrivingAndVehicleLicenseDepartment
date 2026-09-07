@@ -70,7 +70,7 @@ namespace DrivingAndVehicleLicenseDepartment
             else
             {
                 this.Text = "Update Person Info";
-                lblFormTitle.Text = "Edit Person Info";
+                lblFormTitle.Text = "Update Person Info";
             }
 
             _FillCountriesInComboBox();
@@ -196,7 +196,7 @@ namespace DrivingAndVehicleLicenseDepartment
                 lblPersonId.Text = _person.PersonId.ToString();
                 _Mode = enMode.Update;
                 this.Text = "Update Person Info";
-                lblFormTitle.Text = "Edit Person Info";
+                lblFormTitle.Text = "Update Person Info";
                 personSaved?.Invoke(_person.PersonId);
                 MessageBox.Show("Added Succeffully");
             }

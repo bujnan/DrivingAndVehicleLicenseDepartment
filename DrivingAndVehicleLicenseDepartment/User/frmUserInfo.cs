@@ -14,6 +14,9 @@ namespace DrivingAndVehicleLicenseDepartment.User
     {
 
         private int _userId = -1;
+
+        public delegate void OnFormCloseEventHandler();
+        public event OnFormCloseEventHandler OnFormClosed;
         public frmUserInfo(int userId)
         {
             _userId = userId;
@@ -23,6 +26,16 @@ namespace DrivingAndVehicleLicenseDepartment.User
         private void frmUserInfo_Load(object sender, EventArgs e)
         {
             ucUserCard1.LoadUserInfo(_userId);
+        }
+
+        private void frmUserInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            OnFormClosed.Invoke();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
