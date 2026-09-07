@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucPersonCard1 = new DrivingAndVehicleLicenseDepartment.ucPersonCard();
             this.gbLoginInformation = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,15 +35,9 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblUserId = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.ucPersonCard1 = new DrivingAndVehicleLicenseDepartment.ucPersonCard();
             this.gbLoginInformation.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ucPersonCard1
-            // 
-            this.ucPersonCard1.Location = new System.Drawing.Point(1, 0);
-            this.ucPersonCard1.Name = "ucPersonCard1";
-            this.ucPersonCard1.Size = new System.Drawing.Size(895, 284);
-            this.ucPersonCard1.TabIndex = 0;
             // 
             // gbLoginInformation
             // 
@@ -66,7 +59,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(589, 33);
+            this.label3.Location = new System.Drawing.Point(571, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 20);
             this.label3.TabIndex = 2;
@@ -76,7 +69,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(340, 33);
+            this.label2.Location = new System.Drawing.Point(331, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 3;
@@ -86,7 +79,7 @@
             // 
             this.lblIsActive.AutoSize = true;
             this.lblIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIsActive.Location = new System.Drawing.Point(683, 33);
+            this.lblIsActive.Location = new System.Drawing.Point(665, 33);
             this.lblIsActive.Name = "lblIsActive";
             this.lblIsActive.Size = new System.Drawing.Size(39, 20);
             this.lblIsActive.TabIndex = 4;
@@ -96,7 +89,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(446, 33);
+            this.lblUsername.Location = new System.Drawing.Point(437, 33);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(39, 20);
             this.lblUsername.TabIndex = 5;
@@ -121,6 +114,13 @@
             this.label1.Size = new System.Drawing.Size(76, 20);
             this.label1.TabIndex = 7;
             this.label1.Text = "User Id:";
+            // 
+            // ucPersonCard1
+            // 
+            this.ucPersonCard1.Location = new System.Drawing.Point(1, 0);
+            this.ucPersonCard1.Name = "ucPersonCard1";
+            this.ucPersonCard1.Size = new System.Drawing.Size(895, 284);
+            this.ucPersonCard1.TabIndex = 0;
             // 
             // ucUserCard
             // 

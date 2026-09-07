@@ -12,9 +12,17 @@ namespace DrivingAndVehicleLicenseDepartment.User
 {
     public partial class frmUserInfo : Form
     {
-        public frmUserInfo()
+
+        private int _userId = -1;
+        public frmUserInfo(int userId)
         {
+            _userId = userId;
             InitializeComponent();
+        }
+
+        private void frmUserInfo_Load(object sender, EventArgs e)
+        {
+            ucUserCard1.LoadUserInfo(_userId);
         }
     }
 }

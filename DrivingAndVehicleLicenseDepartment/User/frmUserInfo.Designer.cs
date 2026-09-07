@@ -37,7 +37,7 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(825, 379);
+            this.btnClose.Location = new System.Drawing.Point(792, 377);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(88, 42);
             this.btnClose.TabIndex = 1;
@@ -62,6 +62,7 @@
             this.Name = "frmUserInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "User Info";
+            this.Load += new System.EventHandler(this.frmUserInfo_Load);
             this.ResumeLayout(false);
 
         }

@@ -171,7 +171,7 @@ namespace DrivingAndVehicleLicenseDepartment.User
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUserInfo userInfo = new frmUserInfo();
+            frmUserInfo userInfo = new frmUserInfo(Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[0].Value));
             userInfo.ShowDialog();
         }
     }
