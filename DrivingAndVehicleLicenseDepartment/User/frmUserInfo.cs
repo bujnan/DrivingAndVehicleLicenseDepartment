@@ -12,9 +12,7 @@ namespace DrivingAndVehicleLicenseDepartment.User
 {
     public partial class frmUserInfo : Form
     {
-
         private int _userId = -1;
-
         public delegate void OnFormCloseEventHandler();
         public event OnFormCloseEventHandler OnFormClosed;
         public frmUserInfo(int userId)
