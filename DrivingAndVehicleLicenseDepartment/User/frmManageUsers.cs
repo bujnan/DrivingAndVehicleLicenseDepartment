@@ -168,5 +168,11 @@ namespace DrivingAndVehicleLicenseDepartment.User
             addNewUser.OnFormClosed += _LoadUsersList;
             addNewUser.ShowDialog();
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserInfo userInfo = new frmUserInfo();
+            userInfo.ShowDialog();
+        }
     }
 }
