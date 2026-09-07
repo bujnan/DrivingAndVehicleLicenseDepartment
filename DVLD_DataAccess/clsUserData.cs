@@ -47,7 +47,7 @@ namespace DVLD_DataAccess
             return _allUsersTable;
         }
 
-        public static int Save(string username, string password, bool isActive, int personId)
+        public static int AddNewUser(string username, string password, bool isActive, int personId)
         {
             int userId = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
@@ -224,6 +224,43 @@ namespace DVLD_DataAccess
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@userId", userId);
             command.Parameters.AddWithValue("@password", password);
+
+            try
+            {
+                connection.Open();
+                if (command.ExecuteNonQuery() > 0)
+                    isUpdatedSucceed = true;
+            }
+            catch (Exception ex)
+            {
+                isUpdatedSucceed = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isUpdatedSucceed;
+        }
+
+        public static bool Update(int userId, string username, string password, bool isActive, int personId)
+        {
+            bool isUpdatedSucceed = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"UPDATE Users
+                             SET UserName = @username, 
+                                 Password = @password, 
+                                 IsActive = @isActive, 
+                                 PersonID = @personId 
+                             WHERE UserID = @userId;";
+
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@userId", userId);
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@password", password);
+            command.Parameters.AddWithValue("@isActive", isActive);
+            command.Parameters.AddWithValue("@personId", personId);
 
             try
             {

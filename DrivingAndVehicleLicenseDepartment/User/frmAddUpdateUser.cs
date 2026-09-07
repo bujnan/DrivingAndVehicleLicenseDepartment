@@ -47,19 +47,20 @@ namespace DrivingAndVehicleLicenseDepartment.User
                 if (_Mode == enMode.AddNew)
                 {
                     MessageBox.Show("Selected Person Already has a User!");
-
-                    lblUserId.Text = _user.UserId.ToString();
-                    txbUsername.Text = _user.Username;
-                    txbPassword.Text = _user.Password;
-                    txbConfirmPassword.Text = _user.Password;
-                    chbIsActive.Checked = _user.IsActive;
-
                     tpLoginInfo.Enabled = false;
                 }
+
+                lblUserId.Text = _user.UserId.ToString();
+                txbUsername.Text = _user.Username;
+                txbPassword.Text = _user.Password;
+                txbConfirmPassword.Text = _user.Password;
+                chbIsActive.Checked = _user.IsActive;
+
                 tabControl1.SelectedTab = tpLoginInfo;
             }
             else
             {
+                _user = new clsUser();
                 tabControl1.SelectedTab = tpLoginInfo;
 
                 lblUserId.Text = "???";
@@ -77,7 +78,6 @@ namespace DrivingAndVehicleLicenseDepartment.User
         {
             if (ucPersonCardWithFilter1.SelectedPersonInfo != null)
             {
-                _user = new clsUser();
                 _user.PersonId = ucPersonCardWithFilter1.PersonId;
                 _user.Username = txbUsername.Text.Trim();
                 _user.Password = txbPassword.Text.Trim();
@@ -100,18 +100,20 @@ namespace DrivingAndVehicleLicenseDepartment.User
             }
 
             _SetUserInfo();
-            if (_user != null)
+           
+            if (_user.Save())
             {
-                if (_user.Save())
-                {
-                    lblUserId.Text = _user.UserId.ToString();
-                    MessageBox.Show("User Saved Successfully");
-                }
-                else
-                {
-                    MessageBox.Show("Operation Failed! User NOT Saved");
-                }
+                lblUserId.Text = _user.UserId.ToString();
+                this.Text = "Update User";
+                lblFormTitle.Text = "Update User";
+                _Mode = enMode.Update;
+                MessageBox.Show("User Saved Successfully");
             }
+            else
+            {
+                MessageBox.Show("Operation Failed! User NOT Saved");
+            }
+           
         }
 
         private void txbUsername_Validating(object sender, CancelEventArgs e)
@@ -125,8 +127,15 @@ namespace DrivingAndVehicleLicenseDepartment.User
 
             if (clsUser.IsExist(txbUsername.Text))
             {
-                errorProvider1.SetError(txbUsername, "this Username already Exist!");
-                e.Cancel = true;
+                if (_user.Username == txbUsername.Text)
+                {
+                    errorProvider1.SetError(txbUsername, null);
+                }
+                else
+                {
+                    errorProvider1.SetError(txbUsername, "this Username already Exist!");
+                    e.Cancel = true;
+                }
             }
             else
             {
@@ -215,7 +224,6 @@ namespace DrivingAndVehicleLicenseDepartment.User
                 chbIsActive.Checked = _user.IsActive;
 
                 tpLoginInfo.Enabled = true;
-                //tabControl1.SelectedTab = tpLoginInfo;
                 btnSave.Enabled = true;
             }
         }
