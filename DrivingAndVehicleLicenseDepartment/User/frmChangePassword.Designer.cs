@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ucUserCard1 = new DrivingAndVehicleLicenseDepartment.User.Control.ucUserCard();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,9 +41,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // ucUserCard1
@@ -86,22 +89,28 @@
             // 
             this.txbCurrentPassword.Location = new System.Drawing.Point(244, 400);
             this.txbCurrentPassword.Name = "txbCurrentPassword";
+            this.txbCurrentPassword.PasswordChar = '•';
             this.txbCurrentPassword.Size = new System.Drawing.Size(155, 22);
-            this.txbCurrentPassword.TabIndex = 2;
+            this.txbCurrentPassword.TabIndex = 1;
+            this.txbCurrentPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txbCurrentPassword_Validating);
             // 
             // txbNewPassword
             // 
             this.txbNewPassword.Location = new System.Drawing.Point(244, 434);
             this.txbNewPassword.Name = "txbNewPassword";
+            this.txbNewPassword.PasswordChar = '•';
             this.txbNewPassword.Size = new System.Drawing.Size(155, 22);
             this.txbNewPassword.TabIndex = 2;
+            this.txbNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txbNewPassword_Validating);
             // 
             // txbConfirmPassword
             // 
             this.txbConfirmPassword.Location = new System.Drawing.Point(244, 468);
             this.txbConfirmPassword.Name = "txbConfirmPassword";
+            this.txbConfirmPassword.PasswordChar = '•';
             this.txbConfirmPassword.Size = new System.Drawing.Size(155, 22);
-            this.txbConfirmPassword.TabIndex = 2;
+            this.txbConfirmPassword.TabIndex = 3;
+            this.txbConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txbConfirmPassword_Validating);
             // 
             // btnClose
             // 
@@ -111,7 +120,7 @@
             this.btnClose.Location = new System.Drawing.Point(645, 460);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(87, 39);
-            this.btnClose.TabIndex = 3;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
@@ -124,10 +133,11 @@
             this.btnSave.Location = new System.Drawing.Point(751, 460);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 39);
-            this.btnSave.TabIndex = 3;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // pictureBox1
             // 
@@ -156,6 +166,10 @@
             this.pictureBox3.TabIndex = 67;
             this.pictureBox3.TabStop = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -176,9 +190,11 @@
             this.Name = "frmChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Change Password";
+            this.Load += new System.EventHandler(this.frmChangePassword_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +214,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -175,5 +175,11 @@ namespace DrivingAndVehicleLicenseDepartment.User
             userInfo.OnFormClosed += _LoadUsersList;
             userInfo.ShowDialog();
         }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword changePassword = new frmChangePassword(Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[0].Value));
+            changePassword.ShowDialog();
+        }
     }
 }

@@ -79,6 +79,11 @@ namespace DVLD_Business
             return clsUserData.Delete(this._userId);
         }
 
+        public bool UpdatePassword()
+        {
+            return clsUserData.UpdatePassword(this._userId, this._password);
+        }
+
         // Static Methods
         public static DataTable GetAllUsers()
         {

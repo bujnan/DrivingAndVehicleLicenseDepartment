@@ -212,5 +212,36 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
+        public static bool UpdatePassword(int userId, string password)
+        {
+            bool isUpdatedSucceed = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"UPDATE Users
+                             SET Password = @password 
+                             WHERE UserID = @userId;";
+
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@userId", userId);
+            command.Parameters.AddWithValue("@password", password);
+
+            try
+            {
+                connection.Open();
+                if (command.ExecuteNonQuery() > 0)
+                    isUpdatedSucceed = true;
+            }
+            catch (Exception ex)
+            {
+                isUpdatedSucceed = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isUpdatedSucceed;
+        }
+
     }
 }
