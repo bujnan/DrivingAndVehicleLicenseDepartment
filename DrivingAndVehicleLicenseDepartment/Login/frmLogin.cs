@@ -1,5 +1,5 @@
-﻿using DVLD_Business;
-using DrivingAndVehicleLicenseDepartment.Global;
+﻿using DrivingAndVehicleLicenseDepartment.Global;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace DrivingAndVehicleLicenseDepartment.Login
@@ -31,6 +32,15 @@ namespace DrivingAndVehicleLicenseDepartment.Login
                     return;
                 }
 
+                if (chbRememberMe.Checked)
+                {
+                    clsGlobal.RememberUsernameAndPassword(txbUsername.Text.Trim(), txbPassword.Text.Trim());
+                }
+                else
+                {
+                    clsGlobal.RememberUsernameAndPassword("", "");
+                }
+
                 clsGlobal.CurrentUser = user;
                 this.Hide();
                 MainForm mainForm = new MainForm(this);
@@ -45,6 +55,19 @@ namespace DrivingAndVehicleLicenseDepartment.Login
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            string username = "", password = "";
+            if (clsGlobal.GetStoredCredential(ref username, ref password))
+            {
+                txbUsername.Text = username;
+                txbPassword.Text = password;
+                chbRememberMe.Checked = true;
+            }
+            else
+                chbRememberMe.Checked = false;
         }
     }
 }
