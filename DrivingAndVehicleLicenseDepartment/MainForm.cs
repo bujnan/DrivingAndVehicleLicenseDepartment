@@ -2,6 +2,7 @@
 using DrivingAndVehicleLicenseDepartment.User;
 using DrivingAndVehicleLicenseDepartment.Login;
 using System.Windows.Forms;
+using DrivingAndVehicleLicenseDepartment.Global;
 
 namespace DrivingAndVehicleLicenseDepartment
 {
@@ -31,5 +32,17 @@ namespace DrivingAndVehicleLicenseDepartment
             _login.Show();
             this.Close();
         }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserInfo userInfoForm = new frmUserInfo(clsGlobal.CurrentUser.UserId);
+            userInfoForm.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword changePasswordForm = new frmChangePassword(clsGlobal.CurrentUser.UserId);
+            changePasswordForm.ShowDialog();
+         }
     }
 }

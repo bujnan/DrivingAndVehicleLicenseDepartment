@@ -28,7 +28,7 @@ namespace DrivingAndVehicleLicenseDepartment.User
 
         private void frmUserInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            OnFormClosed.Invoke();
+            OnFormClosed?.Invoke();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
