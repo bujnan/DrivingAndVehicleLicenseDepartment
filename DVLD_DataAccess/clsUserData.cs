@@ -280,5 +280,42 @@ namespace DVLD_DataAccess
             return isUpdatedSucceed;
         }
 
+        public static bool FindByUsernameAndPassword(string username, string password, ref int userId, ref bool isActive, ref int personId)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT * FROM Users 
+                             WHERE UserName = @username AND Password = @password;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@password", password);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if(reader.Read())
+                {
+                    userId = Convert.ToInt32(reader["UserID"]);
+                    isActive = Convert.ToBoolean(reader["IsActive"]);
+                    personId = Convert.ToInt32(reader["PersonID"]);
+                    isFound = true;
+                }
+
+                reader.Close();
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
     }
 }

@@ -156,6 +156,7 @@
             this.btnClose.Size = new System.Drawing.Size(44, 37);
             this.btnClose.TabIndex = 4;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // label7
             // 
@@ -171,8 +172,6 @@
             // chbRememberMe
             // 
             this.chbRememberMe.AutoSize = true;
-            this.chbRememberMe.Checked = true;
-            this.chbRememberMe.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbRememberMe.Location = new System.Drawing.Point(207, 224);
             this.chbRememberMe.Name = "chbRememberMe";
             this.chbRememberMe.Size = new System.Drawing.Size(119, 20);
@@ -194,6 +193,7 @@
             this.btnLogin.Text = "Login";
             this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // txbUsername
             // 
@@ -232,7 +232,7 @@
             this.txbPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbPassword.MaxLength = 50;
             this.txbPassword.Name = "txbPassword";
-            this.txbPassword.PasswordChar = '*';
+            this.txbPassword.PasswordChar = '•';
             this.txbPassword.Size = new System.Drawing.Size(160, 22);
             this.txbPassword.TabIndex = 2;
             // 
@@ -258,6 +258,7 @@
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);

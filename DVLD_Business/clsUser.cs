@@ -156,5 +156,20 @@ namespace DVLD_Business
             else
                 return null;
         }
+
+        public static clsUser FindByUsernameAndPassword(string username, string password)
+        {
+            int userId = -1;
+            int personId = -1;
+            bool isActive = false;
+
+            if(clsUserData.FindByUsernameAndPassword(username, password, ref userId, ref isActive, ref personId))
+            {
+                return new clsUser(userId, username, password, isActive, personId);
+            }
+
+            return null;
+        }
+
     }
 }
