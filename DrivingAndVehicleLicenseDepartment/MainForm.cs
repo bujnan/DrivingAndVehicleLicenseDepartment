@@ -1,13 +1,16 @@
 ﻿using System;
 using DrivingAndVehicleLicenseDepartment.User;
+using DrivingAndVehicleLicenseDepartment.Login;
 using System.Windows.Forms;
 
 namespace DrivingAndVehicleLicenseDepartment
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private frmLogin _login; 
+        public MainForm(frmLogin loginForm)
         {
+            _login = loginForm;
             InitializeComponent();
         }
 
@@ -21,6 +24,12 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             frmManageUsers manageUsers = new frmManageUsers();
             manageUsers.ShowDialog();
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _login.Show();
+            this.Close();
         }
     }
 }

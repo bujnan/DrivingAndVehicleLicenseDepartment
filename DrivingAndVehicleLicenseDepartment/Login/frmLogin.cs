@@ -33,7 +33,7 @@ namespace DrivingAndVehicleLicenseDepartment.Login
 
                 clsGlobal.CurrentUser = user;
                 this.Hide();
-                MainForm mainForm = new MainForm();
+                MainForm mainForm = new MainForm(this);
                 mainForm.ShowDialog();
             }
             else
