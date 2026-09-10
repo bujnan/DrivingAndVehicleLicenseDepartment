@@ -54,21 +54,24 @@
             this.dgvApplicationTypes.AllowUserToAddRows = false;
             this.dgvApplicationTypes.AllowUserToDeleteRows = false;
             this.dgvApplicationTypes.AllowUserToOrderColumns = true;
+            this.dgvApplicationTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvApplicationTypes.BackgroundColor = System.Drawing.Color.White;
             this.dgvApplicationTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvApplicationTypes.Location = new System.Drawing.Point(23, 191);
             this.dgvApplicationTypes.Name = "dgvApplicationTypes";
             this.dgvApplicationTypes.ReadOnly = true;
+            this.dgvApplicationTypes.RowHeadersVisible = false;
             this.dgvApplicationTypes.RowHeadersWidth = 51;
             this.dgvApplicationTypes.RowTemplate.Height = 24;
-            this.dgvApplicationTypes.Size = new System.Drawing.Size(585, 324);
+            this.dgvApplicationTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvApplicationTypes.Size = new System.Drawing.Size(585, 195);
             this.dgvApplicationTypes.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 532);
+            this.label2.Location = new System.Drawing.Point(20, 412);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 18);
             this.label2.TabIndex = 0;
@@ -78,7 +81,7 @@
             // 
             this.lblRecords.AutoSize = true;
             this.lblRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecords.Location = new System.Drawing.Point(110, 532);
+            this.lblRecords.Location = new System.Drawing.Point(110, 412);
             this.lblRecords.Name = "lblRecords";
             this.lblRecords.Size = new System.Drawing.Size(35, 18);
             this.lblRecords.TabIndex = 0;
@@ -89,13 +92,14 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(521, 521);
+            this.btnClose.Location = new System.Drawing.Point(521, 401);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(87, 41);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pictureBox1
             // 
@@ -111,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 573);
+            this.ClientSize = new System.Drawing.Size(636, 454);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvApplicationTypes);
             this.Controls.Add(this.pictureBox1);
@@ -122,6 +126,7 @@
             this.Name = "frmApplicationsTypes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Applications Types";
+            this.Load += new System.EventHandler(this.frmApplicationsTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplicationTypes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
