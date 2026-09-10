@@ -47,7 +47,7 @@
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(110, 9);
+            this.label1.Location = new System.Drawing.Point(73, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(267, 48);
             this.label1.TabIndex = 0;
@@ -106,7 +106,7 @@
             this.txbFees.Location = new System.Drawing.Point(119, 134);
             this.txbFees.Name = "txbFees";
             this.txbFees.Size = new System.Drawing.Size(258, 22);
-            this.txbFees.TabIndex = 1;
+            this.txbFees.TabIndex = 2;
             // 
             // pictureBox3
             // 
@@ -130,10 +130,10 @@
             // 
             this.btnSave.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(248, 174);
+            this.btnSave.Location = new System.Drawing.Point(232, 173);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(80, 39);
-            this.btnSave.TabIndex = 2;
+            this.btnSave.Size = new System.Drawing.Size(82, 39);
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
@@ -142,10 +142,10 @@
             // 
             this.btnClose.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(150, 174);
+            this.btnClose.Location = new System.Drawing.Point(134, 173);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(81, 39);
-            this.btnClose.TabIndex = 2;
+            this.btnClose.Size = new System.Drawing.Size(83, 39);
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
@@ -169,7 +169,9 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmUpdateApplicationType";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Update Application Type";
+            this.Load += new System.EventHandler(this.frmUpdateApplicationType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

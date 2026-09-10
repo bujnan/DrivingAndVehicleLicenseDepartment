@@ -43,5 +43,12 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Applications_Types
         {
             this.Close();
         }
+
+        private void editAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUpdateApplicationType updateApplicationType = new frmUpdateApplicationType(Convert.ToInt32(dgvApplicationTypes.SelectedRows[0].Cells[0].Value));
+
+            updateApplicationType.ShowDialog();
+        }
     }
 }
