@@ -15,6 +15,9 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Applications_Types
     {
         private int _applicationTypeId = -1;
         private clsApplicationsTypes _applicationType;
+        public delegate void OnSaveFinishedEventHandler();
+        public event OnSaveFinishedEventHandler OnSaveFinished;
+
         public frmUpdateApplicationType(int applicationTypeId)
         {
             _applicationTypeId = applicationTypeId;
@@ -35,6 +38,20 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Applications_Types
                 txbTitle.Text = _applicationType.Title;
                 txbFees.Text = _applicationType.Fees.ToString();
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            _applicationType.Title = txbTitle.Text;
+            _applicationType.Fees = Convert.ToDouble(txbFees.Text);
+
+            if (_applicationType.Save())
+            {
+                MessageBox.Show("Updated Successfully");
+                OnSaveFinished.Invoke();
+            }    
+            else
+                MessageBox.Show("Updated Successfully");
         }
     }
 }

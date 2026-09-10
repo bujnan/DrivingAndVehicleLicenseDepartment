@@ -13,14 +13,16 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Applications_Types
 {
     public partial class frmApplicationsTypes : Form
     {
-        DataTable applicationsTypesTable = clsApplicationsTypes.GetAllApplicationsTypes();
+        DataTable applicationsTypesTable;
         public frmApplicationsTypes()
         {
             InitializeComponent();
         }
 
-        private void frmApplicationsTypes_Load(object sender, EventArgs e)
+        private void _LoadData()
         {
+            applicationsTypesTable = clsApplicationsTypes.GetAllApplicationsTypes();
+
             if (applicationsTypesTable.Rows.Count > 0)
             {
                 dgvApplicationTypes.DataSource = applicationsTypesTable;
@@ -39,15 +41,26 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Applications_Types
             lblRecords.Text = applicationsTypesTable.Rows.Count.ToString();
         }
 
+
+        private void frmApplicationsTypes_Load(object sender, EventArgs e)
+        {
+            _LoadData();
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        private void _RefreshApplicationTypesList()
+        {
+            _LoadData();
+        }
         private void editAToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUpdateApplicationType updateApplicationType = new frmUpdateApplicationType(Convert.ToInt32(dgvApplicationTypes.SelectedRows[0].Cells[0].Value));
 
+            updateApplicationType.OnSaveFinished += _RefreshApplicationTypesList;
             updateApplicationType.ShowDialog();
         }
     }

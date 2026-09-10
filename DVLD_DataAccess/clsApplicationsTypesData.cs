@@ -72,5 +72,38 @@ namespace DVLD_DataAccess
 
             return isFound;
         }
+
+        public static bool Update(int id, string title, double fees)
+        {
+            bool isUpdatedSucceed = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"Update ApplicationTypes
+                             SET ApplicationTypeTitle = @title,
+                                 ApplicationFees = @fees 
+                             WHERE ApplicationTypeID = @id;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@title", title);
+            command.Parameters.AddWithValue("@fees", fees);
+            command.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                connection.Open();
+                if (command.ExecuteNonQuery() > 0)
+                    isUpdatedSucceed = true;
+            }
+            catch(Exception ex)
+            {
+                isUpdatedSucceed = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isUpdatedSucceed;
+        }
     }
 }

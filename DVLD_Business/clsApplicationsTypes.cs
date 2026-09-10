@@ -40,6 +40,12 @@ namespace DVLD_Business
             _fees = fees;
         }
 
+        // Non Static Methods
+        private bool _Update()
+        {
+            return clsApplicationsTypesData.Update(_id, _title, _fees);
+        }
+
         // Static Methods
         public static DataTable GetAllApplicationsTypes()
         {
@@ -55,6 +61,11 @@ namespace DVLD_Business
                 return new clsApplicationsTypes(applicationTypeId, title, fees);
             else
                 return null;
+        }
+
+        public bool Save()
+        {
+            return _Update();
         }
     }
 }
