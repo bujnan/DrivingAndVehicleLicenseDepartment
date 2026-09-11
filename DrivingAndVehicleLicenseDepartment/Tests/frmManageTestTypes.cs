@@ -23,7 +23,7 @@ namespace DrivingAndVehicleLicenseDepartment.Tests
             this.Close();
         }
 
-        private void frmManageTestTypes_Load(object sender, EventArgs e)
+        private void _LoadTestTypesData()
         {
             allTestTypesTable = clsTestType.GetAllTestTypes();
             if (allTestTypesTable.Rows.Count > 0)
@@ -45,6 +45,18 @@ namespace DrivingAndVehicleLicenseDepartment.Tests
 
                 lblRecords.Text = allTestTypesTable.Rows.Count.ToString();
             }
+        }
+
+        private void frmManageTestTypes_Load(object sender, EventArgs e)
+        {
+            _LoadTestTypesData();
+        }
+
+        private void editTestTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUpdateTestType updateTestType = new frmUpdateTestType(Convert.ToInt32(dgvTestTypes.SelectedRows[0].Cells[0].Value));
+            updateTestType.OnSaveFinished += _LoadTestTypesData;
+            updateTestType.ShowDialog();
         }
     }
 }
