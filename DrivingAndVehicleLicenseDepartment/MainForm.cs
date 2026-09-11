@@ -4,6 +4,7 @@ using DrivingAndVehicleLicenseDepartment.Login;
 using DrivingAndVehicleLicenseDepartment.Applications.Applications_Types;
 using System.Windows.Forms;
 using DrivingAndVehicleLicenseDepartment.Global;
+using DrivingAndVehicleLicenseDepartment.Tests;
 
 namespace DrivingAndVehicleLicenseDepartment
 {
@@ -50,6 +51,12 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             frmApplicationsTypes applicationsTypeForm = new frmApplicationsTypes();
             applicationsTypeForm.ShowDialog();
+        }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageTestTypes manageTestTypes = new frmManageTestTypes();
+            manageTestTypes.ShowDialog();
         }
     }
 }
