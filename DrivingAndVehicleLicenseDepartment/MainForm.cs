@@ -1,10 +1,11 @@
-﻿using System;
-using DrivingAndVehicleLicenseDepartment.User;
-using DrivingAndVehicleLicenseDepartment.Login;
-using DrivingAndVehicleLicenseDepartment.Applications.Applications_Types;
-using System.Windows.Forms;
+﻿using DrivingAndVehicleLicenseDepartment.Applications.Applications_Types;
+using DrivingAndVehicleLicenseDepartment.Applications.Local_Driving_License;
 using DrivingAndVehicleLicenseDepartment.Global;
+using DrivingAndVehicleLicenseDepartment.Login;
 using DrivingAndVehicleLicenseDepartment.Tests;
+using DrivingAndVehicleLicenseDepartment.User;
+using System;
+using System.Windows.Forms;
 
 namespace DrivingAndVehicleLicenseDepartment
 {
@@ -57,6 +58,12 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             frmManageTestTypes manageTestTypes = new frmManageTestTypes();
             manageTestTypes.ShowDialog();
+        }
+
+        private void tToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNewLocalDrivingLicenseApplication newLocalDrivingLicenseApplication = new frmNewLocalDrivingLicenseApplication();
+            newLocalDrivingLicenseApplication.ShowDialog();
         }
     }
 }
