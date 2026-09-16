@@ -1,5 +1,6 @@
 ﻿using DrivingAndVehicleLicenseDepartment.Applications.Applications_Types;
 using DrivingAndVehicleLicenseDepartment.Applications.Local_Driving_License;
+using DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Local_Driving_License_Application;
 using DrivingAndVehicleLicenseDepartment.Global;
 using DrivingAndVehicleLicenseDepartment.Login;
 using DrivingAndVehicleLicenseDepartment.Tests;
@@ -64,6 +65,12 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             frmNewLocalDrivingLicenseApplication newLocalDrivingLicenseApplication = new frmNewLocalDrivingLicenseApplication();
             newLocalDrivingLicenseApplication.ShowDialog();
+        }
+
+        private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListLocalDrivingApplications LocalDrivingApplicationForm = new frmListLocalDrivingApplications();
+            LocalDrivingApplicationForm.ShowDialog();
         }
     }
 }
