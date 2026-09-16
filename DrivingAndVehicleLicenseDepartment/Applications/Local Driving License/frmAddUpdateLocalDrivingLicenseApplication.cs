@@ -13,13 +13,15 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace DrivingAndVehicleLicenseDepartment.Applications.Local_Driving_License
 {
-    public partial class frmNewLocalDrivingLicenseApplication : Form
+    public partial class frmAddUpdateLocalDrivingLicenseApplication : Form
     {
         private clsPerson _selectedPerson = null;
         private clsLocalDrivingLicenseApplication _localDrivingLicenseApplication = null;
         private clsApplicationsTypes _applicationType = clsApplicationsTypes.Find((int)clsApplication.enApplicationType.NewLocalLicense);
+        public delegate void OnSaveEventHandler();
+        public event OnSaveEventHandler OnSave;
 
-        public frmNewLocalDrivingLicenseApplication()
+        public frmAddUpdateLocalDrivingLicenseApplication()
         {
             InitializeComponent();
             tpApplicationInfo.Enabled = false;
@@ -52,6 +54,9 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Local_Driving_License
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (_selectedPerson == null)
+                return;
+
             // Check if there is already active application for this license class by this personId
             int licenseClassId = clsLicenseInfo.Find(cbLicenseClasses.Text).LicenseClassId;
             int activeApplicationId = clsApplication.GetActiveApplicationIdForLicenseClass(_selectedPerson.PersonId, (int)clsApplication.enApplicationType.NewLocalLicense, licenseClassId);
@@ -83,6 +88,7 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Local_Driving_License
             if (_localDrivingLicenseApplication.Save())
             {
                 lblApplicationId.Text = _localDrivingLicenseApplication.ApplicationId.ToString();
+                OnSave.Invoke();
                 MessageBox.Show("Application Added Successfully");
             }
             else

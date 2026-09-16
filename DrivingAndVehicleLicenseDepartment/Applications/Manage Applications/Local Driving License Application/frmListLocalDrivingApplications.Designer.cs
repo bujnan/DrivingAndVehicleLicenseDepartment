@@ -111,6 +111,7 @@
             this.btnAddNewApplication.Size = new System.Drawing.Size(73, 75);
             this.btnAddNewApplication.TabIndex = 4;
             this.btnAddNewApplication.UseVisualStyleBackColor = false;
+            this.btnAddNewApplication.Click += new System.EventHandler(this.btnAddNewApplication_Click);
             // 
             // pictureBox2
             // 

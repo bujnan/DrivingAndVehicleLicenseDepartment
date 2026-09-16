@@ -63,7 +63,7 @@ namespace DrivingAndVehicleLicenseDepartment
 
         private void tToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmNewLocalDrivingLicenseApplication newLocalDrivingLicenseApplication = new frmNewLocalDrivingLicenseApplication();
+            frmAddUpdateLocalDrivingLicenseApplication newLocalDrivingLicenseApplication = new frmAddUpdateLocalDrivingLicenseApplication();
             newLocalDrivingLicenseApplication.ShowDialog();
         }
 

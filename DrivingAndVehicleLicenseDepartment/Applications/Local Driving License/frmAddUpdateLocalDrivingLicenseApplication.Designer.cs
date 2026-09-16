@@ -1,6 +1,6 @@
 ﻿namespace DrivingAndVehicleLicenseDepartment.Applications.Local_Driving_License
 {
-    partial class frmNewLocalDrivingLicenseApplication
+    partial class frmAddUpdateLocalDrivingLicenseApplication
     {
         /// <summary>
         /// Required designer variable.
