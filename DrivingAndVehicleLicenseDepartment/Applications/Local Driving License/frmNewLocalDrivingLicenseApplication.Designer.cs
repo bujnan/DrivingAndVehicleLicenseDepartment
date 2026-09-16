@@ -32,6 +32,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpPersonInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
+            this.ucPersonCardWithFilter1 = new DrivingAndVehicleLicenseDepartment.People.Control.ucPersonCardWithFilter();
             this.tpApplicationInfo = new System.Windows.Forms.TabPage();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -50,7 +51,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ucPersonCardWithFilter1 = new DrivingAndVehicleLicenseDepartment.People.Control.ucPersonCardWithFilter();
             this.tabControl1.SuspendLayout();
             this.tpPersonInfo.SuspendLayout();
             this.tpApplicationInfo.SuspendLayout();
@@ -106,6 +106,15 @@
             this.btnNext.Text = "Next";
             this.btnNext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // ucPersonCardWithFilter1
+            // 
+            this.ucPersonCardWithFilter1.FiltersEnabled = true;
+            this.ucPersonCardWithFilter1.Location = new System.Drawing.Point(6, 6);
+            this.ucPersonCardWithFilter1.Name = "ucPersonCardWithFilter1";
+            this.ucPersonCardWithFilter1.Size = new System.Drawing.Size(900, 354);
+            this.ucPersonCardWithFilter1.TabIndex = 0;
             // 
             // tpApplicationInfo
             // 
@@ -301,6 +310,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -315,14 +325,6 @@
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // ucPersonCardWithFilter1
-            // 
-            this.ucPersonCardWithFilter1.FiltersEnabled = true;
-            this.ucPersonCardWithFilter1.Location = new System.Drawing.Point(6, 6);
-            this.ucPersonCardWithFilter1.Name = "ucPersonCardWithFilter1";
-            this.ucPersonCardWithFilter1.Size = new System.Drawing.Size(900, 354);
-            this.ucPersonCardWithFilter1.TabIndex = 0;
             // 
             // frmNewLocalDrivingLicenseApplication
             // 
