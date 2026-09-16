@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -47,6 +48,64 @@ namespace DVLD_DataAccess
             }
 
             return newLocalDrivingApplicationId;
+        }
+
+        public static DataTable GetAllLocalDrivingLicenseAplications()
+        {
+            DataTable allLocalDrivingLicenseApplication = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT LDLA.LocalDrivingLicenseApplicationID, 
+                             LC.ClassName,
+                             P.NationalNo,
+                             FullName = 
+                             	P.FirstName + ' ' + P.SecondName + ' ' + IsNull(P.ThirdName, '') + ' ' + P.LastName,
+                             A.ApplicationDate,
+                             PassedTests =
+                             (
+                             	SELECT COUNT(TA.TestTypeID)
+                             	FROM Tests T
+                             	INNER JOIN TestAppointments TA
+                             		ON T.TestAppointmentID = TA.TestAppointmentID
+                             	INNER JOIN TestTypes TT
+                             		ON TA.TestTypeID = TT.TestTypeID
+                             	WHERE TA.LocalDrivingLicenseApplicationID = LDLA.LocalDrivingLicenseApplicationID
+                             		AND T.TestResult = 1
+                             ),
+                             ApplicationStatus =
+                             CASE
+                             	WHEN A.ApplicationStatus = 1 THEN 'New'
+                             	WHEN A.ApplicationStatus = 2 THEN 'Canceled'
+                             	WHEN A.ApplicationStatus = 3 THEN 'Completed'
+                             END
+                             FROM LocalDrivingLicenseApplications LDLA
+                             INNER JOIN LicenseClasses LC
+                             	ON LDLA.LicenseClassID = LC.LicenseClassID
+                             INNER JOIN Applications A
+                             	ON LDLA.ApplicationID = A.ApplicationID
+                             INNER JOIN People P
+                             	ON A.ApplicantPersonID = P.PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                    allLocalDrivingLicenseApplication.Load(reader);
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return allLocalDrivingLicenseApplication;
         }
     }
 }

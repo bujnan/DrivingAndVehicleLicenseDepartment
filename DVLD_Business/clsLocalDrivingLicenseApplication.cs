@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using DVLD_DataAccess;
 
 namespace DVLD_Business
@@ -47,14 +48,13 @@ namespace DVLD_Business
             _mode = enMode.Update;
         }
 
-        // Static Methods
+        // Non Static Methods
         private bool _AddNewLocalApplication()
         {
             _localDrivingLicenseApplicationId = clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication(ApplicationId, _licenseClassId);
             return (_localDrivingLicenseApplicationId  != -1);
         }
 
-        // Non Static Methods
         public bool Save()
         {
             base.mode = (clsApplication.enMode) _mode; // Cast the sub mode to fit the base mode
@@ -74,6 +74,12 @@ namespace DVLD_Business
                 default:
                     return false;
             }
+        }
+
+        // Static Methods
+        public static DataTable GetAllLocalDrivingLicenseAplications()
+        {
+            return clsLocalDrivingLicenseApplicationData.GetAllLocalDrivingLicenseAplications();
         }
 
     }

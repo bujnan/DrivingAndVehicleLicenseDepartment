@@ -48,7 +48,7 @@
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(283, 145);
+            this.label1.Location = new System.Drawing.Point(321, 145);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(379, 39);
             this.label1.TabIndex = 2;
@@ -60,15 +60,16 @@
             this.dgvListLocalApplications.AllowUserToAddRows = false;
             this.dgvListLocalApplications.AllowUserToDeleteRows = false;
             this.dgvListLocalApplications.AllowUserToOrderColumns = true;
+            this.dgvListLocalApplications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListLocalApplications.BackgroundColor = System.Drawing.Color.White;
             this.dgvListLocalApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListLocalApplications.ColumnHeadersVisible = false;
-            this.dgvListLocalApplications.Location = new System.Drawing.Point(28, 266);
+            this.dgvListLocalApplications.Location = new System.Drawing.Point(27, 266);
             this.dgvListLocalApplications.Name = "dgvListLocalApplications";
             this.dgvListLocalApplications.ReadOnly = true;
+            this.dgvListLocalApplications.RowHeadersVisible = false;
             this.dgvListLocalApplications.RowHeadersWidth = 51;
             this.dgvListLocalApplications.RowTemplate.Height = 24;
-            this.dgvListLocalApplications.Size = new System.Drawing.Size(873, 285);
+            this.dgvListLocalApplications.Size = new System.Drawing.Size(967, 285);
             this.dgvListLocalApplications.TabIndex = 3;
             // 
             // btnSave
@@ -76,7 +77,7 @@
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(816, 571);
+            this.btnSave.Location = new System.Drawing.Point(909, 571);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(85, 43);
             this.btnSave.TabIndex = 4;
@@ -88,7 +89,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(28, 231);
+            this.label4.Location = new System.Drawing.Point(27, 231);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 16);
             this.label4.TabIndex = 2;
@@ -105,7 +106,7 @@
             // 
             this.btnAddNewApplication.BackColor = System.Drawing.Color.White;
             this.btnAddNewApplication.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.New_Application_64;
-            this.btnAddNewApplication.Location = new System.Drawing.Point(828, 174);
+            this.btnAddNewApplication.Location = new System.Drawing.Point(921, 174);
             this.btnAddNewApplication.Name = "btnAddNewApplication";
             this.btnAddNewApplication.Size = new System.Drawing.Size(73, 75);
             this.btnAddNewApplication.TabIndex = 4;
@@ -114,7 +115,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Local_32;
-            this.pictureBox2.Location = new System.Drawing.Point(514, 48);
+            this.pictureBox2.Location = new System.Drawing.Point(549, 50);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(40, 43);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -124,7 +125,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Applications;
-            this.pictureBox1.Location = new System.Drawing.Point(417, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(455, 21);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(110, 112);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -135,7 +136,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 584);
+            this.label2.Location = new System.Drawing.Point(27, 584);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 16);
             this.label2.TabIndex = 2;
@@ -171,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 630);
+            this.ClientSize = new System.Drawing.Size(1021, 630);
             this.Controls.Add(this.cbFilterBy);
             this.Controls.Add(this.txbFilterBy);
             this.Controls.Add(this.btnAddNewApplication);
