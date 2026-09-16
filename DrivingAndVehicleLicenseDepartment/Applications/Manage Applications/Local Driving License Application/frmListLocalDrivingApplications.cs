@@ -57,16 +57,67 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
             _LoadData();
         }
 
-        private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txbFilterBy.Visible = (cbFilterBy.SelectedIndex != 0);
-        }
-
         private void btnAddNewApplication_Click(object sender, EventArgs e)
         {
             frmAddUpdateLocalDrivingLicenseApplication addUpdateLocalDrivingLicenseApplicationForm = new frmAddUpdateLocalDrivingLicenseApplication();
             addUpdateLocalDrivingLicenseApplicationForm.OnSave += _LoadData;
             addUpdateLocalDrivingLicenseApplicationForm.ShowDialog();
+        }
+
+        private void txbFilterBy_TextChanged(object sender, EventArgs e)
+        {
+            string selectedColumnName = "";
+            switch (cbFilterBy.Text)
+            {
+                case "L.D.L App Id":
+                    selectedColumnName = "LocalDrivingLicenseApplicationID";
+                    break;
+
+                case "National No":
+                    selectedColumnName = "NationalNo";
+                    break;
+
+                case "Full Name":
+                    selectedColumnName = "FullName";
+                    break;
+
+                case "Status":
+                    selectedColumnName = "ApplicationStatus";
+                    break;
+
+                case "None":
+                    selectedColumnName = "None";
+                    break;
+                
+            }
+
+            if (txbFilterBy.Text == "" || selectedColumnName == "None")
+            {
+                allLocalDrivingLicenseApplications.DefaultView.RowFilter = "";
+                lblRecords.Text = allLocalDrivingLicenseApplications.DefaultView.Count.ToString();
+                return;
+            }
+
+            if (selectedColumnName == "LocalDrivingLicenseApplicationID")
+            {
+                allLocalDrivingLicenseApplications.DefaultView.RowFilter = $"{selectedColumnName} = {txbFilterBy.Text.Trim()}";
+            }
+            else
+                allLocalDrivingLicenseApplications.DefaultView.RowFilter = $"{selectedColumnName} LIKE '{txbFilterBy.Text.Trim()}%'";
+        }
+
+        private void txbFilterBy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cbFilterBy.Text == "L.D.L App Id")
+            {
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            }
+        }
+
+        private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txbFilterBy.Text = "";  
+            txbFilterBy.Visible = (cbFilterBy.SelectedIndex != 0);
         }
     }
 }

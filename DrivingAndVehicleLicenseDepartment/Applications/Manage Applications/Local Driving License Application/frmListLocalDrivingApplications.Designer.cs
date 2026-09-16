@@ -101,6 +101,8 @@
             this.txbFilterBy.Name = "txbFilterBy";
             this.txbFilterBy.Size = new System.Drawing.Size(234, 22);
             this.txbFilterBy.TabIndex = 5;
+            this.txbFilterBy.TextChanged += new System.EventHandler(this.txbFilterBy_TextChanged);
+            this.txbFilterBy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbFilterBy_KeyPress);
             // 
             // btnAddNewApplication
             // 
