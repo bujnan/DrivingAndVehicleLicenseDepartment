@@ -52,7 +52,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
             string query = @"SELECT * FROM LicenseClasses 
-                         WHERE ClassName = @licenseClassName";
+                             WHERE ClassName = @licenseClassName";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@licenseClassName", licenseClassName);

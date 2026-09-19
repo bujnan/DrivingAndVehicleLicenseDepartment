@@ -1,6 +1,7 @@
-﻿using System;
+﻿using DVLD_DataAccess;
+using System;
 using System.Data;
-using DVLD_DataAccess;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_Business
 {
@@ -32,14 +33,14 @@ namespace DVLD_Business
             _mode = enMode.AddNew;
         }
 
-        private clsLocalDrivingLicenseApplication(int localDrivingLicenseApplication, int licenseClassId, int applicationId, int applicantPersonId, int applicationTypeId, byte applicationStatus, DateTime lastStatusDate, double paidFees, int createdByUserId)
+        private clsLocalDrivingLicenseApplication(int localDrivingLicenseApplication, int licenseClassId, int applicationId, int applicantPersonId, int applicationTypeId, byte applicationStatus, DateTime applicationDate,DateTime lastStatusDate, double paidFees, int createdByUserId)
         {
             _localDrivingLicenseApplicationId = localDrivingLicenseApplication;
             _licenseClassId = licenseClassId;
             _licenseInfo = clsLicenseInfo.Find(licenseClassId);
             this.ApplicationId = applicationId;
             this.ApplicantPersonId = applicantPersonId;
-            this.ApplicationDate = DateTime.Now;
+            this.ApplicationDate = applicationDate;
             this.ApplicationTypeId = applicationTypeId;
             this.ApplicationStatus = applicationStatus;
             this.LastStatusDate = lastStatusDate;
@@ -49,10 +50,15 @@ namespace DVLD_Business
         }
 
         // Non Static Methods
-        private bool _AddNewLocalApplication()
+        private bool _AddNewLocalDrivingLicenseApplication()
         {
             _localDrivingLicenseApplicationId = clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication(ApplicationId, _licenseClassId);
             return (_localDrivingLicenseApplicationId  != -1);
+        }
+
+        private bool _UpdateLocalDarivingLicenseApplication()
+        {
+            return clsLocalDrivingLicenseApplicationData.UpdateLocalDrivingLicenseApplication(_localDrivingLicenseApplicationId, _licenseClassId);
         }
 
         public bool Save()
@@ -64,13 +70,17 @@ namespace DVLD_Business
             switch (_mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewLocalApplication())
+                    if (_AddNewLocalDrivingLicenseApplication())
                     {
                         _mode = enMode.Update;
                         return true;
                     }
                     else
                         return false;
+
+                case enMode.Update:
+                    return _UpdateLocalDarivingLicenseApplication();
+
                 default:
                     return false;
             }
@@ -80,6 +90,36 @@ namespace DVLD_Business
         public static DataTable GetAllLocalDrivingLicenseAplications()
         {
             return clsLocalDrivingLicenseApplicationData.GetAllLocalDrivingLicenseAplications();
+        }
+
+        public static clsLocalDrivingLicenseApplication FindLocalDrivingLicenseApplicationByApplicantPersonId(int personId)
+        {
+            int localDrivingLicenseApplication = -1, licenseClassId = -1, applicationId = -1, applicationTypeId = -1, createdByUserId = -1;
+            byte applicationStatus = 1;
+            DateTime lastStatusDate = DateTime.Now, applicationDate = DateTime.Now;
+            double paidFees = 0; 
+
+            if (clsLocalDrivingLicenseApplicationData.FindLocalDrivingLicenseApplicationByApplicantPersonId(personId, ref localDrivingLicenseApplication, ref licenseClassId, ref applicationId, ref applicationTypeId, ref applicationStatus, ref applicationDate, ref lastStatusDate, ref paidFees, ref createdByUserId))
+            {
+                return new clsLocalDrivingLicenseApplication(localDrivingLicenseApplication, licenseClassId, applicationId, personId, applicationTypeId, applicationStatus, applicationDate, lastStatusDate, paidFees, createdByUserId);
+            }
+            else
+                return null;
+        }
+
+        public static clsLocalDrivingLicenseApplication FindByLocalDrivinLicenseApplicationId(int localDrivingLicenseAppId)
+        {
+            int personId = -1, licenseClassId = -1, applicationId = -1, applicationTypeId = -1, createdByUserId = -1;
+            byte applicationStatus = 1;
+            DateTime lastStatusDate = DateTime.Now, applicationDate = DateTime.Now;
+            double paidFees = 0;
+
+            if (clsLocalDrivingLicenseApplicationData.FindByLocalDrivinLicenseApplicationId(localDrivingLicenseAppId, ref personId, ref licenseClassId, ref applicationId, ref applicationTypeId, ref applicationStatus, ref applicationDate, ref lastStatusDate, ref paidFees, ref createdByUserId))
+            {
+                return new clsLocalDrivingLicenseApplication(localDrivingLicenseAppId, licenseClassId, applicationId, personId, applicationTypeId, applicationStatus, applicationDate, lastStatusDate, paidFees, createdByUserId);
+            }
+            else
+                return null;
         }
 
     }

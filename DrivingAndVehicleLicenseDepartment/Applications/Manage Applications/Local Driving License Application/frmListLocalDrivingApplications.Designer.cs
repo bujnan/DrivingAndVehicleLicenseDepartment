@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvListLocalApplications = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSave = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txbFilterBy = new System.Windows.Forms.TextBox();
@@ -40,6 +43,7 @@
             this.lblRecords = new System.Windows.Forms.Label();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListLocalApplications)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -63,14 +67,32 @@
             this.dgvListLocalApplications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListLocalApplications.BackgroundColor = System.Drawing.Color.White;
             this.dgvListLocalApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListLocalApplications.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvListLocalApplications.Location = new System.Drawing.Point(27, 266);
             this.dgvListLocalApplications.Name = "dgvListLocalApplications";
             this.dgvListLocalApplications.ReadOnly = true;
             this.dgvListLocalApplications.RowHeadersVisible = false;
             this.dgvListLocalApplications.RowHeadersWidth = 51;
             this.dgvListLocalApplications.RowTemplate.Height = 24;
+            this.dgvListLocalApplications.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListLocalApplications.Size = new System.Drawing.Size(967, 285);
             this.dgvListLocalApplications.TabIndex = 3;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editApplicationToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(190, 30);
+            // 
+            // editApplicationToolStripMenuItem
+            // 
+            this.editApplicationToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.edit_32;
+            this.editApplicationToolStripMenuItem.Name = "editApplicationToolStripMenuItem";
+            this.editApplicationToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.editApplicationToolStripMenuItem.Text = "Edit Application";
+            this.editApplicationToolStripMenuItem.Click += new System.EventHandler(this.editApplicationToolStripMenuItem_Click);
             // 
             // btnSave
             // 
@@ -194,6 +216,7 @@
             this.Text = "List of All Local Driving Applications";
             this.Load += new System.EventHandler(this.frmListLocalDrivingApplications_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListLocalApplications)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -214,5 +237,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblRecords;
         private System.Windows.Forms.ComboBox cbFilterBy;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem editApplicationToolStripMenuItem;
     }
 }

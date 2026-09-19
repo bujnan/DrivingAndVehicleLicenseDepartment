@@ -108,6 +108,11 @@ namespace DVLD_Business
             _applicationId = clsApplicationData.AddNew(_applicantPersonId, _applicationDate, _applicationTypeId, _applicationStatus, _lastStatusDate, _paidFees, _createdByUserId);
             return _applicationId != -1;
         }
+
+        private bool _UpdateApplication()
+        {
+            return clsApplicationData.UpdateApplication(_applicationId, _lastStatusDate);
+        }
         public bool Save()
         {
             switch(mode)
@@ -120,6 +125,9 @@ namespace DVLD_Business
                     }
                     else
                         return false;
+
+                case enMode.Update:
+                    return _UpdateApplication();
 
                 default:
                     return false;

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_DataAccess
 {
@@ -106,6 +107,128 @@ namespace DVLD_DataAccess
             }
 
             return allLocalDrivingLicenseApplication;
+        }
+
+        public static bool FindLocalDrivingLicenseApplicationByApplicantPersonId(int personId, ref int localDrivingLicenseApplication, ref int licenseClassId, ref int applicationId, ref int applicationTypeId, ref byte applicationStatus, ref DateTime applicationDate, ref DateTime lastStatusDate, ref double paidFees, ref int createdByUserId)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT * FROM LocalDrivingLicenseApplications LDLA
+                             INNER JOIN Applications A
+                             	ON LDLA.ApplicationID = A.ApplicationID
+                             WHERE A.ApplicantPersonID = @personId;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@personId", personId);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    applicationDate = Convert.ToDateTime(reader["ApplicationDate"]); 
+                    localDrivingLicenseApplication = Convert.ToInt32(reader["LocalDrivingLicenseApplicationID"]);
+                    licenseClassId = Convert.ToInt32(reader["LicenseClassID"]);
+                    applicationId = Convert.ToInt32(reader["ApplicationID"]);
+                    applicationTypeId = Convert.ToInt32(reader["ApplicationTypeID"]);
+                    applicationStatus = Convert.ToByte(reader["ApplicationStatus"]);
+                    lastStatusDate = Convert.ToDateTime(reader["LastStatusDate"]);
+                    paidFees = Convert.ToDouble(reader["PaidFees"]);
+                    createdByUserId = Convert.ToInt32(reader["CreatedByUserID"]);
+
+                    isFound = true;
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+        public static bool FindByLocalDrivinLicenseApplicationId(int localDrivingLicenseApplication, ref int personId, ref int licenseClassId, ref int applicationId, ref int applicationTypeId, ref byte applicationStatus, ref DateTime applicationDate, ref DateTime lastStatusDate, ref double paidFees, ref int createdByUserId)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT * FROM LocalDrivingLicenseApplications LDLA
+                             INNER JOIN Applications A
+                             	ON LDLA.ApplicationID = A.ApplicationID
+                             WHERE LDLA.LocalDrivingLicenseApplicationID = @localDrivingLicenseApplication;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@localDrivingLicenseApplication", localDrivingLicenseApplication);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    applicationDate = Convert.ToDateTime(reader["ApplicationDate"]);
+                    personId = Convert.ToInt32(reader["ApplicantPersonID"]);
+                    licenseClassId = Convert.ToInt32(reader["LicenseClassID"]);
+                    applicationId = Convert.ToInt32(reader["ApplicationID"]);
+                    applicationTypeId = Convert.ToInt32(reader["ApplicationTypeID"]);
+                    applicationStatus = Convert.ToByte(reader["ApplicationStatus"]);
+                    lastStatusDate = Convert.ToDateTime(reader["LastStatusDate"]);
+                    paidFees = Convert.ToDouble(reader["PaidFees"]);
+                    createdByUserId = Convert.ToInt32(reader["CreatedByUserID"]);
+
+                    isFound = true;
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+        public static bool UpdateLocalDrivingLicenseApplication(int localDrivingLicenseApplicationId, int licenseClassId)
+        {
+            bool isUpdateSucceed = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"UPDATE LocalDrivingLicenseApplications 
+                             SET LicenseClassID = @licenseClassId
+                             WHERE LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationId;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@licenseClassId", licenseClassId);
+            command.Parameters.AddWithValue("@localDrivingLicenseApplicationId", localDrivingLicenseApplicationId);
+
+            try
+            {
+                connection.Open();
+                isUpdateSucceed = (command.ExecuteNonQuery() > 0);
+            }
+            catch (Exception ex)
+            {
+                isUpdateSucceed = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isUpdateSucceed;
         }
     }
 }

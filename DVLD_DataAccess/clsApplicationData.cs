@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -101,6 +102,36 @@ namespace DVLD_DataAccess
             }
 
             return activeApplicationId;
+        }
+
+        public static bool UpdateApplication(int applicationId,  DateTime lastStatusDate)
+        {
+            bool isUpdateSucceed = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"UPDATE Applications
+                             SET LastStatusDate = @lastStatusDate
+                             WHERE ApplicationID = @applicationId;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@applicationId", applicationId);
+            command.Parameters.AddWithValue("@lastStatusDate", DateTime.Now);
+
+            try
+            {
+                connection.Open();
+                isUpdateSucceed = (command.ExecuteNonQuery() > 0);
+            }
+            catch (Exception ex)
+            {
+                isUpdateSucceed = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isUpdateSucceed;
         }
     }
 }

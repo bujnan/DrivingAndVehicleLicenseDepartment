@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblFormTitle = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpPersonInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
-            this.ucPersonCardWithFilter1 = new DrivingAndVehicleLicenseDepartment.People.Control.ucPersonCardWithFilter();
             this.tpApplicationInfo = new System.Windows.Forms.TabPage();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -51,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.ucPersonCardWithFilter1 = new DrivingAndVehicleLicenseDepartment.People.Control.ucPersonCardWithFilter();
             this.tabControl1.SuspendLayout();
             this.tpPersonInfo.SuspendLayout();
             this.tpApplicationInfo.SuspendLayout();
@@ -61,16 +61,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblFormTitle
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(231, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(481, 48);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "New Local Driving License Application";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFormTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFormTitle.ForeColor = System.Drawing.Color.Maroon;
+            this.lblFormTitle.Location = new System.Drawing.Point(231, 26);
+            this.lblFormTitle.Name = "lblFormTitle";
+            this.lblFormTitle.Size = new System.Drawing.Size(481, 48);
+            this.lblFormTitle.TabIndex = 0;
+            this.lblFormTitle.Text = "???";
+            this.lblFormTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabControl1
             // 
@@ -107,14 +107,6 @@
             this.btnNext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // ucPersonCardWithFilter1
-            // 
-            this.ucPersonCardWithFilter1.FiltersEnabled = true;
-            this.ucPersonCardWithFilter1.Location = new System.Drawing.Point(6, 6);
-            this.ucPersonCardWithFilter1.Name = "ucPersonCardWithFilter1";
-            this.ucPersonCardWithFilter1.Size = new System.Drawing.Size(900, 354);
-            this.ucPersonCardWithFilter1.TabIndex = 0;
             // 
             // tpApplicationInfo
             // 
@@ -200,9 +192,9 @@
             "Class 2 - Heavy Motorcycle License",
             "Class 3 - Ordinary Driving License",
             "Class 4 - Commercial",
-            "Claas 5 - Agricultural",
+            "Class 5 - Agricultural",
             "Class 6 - Small and Medium Bus",
-            "Class 7 - Trucks and Heavy Vehicle"});
+            "Class 7 - Truck and Heavy Vehicle"});
             this.cbLicenseClasses.Location = new System.Drawing.Point(275, 134);
             this.cbLicenseClasses.Name = "cbLicenseClasses";
             this.cbLicenseClasses.Size = new System.Drawing.Size(232, 24);
@@ -326,7 +318,15 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // frmNewLocalDrivingLicenseApplication
+            // ucPersonCardWithFilter1
+            // 
+            this.ucPersonCardWithFilter1.FiltersEnabled = true;
+            this.ucPersonCardWithFilter1.Location = new System.Drawing.Point(6, 6);
+            this.ucPersonCardWithFilter1.Name = "ucPersonCardWithFilter1";
+            this.ucPersonCardWithFilter1.Size = new System.Drawing.Size(900, 354);
+            this.ucPersonCardWithFilter1.TabIndex = 0;
+            // 
+            // frmAddUpdateLocalDrivingLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -334,11 +334,12 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblFormTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmNewLocalDrivingLicenseApplication";
+            this.Name = "frmAddUpdateLocalDrivingLicenseApplication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "New Local Driving License Application";
+            this.Text = "???";
+            this.Load += new System.EventHandler(this.frmAddUpdateLocalDrivingLicenseApplication_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpPersonInfo.ResumeLayout(false);
             this.tpApplicationInfo.ResumeLayout(false);
@@ -354,7 +355,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblFormTitle;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tpPersonInfo;
         private System.Windows.Forms.TabPage tpApplicationInfo;

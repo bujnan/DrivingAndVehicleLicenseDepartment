@@ -47,6 +47,8 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
 
                 dgvListLocalApplications.Columns[6].HeaderText = "Status";
                 dgvListLocalApplications.Columns[6].Width = 120;
+
+                dgvListLocalApplications.ClearSelection();
             }
             cbFilterBy.SelectedIndex = 0;
             lblRecords.Text = allLocalDrivingLicenseApplications.Rows.Count.ToString();
@@ -118,6 +120,13 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
         {
             txbFilterBy.Text = "";  
             txbFilterBy.Visible = (cbFilterBy.SelectedIndex != 0);
+        }
+
+        private void editApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateLocalDrivingLicenseApplication addUpdateLocalDrivingLicenseApplication = new frmAddUpdateLocalDrivingLicenseApplication(Convert.ToInt32(dgvListLocalApplications.SelectedRows[0].Cells[0].Value));
+            addUpdateLocalDrivingLicenseApplication.OnSave += _LoadData;
+            addUpdateLocalDrivingLicenseApplication.ShowDialog();
         }
     }
 }
