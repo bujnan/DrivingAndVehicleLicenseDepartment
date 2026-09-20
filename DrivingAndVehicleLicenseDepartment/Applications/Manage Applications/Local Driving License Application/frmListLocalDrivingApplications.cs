@@ -128,5 +128,22 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
             addUpdateLocalDrivingLicenseApplication.OnSave += _LoadData;
             addUpdateLocalDrivingLicenseApplication.ShowDialog();
         }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you Sure you Want to Delete this Application?", "Warning!" ,MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                return;
+            }
+
+            int localDrivingLicenseApplicationId = Convert.ToInt32(dgvListLocalApplications.CurrentRow.Cells[0].Value);
+            if (clsLocalDrivingLicenseApplication.FindByLocalDrivinLicenseApplicationId(localDrivingLicenseApplicationId).Delete())
+            {
+                _LoadData();
+                MessageBox.Show("Application Deleted Successfully", "Operation Succeed");
+            }
+            else
+                MessageBox.Show("Application Deletion Failed!", "Operation Failed");
+        }
     }
 }

@@ -113,6 +113,12 @@ namespace DVLD_Business
         {
             return clsApplicationData.UpdateApplication(_applicationId, _lastStatusDate);
         }
+
+        protected bool Delete()
+        {
+            return clsApplicationData.DeleteByApplicationId(_applicationId);
+        }
+
         public bool Save()
         {
             switch(mode)

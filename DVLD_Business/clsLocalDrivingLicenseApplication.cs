@@ -61,6 +61,16 @@ namespace DVLD_Business
             return clsLocalDrivingLicenseApplicationData.UpdateLocalDrivingLicenseApplication(_localDrivingLicenseApplicationId, _licenseClassId);
         }
 
+        public bool Delete()
+        {
+            if (clsLocalDrivingLicenseApplicationData.DeleteByLocalDrivingLicenseApplicationId(_localDrivingLicenseApplicationId))
+            {
+                return base.Delete();
+            }
+
+            return false;
+        }
+
         public bool Save()
         {
             base.mode = (clsApplication.enMode) _mode; // Cast the sub mode to fit the base mode

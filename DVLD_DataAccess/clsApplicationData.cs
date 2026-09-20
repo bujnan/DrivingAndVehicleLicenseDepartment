@@ -133,5 +133,34 @@ namespace DVLD_DataAccess
 
             return isUpdateSucceed;
         }
+
+        public static bool DeleteByApplicationId(int applicationId)
+        {
+            bool isDeletionSucceed = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"DELETE FROM Applications
+                             WHERE ApplicationID = @applicationId";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@applicationId", applicationId);
+
+            try
+            {
+                connection.Open();
+                if (command.ExecuteNonQuery() > 0)
+                    isDeletionSucceed = true;
+            }
+            catch (Exception ex)
+            {
+                isDeletionSucceed = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isDeletionSucceed;
+        }
     }
 }

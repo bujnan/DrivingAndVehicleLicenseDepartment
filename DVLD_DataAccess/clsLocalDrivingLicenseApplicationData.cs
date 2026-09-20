@@ -230,5 +230,34 @@ namespace DVLD_DataAccess
 
             return isUpdateSucceed;
         }
+
+        public static bool DeleteByLocalDrivingLicenseApplicationId(int localDrivingLicenseApplicationId)
+        {
+            bool isDeletionSucceed = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"DELETE FROM LocalDrivingLicenseApplications
+                             WHERE LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationId";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@localDrivingLicenseApplicationId", localDrivingLicenseApplicationId);
+
+            try
+            {
+                connection.Open();
+                if (command.ExecuteNonQuery() > 0)
+                    isDeletionSucceed = true;
+            }
+            catch (Exception ex)
+            {
+                isDeletionSucceed = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isDeletionSucceed;
+        }
     }
 }
