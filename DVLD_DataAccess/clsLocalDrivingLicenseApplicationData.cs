@@ -259,5 +259,35 @@ namespace DVLD_DataAccess
 
             return isDeletionSucceed;
         }
+
+        public static bool Cancel(int applicationId)
+        {
+            bool isCancelationSucceed = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"UPDATE Applications
+                             SET ApplicationStatus = 2
+                             WHERE ApplicationId = @applicationId;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@applicationId", applicationId);
+
+            try
+            {
+                connection.Open();
+                if (command.ExecuteNonQuery() > 0)
+                    isCancelationSucceed = true;
+            }
+            catch (Exception ex)
+            {
+                isCancelationSucceed = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isCancelationSucceed;
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
     public partial class frmListLocalDrivingApplications : Form
     {
         private DataTable allLocalDrivingLicenseApplications = new DataTable();
+
         public frmListLocalDrivingApplications()
         {
             InitializeComponent();
@@ -144,6 +145,28 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
             }
             else
                 MessageBox.Show("Application Deletion Failed!", "Operation Failed");
+        }
+
+        private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int localDrivingLicenseApplicationId = Convert.ToInt32(dgvListLocalApplications.CurrentRow.Cells[0].Value);
+
+            clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivinLicenseApplicationId(localDrivingLicenseApplicationId);
+
+            if (localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.Canceled || localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.Completed)
+            {
+                MessageBox.Show("You Can't Cancel an Application Already Canceled/Completed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (clsLocalDrivingLicenseApplication.Cancel(localDrivingLicenseApplication.ApplicationId))
+            {
+                _LoadData();
+                MessageBox.Show("Application Canceled Successfully", "Operation Succeed", MessageBoxButtons.OK);
+            }
+            else
+                MessageBox.Show("Failed! Application Did NOT Canceled!", "Operation Failed", MessageBoxButtons.OK);
+
         }
     }
 }

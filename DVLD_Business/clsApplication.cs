@@ -22,6 +22,8 @@ namespace DVLD_Business
         public enum enMode { AddNew = 1, Update = 2};
         public enMode mode = enMode.AddNew;
 
+        public enum enApplicationStatus { New = 1, Canceled, Completed = 3};
+
         public enum enApplicationType { NewLocalLicense = 1, RenewLicense = 2, ReplaceForLostLicense = 3, ReplaceForDamage = 4, ReleaseDetainedLicense = 5, NewInternationalLicense = 6, RetakeTest = 7 }
 
         // Setters and Getters

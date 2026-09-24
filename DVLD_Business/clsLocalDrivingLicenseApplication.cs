@@ -132,5 +132,9 @@ namespace DVLD_Business
                 return null;
         }
 
+        public static bool Cancel(int applicationId)
+        {
+            return clsLocalDrivingLicenseApplicationData.Cancel(applicationId);
+        }
     }
 }
