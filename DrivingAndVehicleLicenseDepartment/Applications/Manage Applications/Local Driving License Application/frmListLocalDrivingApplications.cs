@@ -1,4 +1,5 @@
 ﻿using DrivingAndVehicleLicenseDepartment.Applications.Local_Driving_License;
+using DrivingAndVehicleLicenseDepartment.Appointments.Vision;
 using DVLD_Business;
 using System;
 using System.Collections.Generic;
@@ -173,6 +174,13 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
         {
             frmLocalDrivingLicenseApplicationInfo localDrivingLicenseInfoForm = new frmLocalDrivingLicenseApplicationInfo(Convert.ToInt32(dgvListLocalApplications.CurrentRow.Cells[0].Value));
             localDrivingLicenseInfoForm.ShowDialog();
+        }
+
+        private void sechduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int localDrivingLicenseApplicationId = Convert.ToInt32(dgvListLocalApplications.CurrentRow.Cells[0].Value);
+            frmVisionTestAppointments visionTestAppointmentsForm = new frmVisionTestAppointments(localDrivingLicenseApplicationId);
+            visionTestAppointmentsForm.ShowDialog();
         }
     }
 }
