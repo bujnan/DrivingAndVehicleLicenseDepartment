@@ -168,5 +168,11 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
                 MessageBox.Show("Failed! Application Did NOT Canceled!", "Operation Failed", MessageBoxButtons.OK);
 
         }
+
+        private void showApplicationDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLocalDrivingLicenseApplicationInfo localDrivingLicenseInfoForm = new frmLocalDrivingLicenseApplicationInfo(Convert.ToInt32(dgvListLocalApplications.CurrentRow.Cells[0].Value));
+            localDrivingLicenseInfoForm.ShowDialog();
+        }
     }
 }

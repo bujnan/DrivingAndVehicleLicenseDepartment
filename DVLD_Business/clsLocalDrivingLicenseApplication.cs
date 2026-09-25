@@ -96,6 +96,11 @@ namespace DVLD_Business
             }
         }
 
+        public byte GetPassedTests()
+        {
+            return clsTest.CountPassedTests(_localDrivingLicenseApplicationId);
+        }
+
         // Static Methods
         public static DataTable GetAllLocalDrivingLicenseAplications()
         {
@@ -136,5 +141,7 @@ namespace DVLD_Business
         {
             return clsLocalDrivingLicenseApplicationData.Cancel(applicationId);
         }
+
+       
     }
 }

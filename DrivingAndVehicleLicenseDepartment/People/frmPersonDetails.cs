@@ -31,7 +31,7 @@ namespace DrivingAndVehicleLicenseDepartment
 
         private void frmPersonDetails_FormClosed(object sender, FormClosedEventArgs e)
         {
-            formClosed.Invoke();
+            formClosed?.Invoke();
         }
     }
 }

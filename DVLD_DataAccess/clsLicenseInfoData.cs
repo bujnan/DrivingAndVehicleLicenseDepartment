@@ -29,7 +29,7 @@ namespace DVLD_DataAccess
                     licenseClassName = reader["ClassName"].ToString();
                     licenseClassDescription = reader["ClassDescription"].ToString();
                     minimumAllowedAge = Convert.ToInt16(reader["MinimumAllowedAge"]);
-                    defaultValidityLength = Convert.ToInt16(reader["DefaultValidityength"]);
+                    defaultValidityLength = Convert.ToInt16(reader["DefaultValidityLength"]);
                     licenseClassFees = Convert.ToDouble(reader["ClassFees"]);
                     isFound = true;
                 }
