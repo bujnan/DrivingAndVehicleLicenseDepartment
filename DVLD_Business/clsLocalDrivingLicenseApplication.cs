@@ -25,6 +25,11 @@ namespace DVLD_Business
             get { return _licenseClassId; }
         }
 
+        public clsLicenseInfo LicenseInfo
+        {
+            get { return _licenseInfo; }
+        }
+
         // Constructors
         public clsLocalDrivingLicenseApplication()
         {
@@ -101,6 +106,16 @@ namespace DVLD_Business
             return clsTest.CountPassedTests(_localDrivingLicenseApplicationId);
         }
 
+        public bool DidAttendTestType(int testTypeId)
+        {
+            return clsLocalDrivingLicenseApplicationData.DidAttendTestType(_localDrivingLicenseApplicationId, testTypeId);
+        }
+
+        public byte TotalTrialsPerTest(int testTypeId)
+        {
+            return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(_localDrivingLicenseApplicationId, testTypeId);
+        }
+
         // Static Methods
         public static DataTable GetAllLocalDrivingLicenseAplications()
         {
@@ -142,6 +157,6 @@ namespace DVLD_Business
             return clsLocalDrivingLicenseApplicationData.Cancel(applicationId);
         }
 
-       
+      
     }
 }

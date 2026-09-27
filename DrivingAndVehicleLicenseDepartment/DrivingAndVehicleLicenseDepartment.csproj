@@ -143,11 +143,23 @@
     <Compile Include="Tests\frmManageTestTypes.Designer.cs">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tests\frmScheduleTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\frmScheduleTest.Designer.cs">
+      <DependentUpon>frmScheduleTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tests\frmUpdateTestType.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tests\frmUpdateTestType.Designer.cs">
       <DependentUpon>frmUpdateTestType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\ucScheduleTestType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tests\ucScheduleTestType.Designer.cs">
+      <DependentUpon>ucScheduleTestType.cs</DependentUpon>
     </Compile>
     <Compile Include="User\Control\ucUserCard.cs">
       <SubType>UserControl</SubType>
@@ -229,8 +241,14 @@
     <EmbeddedResource Include="Tests\frmManageTestTypes.resx">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tests\frmScheduleTest.resx">
+      <DependentUpon>frmScheduleTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tests\frmUpdateTestType.resx">
       <DependentUpon>frmUpdateTestType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\ucScheduleTestType.resx">
+      <DependentUpon>ucScheduleTestType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Control\ucUserCard.resx">
       <DependentUpon>ucUserCard.cs</DependentUpon>
@@ -443,9 +461,17 @@
   <ItemGroup>
     <None Include="Resources\vision test 32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Count 32.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\vision test 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\written test 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\driving test 512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

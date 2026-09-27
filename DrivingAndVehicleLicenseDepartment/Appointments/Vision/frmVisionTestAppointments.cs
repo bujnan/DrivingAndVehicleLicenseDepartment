@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DrivingAndVehicleLicenseDepartment.Tests;
 
 namespace DrivingAndVehicleLicenseDepartment.Appointments.Vision
 {
@@ -15,7 +16,7 @@ namespace DrivingAndVehicleLicenseDepartment.Appointments.Vision
     {
         private int _localDrivingLicenseApplicationId = -1;
         private DataTable _testsAppointmentsTable = new DataTable();
-        public frmVisionTestAppointments(int localDrivingLicenseApplicationId)
+        public frmVisionTestAppointments(int localDrivingLicenseApplicationId) // Here
         {
             _localDrivingLicenseApplicationId = localDrivingLicenseApplicationId;
             InitializeComponent();
@@ -53,6 +54,12 @@ namespace DrivingAndVehicleLicenseDepartment.Appointments.Vision
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddNewAppointment_Click(object sender, EventArgs e)
+        {
+            frmScheduleTest scheduleTestForm = new frmScheduleTest(_localDrivingLicenseApplicationId);
+            scheduleTestForm.ShowDialog();
         }
     }
 }

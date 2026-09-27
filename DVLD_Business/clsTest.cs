@@ -9,6 +9,8 @@ namespace DVLD_Business
 {
     public class clsTest
     {
+        public enum enTestType { Vision = 1, Written = 2, Driven = 3};
+
 
         // Static Methods
         public static byte CountPassedTests(int localDrivingLicenseApplicationId)
