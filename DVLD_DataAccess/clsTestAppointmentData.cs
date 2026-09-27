@@ -5,12 +5,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+                                  
 namespace DVLD_DataAccess
 {
     public class clsTestAppointmentData
     {
-        public static DataTable GetAllVisionTestAppointments(int localDrivingLicenseApplicationId)
+        public static DataTable GetAllTestsAppointments(int localDrivingLicenseApplicationId, int testTypeId)
         {
             DataTable allVisionTestAppointmentsTable = new DataTable();
 
@@ -18,10 +18,11 @@ namespace DVLD_DataAccess
             string query = @"SELECT * FROM TestAppointments 
                              WHERE 
                                 LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationId 
-                                AND TestTypeID = 1;";
+                                AND TestTypeID = @testTypeId;";
 
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("localDrivingLicenseApplicationId", localDrivingLicenseApplicationId);
+            command.Parameters.AddWithValue("@localDrivingLicenseApplicationId", localDrivingLicenseApplicationId);
+            command.Parameters.AddWithValue("@testTypeId", testTypeId);
 
             try
             {

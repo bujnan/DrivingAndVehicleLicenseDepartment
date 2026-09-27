@@ -85,11 +85,11 @@
     <Compile Include="Applications\Manage Applications\Local Driving License Application\frmListLocalDrivingApplications.Designer.cs">
       <DependentUpon>frmListLocalDrivingApplications.cs</DependentUpon>
     </Compile>
-    <Compile Include="Appointments\Vision\frmVisionTestAppointments.cs">
+    <Compile Include="Appointments\frmListTestAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Appointments\Vision\frmVisionTestAppointments.Designer.cs">
-      <DependentUpon>frmVisionTestAppointments.cs</DependentUpon>
+    <Compile Include="Appointments\frmListTestAppointments.Designer.cs">
+      <DependentUpon>frmListTestAppointments.cs</DependentUpon>
     </Compile>
     <Compile Include="Global\clsGlobal.cs" />
     <Compile Include="Global\clsUtil.cs" />
@@ -209,8 +209,8 @@
     <EmbeddedResource Include="Applications\Manage Applications\Local Driving License Application\frmListLocalDrivingApplications.resx">
       <DependentUpon>frmListLocalDrivingApplications.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Appointments\Vision\frmVisionTestAppointments.resx">
-      <DependentUpon>frmVisionTestAppointments.cs</DependentUpon>
+    <EmbeddedResource Include="Appointments\frmListTestAppointments.resx">
+      <DependentUpon>frmListTestAppointments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -472,6 +472,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\driving test 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Written Test 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\driving test 32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

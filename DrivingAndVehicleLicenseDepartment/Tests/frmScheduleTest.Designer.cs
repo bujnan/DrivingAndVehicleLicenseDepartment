@@ -67,6 +67,7 @@
             this.Name = "frmScheduleTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Schedule Test";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmScheduleTest_FormClosed);
             this.ResumeLayout(false);
 
         }

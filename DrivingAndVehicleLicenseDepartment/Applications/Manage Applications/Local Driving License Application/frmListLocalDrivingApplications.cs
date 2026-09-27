@@ -179,7 +179,21 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
         private void sechduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int localDrivingLicenseApplicationId = Convert.ToInt32(dgvListLocalApplications.CurrentRow.Cells[0].Value);
-            frmVisionTestAppointments visionTestAppointmentsForm = new frmVisionTestAppointments(localDrivingLicenseApplicationId);
+            frmListTestAppointments visionTestAppointmentsForm = new frmListTestAppointments(localDrivingLicenseApplicationId, (int)clsTestType.enTestType.Vision);
+            visionTestAppointmentsForm.ShowDialog();
+        }
+
+        private void scheduleWrittingTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int localDrivingLicenseApplicationId = Convert.ToInt32(dgvListLocalApplications.CurrentRow.Cells[0].Value);
+            frmListTestAppointments visionTestAppointmentsForm = new frmListTestAppointments(localDrivingLicenseApplicationId, (int)clsTestType.enTestType.Written);
+            visionTestAppointmentsForm.ShowDialog();
+        }
+
+        private void scheduleDrivingTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int localDrivingLicenseApplicationId = Convert.ToInt32(dgvListLocalApplications.CurrentRow.Cells[0].Value);
+            frmListTestAppointments visionTestAppointmentsForm = new frmListTestAppointments(localDrivingLicenseApplicationId, (int)clsTestType.enTestType.Driving);
             visionTestAppointmentsForm.ShowDialog();
         }
     }

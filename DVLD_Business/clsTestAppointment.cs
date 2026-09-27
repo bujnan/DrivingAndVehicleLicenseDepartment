@@ -116,9 +116,9 @@ namespace DVLD_Business
         }
 
         // Static Methods
-        public static DataTable GetAllVisionTestAppointments(int localDrivingLicenseApplicationId)
+        public static DataTable GetAllTestsAppointments(int localDrivingLicenseApplicationId, int testTypeId)
         {
-            return clsTestAppointmentData.GetAllVisionTestAppointments(localDrivingLicenseApplicationId);
+            return clsTestAppointmentData.GetAllTestsAppointments(localDrivingLicenseApplicationId, testTypeId);
         }
     }
 }

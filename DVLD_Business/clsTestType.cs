@@ -14,6 +14,7 @@ namespace DVLD_Business
         private string _title = "";
         private string _description = "";
         private double _fees = 0;
+        public enum enTestType { Vision = 1, Written = 2, Driving = 3};
 
         // Setters and Getters
         public int Id
