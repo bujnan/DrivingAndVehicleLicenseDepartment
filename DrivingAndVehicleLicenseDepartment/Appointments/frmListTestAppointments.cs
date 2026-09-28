@@ -105,5 +105,22 @@ namespace DrivingAndVehicleLicenseDepartment.Appointments.Vision
             scheduleTestForm.OnSave += _LoadData;
             scheduleTestForm.ShowDialog();
         }
+
+        private void editAppointmentDateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int testAppointmentId = (int)dgvAppointments.CurrentRow.Cells[0].Value;
+            bool isLocked = clsTestAppointment.IsLocked(testAppointmentId, _testTypeId, _localDrivingLicenseApplicationId);
+
+            if (isLocked)
+            {
+                MessageBox.Show("This Appointment is Locked! you can NOT edit it", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            frmScheduleTest scheduleTestForm = new frmScheduleTest(_localDrivingLicenseApplicationId, _testTypeId, testAppointmentId);
+            scheduleTestForm.OnSave += _LoadData;
+            scheduleTestForm.ShowDialog();
+
+        }
     }
 }

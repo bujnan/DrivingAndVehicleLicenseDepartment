@@ -63,6 +63,24 @@ namespace DrivingAndVehicleLicenseDepartment.Tests
             InitializeComponent();
         }
 
+        private bool _LoadTestAppointmentData()
+        {
+            _testAppointment = clsTestAppointment.Find(_testAppointmentId);
+
+            if (_testAppointment == null)
+                return false;
+
+            // we compare the current date with the appointment date to set the min date.
+            if (DateTime.Compare(DateTime.Now, _testAppointment.AppointmentDate) < 0)
+                dtpDate.MinDate = DateTime.Now;
+            else
+                dtpDate.MinDate = _testAppointment.AppointmentDate;
+
+            dtpDate.Value = _testAppointment.AppointmentDate;
+
+            return true;
+        }
+
         public void LoadInfo(int localDrivingLicenseApplicationId, int testAppointmentId = -1)
         {
             _localDrivingLicenseApplicationId = localDrivingLicenseApplicationId;
@@ -83,16 +101,17 @@ namespace DrivingAndVehicleLicenseDepartment.Tests
 
                 _testAppointment = new clsTestAppointment();
             }
-            //else
-            //{
-            //    if (!_LoadTestAppointmentData())
-            //        return;
-            //}
+            else
+            {
+                if (!_LoadTestAppointmentData())
+                    return;
+            }
 
             lblDrivingLicenseApplicationId.Text = _localDrivingLicenseApplication.LocalDrivingLicenseApplicationId.ToString();
             lblDrivingClass.Text = _localDrivingLicenseApplication.LicenseInfo.LicenseClassName;
             lblFullName.Text = clsPerson.Find(_localDrivingLicenseApplication.ApplicantPersonId).FullName;
             lblTrial.Text = _localDrivingLicenseApplication.TotalTrialsPerTest((int)_testTypeId).ToString();
+            lblFees.Text = _localDrivingLicenseApplication.PaidFees.ToString();
 
             if (_localDrivingLicenseApplication.DidAttendTestType((int)_testTypeId))
                 _creationMode = enCreationMode.RetakeTestSchedule;
@@ -176,7 +195,6 @@ namespace DrivingAndVehicleLicenseDepartment.Tests
             {
                 _mode = enMode.Update;
                 MessageBox.Show("Saved Successfully", "Operation Succeed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             else
                 MessageBox.Show("Error: NOT Saved!", "Operation Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);

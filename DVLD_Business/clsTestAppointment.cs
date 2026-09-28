@@ -98,11 +98,17 @@ namespace DVLD_Business
             _testAppointmentId = clsTestAppointmentData.AddNewTestAppointment(_testTypeId, _localDrivingLicenseApplicationId, _appointmentDate, _paidFees, _userId);
             return _testAppointmentId != -1;
         }
+
+        private bool _UpdateTestAppointment()
+        {
+            return clsTestAppointmentData.UpdateTestAppointment(_testAppointmentId, _appointmentDate);
+        }
         public bool Save()
         {
             switch (_mode)
             {
                 case enMode.AddNew:
+                {
                     if (_AddNewTestAppointment())
                     {
                         _mode = enMode.Update;
@@ -110,6 +116,12 @@ namespace DVLD_Business
                     }
                     else
                         return false;
+                }
+
+                case enMode.Update:
+                {
+                    return _UpdateTestAppointment();
+                }
             }
 
             return false;
@@ -119,6 +131,25 @@ namespace DVLD_Business
         public static DataTable GetAllTestsAppointments(int localDrivingLicenseApplicationId, int testTypeId)
         {
             return clsTestAppointmentData.GetAllTestsAppointments(localDrivingLicenseApplicationId, testTypeId);
+        }
+
+        public static bool IsLocked(int testAppointmentId, int testTypeId, int localDrivingLicenseApplicationId)
+        {
+            return clsTestAppointmentData.IsLocked(testAppointmentId, testTypeId, localDrivingLicenseApplicationId);
+        }
+
+        public static clsTestAppointment Find(int testAppointmentId)
+        {
+            int testTypeId = -1, localDrivingLicenseApplicationId = -1, userId = -1;
+            DateTime appointmentDate = DateTime.Now;
+            double paidFees = 0;
+
+            if (clsTestAppointmentData.Find(testAppointmentId, ref testTypeId, ref localDrivingLicenseApplicationId, ref userId, ref appointmentDate, ref paidFees))
+            {
+                return new clsTestAppointment(testAppointmentId, testTypeId, localDrivingLicenseApplicationId, appointmentDate, paidFees, userId);
+            }
+            else
+                return null;
         }
     }
 }

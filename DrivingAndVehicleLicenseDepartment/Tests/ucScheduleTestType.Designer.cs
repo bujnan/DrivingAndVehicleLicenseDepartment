@@ -180,9 +180,9 @@
             this.lblRetakeApplicationFees.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRetakeApplicationFees.Location = new System.Drawing.Point(184, 36);
             this.lblRetakeApplicationFees.Name = "lblRetakeApplicationFees";
-            this.lblRetakeApplicationFees.Size = new System.Drawing.Size(35, 18);
+            this.lblRetakeApplicationFees.Size = new System.Drawing.Size(17, 18);
             this.lblRetakeApplicationFees.TabIndex = 5;
-            this.lblRetakeApplicationFees.Text = "???";
+            this.lblRetakeApplicationFees.Text = "0";
             // 
             // label12
             // 
@@ -305,9 +305,9 @@
             this.lblFees.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFees.Location = new System.Drawing.Point(166, 415);
             this.lblFees.Name = "lblFees";
-            this.lblFees.Size = new System.Drawing.Size(35, 18);
+            this.lblFees.Size = new System.Drawing.Size(17, 18);
             this.lblFees.TabIndex = 16;
-            this.lblFees.Text = "???";
+            this.lblFees.Text = "0";
             // 
             // label7
             // 
