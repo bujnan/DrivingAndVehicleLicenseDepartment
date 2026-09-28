@@ -196,5 +196,29 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
             frmListTestAppointments visionTestAppointmentsForm = new frmListTestAppointments(localDrivingLicenseApplicationId, (int)clsTestType.enTestType.Driving);
             visionTestAppointmentsForm.ShowDialog();
         }
+
+        private void _DetermineScheduleTestEnabled(clsLocalDrivingLicenseApplication localDrivingLicenseApplication)
+        {
+            bool didPassVesionTest = localDrivingLicenseApplication.DidPassTestType((int)clsTestType.enTestType.Vision);
+            bool didPassWrittenTest = localDrivingLicenseApplication.DidPassTestType((int)clsTestType.enTestType.Written);
+            bool didPassDrivingTest = localDrivingLicenseApplication.DidPassTestType((int)clsTestType.enTestType.Driving);
+
+            scheduleTestToolStripMenuItem.Enabled = (!didPassVesionTest || !didPassWrittenTest || !didPassDrivingTest) && (localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.New);
+
+            if (scheduleTestToolStripMenuItem.Enabled)
+            {
+                scheduleVisionTestToolStripMenuItem.Enabled = !didPassVesionTest;
+                scheduleWrittingTestToolStripMenuItem.Enabled = didPassVesionTest && !didPassWrittenTest;
+                scheduleDrivingTestToolStripMenuItem.Enabled = didPassVesionTest && didPassWrittenTest && !didPassDrivingTest;
+            }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            int localDrivingLicenseApplicationId = (int)dgvListLocalApplications.CurrentRow.Cells[0].Value;
+            clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivinLicenseApplicationId(localDrivingLicenseApplicationId);
+
+            _DetermineScheduleTestEnabled(localDrivingLicenseApplication);
+        }
     }
 }

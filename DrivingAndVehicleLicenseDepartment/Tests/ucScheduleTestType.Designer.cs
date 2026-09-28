@@ -60,6 +60,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pbTestType = new System.Windows.Forms.PictureBox();
+            this.lblWarningMessage = new System.Windows.Forms.Label();
             this.gbTestType.SuspendLayout();
             this.gbRetakeTestInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -76,6 +77,7 @@
             // 
             // gbTestType
             // 
+            this.gbTestType.Controls.Add(this.lblWarningMessage);
             this.gbTestType.Controls.Add(this.gbRetakeTestInfo);
             this.gbTestType.Controls.Add(this.btnSave);
             this.gbTestType.Controls.Add(this.dtpDate);
@@ -418,6 +420,17 @@
             this.pbTestType.TabIndex = 6;
             this.pbTestType.TabStop = false;
             // 
+            // lblWarningMessage
+            // 
+            this.lblWarningMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblWarningMessage.Location = new System.Drawing.Point(11, 208);
+            this.lblWarningMessage.Name = "lblWarningMessage";
+            this.lblWarningMessage.Size = new System.Drawing.Size(496, 22);
+            this.lblWarningMessage.TabIndex = 28;
+            this.lblWarningMessage.Text = "Warning!";
+            this.lblWarningMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblWarningMessage.Visible = false;
+            // 
             // ucScheduleTestType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -477,5 +490,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbTestType;
+        private System.Windows.Forms.Label lblWarningMessage;
     }
 }

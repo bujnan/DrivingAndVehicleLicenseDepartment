@@ -115,8 +115,54 @@ namespace DrivingAndVehicleLicenseDepartment.Tests
             lblTotalFees.Text = (Convert.ToSingle(lblFees.Text) + Convert.ToSingle(lblRetakeApplicationFees.Text)).ToString();
         }
 
+        private bool _HasPassedPreviousTest()
+        {
+            switch (_testTypeId)
+            {
+                case clsTest.enTestType.Vision:
+                {
+                    lblWarningMessage.Visible = false;
+                    return true;
+                }
+
+                case clsTest.enTestType.Written:
+                {
+                    if (!_localDrivingLicenseApplication.DidPassTestType((int)clsTest.enTestType.Vision))
+                    {
+                        lblWarningMessage.Text = "Can NOT Schedule! Vision Test should be passed first";
+                        lblWarningMessage.Visible = true;
+                        dtpDate.Enabled = false;
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+
+                case clsTest.enTestType.Driven:
+                {
+                    if (!_localDrivingLicenseApplication.DidPassTestType((int)clsTest.enTestType.Written))
+                    {
+                        lblWarningMessage.Text = "Can NOT Schedule! Writing Test should be passed first";
+                        lblWarningMessage.Visible = true;
+                        dtpDate.Enabled = false;
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!_HasPassedPreviousTest())
+                return;
+
             //if (!_HandleRetakeApplication())
             //    return;
 

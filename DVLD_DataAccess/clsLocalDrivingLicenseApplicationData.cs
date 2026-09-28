@@ -370,5 +370,45 @@ namespace DVLD_DataAccess
 
             return totalTrialsPerTest;
         }
+
+        public static bool DidPassTestType(int localDrivingLicenseApplicationId, int testTypeId)
+        {
+            bool didPassedTest = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT Found = 1
+                             FROM TestAppointments TA
+                             INNER JOIN TestTypes TT
+                             	ON TA.TestTypeID = TT.TestTypeID
+                             INNER JOIN Tests T
+                             	ON TA.TestAppointmentID = T.TestAppointmentID
+                             WHERE 
+                             	T.TestResult = 1 
+                             	AND TA.LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationId 
+                             	AND TT.TestTypeID = @testTypeId";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@localDrivingLicenseApplicationId", localDrivingLicenseApplicationId);
+            command.Parameters.AddWithValue("@testTypeId", testTypeId);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null)
+                    didPassedTest = true;
+            }
+            catch (Exception ex)
+            {
+                didPassedTest = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return didPassedTest;
+        }
     }
 }

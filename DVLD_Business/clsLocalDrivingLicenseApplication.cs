@@ -111,6 +111,11 @@ namespace DVLD_Business
             return clsLocalDrivingLicenseApplicationData.DidAttendTestType(_localDrivingLicenseApplicationId, testTypeId);
         }
 
+        public bool DidPassTestType(int testTypeId)
+        {
+            return clsLocalDrivingLicenseApplicationData.DidPassTestType(_localDrivingLicenseApplicationId, testTypeId);
+        }
+
         public byte TotalTrialsPerTest(int testTypeId)
         {
             return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(_localDrivingLicenseApplicationId, testTypeId);
