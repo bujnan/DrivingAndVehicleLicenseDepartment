@@ -101,6 +101,12 @@ namespace DrivingAndVehicleLicenseDepartment.Appointments.Vision
 
         private void btnAddNewAppointment_Click(object sender, EventArgs e)
         {
+            if (clsTestAppointment.HasActiveTestAppointment(_localDrivingLicenseApplicationId, _testTypeId))
+            {
+                MessageBox.Show("Already Exist an Active Appointment for this Test", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             frmScheduleTest scheduleTestForm = new frmScheduleTest(_localDrivingLicenseApplicationId, _testTypeId);
             scheduleTestForm.OnSave += _LoadData;
             scheduleTestForm.ShowDialog();

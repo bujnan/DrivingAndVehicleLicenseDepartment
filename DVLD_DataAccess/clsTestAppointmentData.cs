@@ -209,5 +209,41 @@ namespace DVLD_DataAccess
 
             return isFound;
         }
+
+        public static bool HasActiveTestAppointment(int localDrivingLicenseApplicationId, int testTypeId)
+        {
+            bool hasActiveAppointment = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT TOP 1 IsLocked
+                             FROM TestAppointments
+                             WHERE 
+                             	LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationId
+                             	AND TestTypeID = @testTypeId
+                             	AND IsLocked = 0
+                             ORDER BY TestAppointmentID DESC;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@localDrivingLicenseApplicationId", localDrivingLicenseApplicationId);
+            command.Parameters.AddWithValue("@testTypeId", testTypeId);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                    hasActiveAppointment = true;
+            }
+            catch (Exception ex)
+            {
+                hasActiveAppointment = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return hasActiveAppointment;
+        }
     }
 }

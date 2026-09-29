@@ -32,17 +32,17 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editAppointmentDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.lblRecord = new System.Windows.Forms.Label();
             this.btnAddNewAppointment = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pbTestType = new System.Windows.Forms.PictureBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editAppointmentDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ucDrivingLicenseInfo1 = new DrivingAndVehicleLicenseDepartment.Applications.Controls.ucDrivingLicenseInfo();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -84,6 +84,22 @@
             this.dgvAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAppointments.Size = new System.Drawing.Size(916, 141);
             this.dgvAppointments.TabIndex = 4;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editAppointmentDateToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(237, 30);
+            // 
+            // editAppointmentDateToolStripMenuItem
+            // 
+            this.editAppointmentDateToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.edit_32;
+            this.editAppointmentDateToolStripMenuItem.Name = "editAppointmentDateToolStripMenuItem";
+            this.editAppointmentDateToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
+            this.editAppointmentDateToolStripMenuItem.Text = "Edit Appointment Date";
+            this.editAppointmentDateToolStripMenuItem.Click += new System.EventHandler(this.editAppointmentDateToolStripMenuItem_Click);
             // 
             // label3
             // 
@@ -145,22 +161,6 @@
             this.pbTestType.TabIndex = 0;
             this.pbTestType.TabStop = false;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editAppointmentDateToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(237, 58);
-            // 
-            // editAppointmentDateToolStripMenuItem
-            // 
-            this.editAppointmentDateToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.edit_32;
-            this.editAppointmentDateToolStripMenuItem.Name = "editAppointmentDateToolStripMenuItem";
-            this.editAppointmentDateToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
-            this.editAppointmentDateToolStripMenuItem.Text = "Edit Appointment Date";
-            this.editAppointmentDateToolStripMenuItem.Click += new System.EventHandler(this.editAppointmentDateToolStripMenuItem_Click);
-            // 
             // ucDrivingLicenseInfo1
             // 
             this.ucDrivingLicenseInfo1.Location = new System.Drawing.Point(26, 180);
@@ -189,8 +189,8 @@
             this.Text = "Test Appointment Type";
             this.Load += new System.EventHandler(this.frmVisionTestAppointments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

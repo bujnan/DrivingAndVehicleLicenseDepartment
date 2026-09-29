@@ -138,6 +138,11 @@ namespace DVLD_Business
             return clsTestAppointmentData.IsLocked(testAppointmentId, testTypeId, localDrivingLicenseApplicationId);
         }
 
+        public static bool HasActiveTestAppointment(int localDrivingLicenseApplicationId, int testTypeId)
+        {
+            return clsTestAppointmentData.HasActiveTestAppointment(localDrivingLicenseApplicationId, testTypeId);
+        }
+
         public static clsTestAppointment Find(int testAppointmentId)
         {
             int testTypeId = -1, localDrivingLicenseApplicationId = -1, userId = -1;
