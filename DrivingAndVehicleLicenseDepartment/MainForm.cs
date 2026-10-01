@@ -72,5 +72,11 @@ namespace DrivingAndVehicleLicenseDepartment
             frmListLocalDrivingApplications LocalDrivingApplicationForm = new frmListLocalDrivingApplications();
             LocalDrivingApplicationForm.ShowDialog();
         }
+
+        private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListLocalDrivingApplications LocalDrivingApplicationForm = new frmListLocalDrivingApplications();
+            LocalDrivingApplicationForm.ShowDialog();
+        }
     }
 }
