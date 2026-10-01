@@ -182,6 +182,16 @@ namespace DrivingAndVehicleLicenseDepartment.Tests
             if (!_HasPassedPreviousTest())
                 return;
 
+            if (clsTestAppointment.DidPassActualTest(_localDrivingLicenseApplicationId, (int)_testTypeId))
+            {
+                lblWarningMessage.Text = "Can NOT Schedule an Appointment for a Successfully Passed this Test";
+                lblWarningMessage.Visible = true;
+                dtpDate.Enabled = false;
+                gbRetakeTestInfo.Enabled = false;
+                btnSave.Enabled = false;
+                return;    
+            }
+
             //if (!_HandleRetakeApplication())
             //    return;
 

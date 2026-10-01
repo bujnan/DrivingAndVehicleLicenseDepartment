@@ -156,5 +156,10 @@ namespace DVLD_Business
             else
                 return null;
         }
+
+        public static bool DidPassActualTest(int localDrivingLicenseApplicationId, int testTypeId)
+        {
+            return clsTestAppointmentData.DidPassTest(localDrivingLicenseApplicationId, testTypeId);
+        }
     }
 }

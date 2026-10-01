@@ -45,5 +45,57 @@ namespace DVLD_DataAccess
             return totalTestsPassed;
         }
 
+        public static int AddNewTest(int testAppointmentId, byte testResult, string testNotes, int createdByUserId)
+        {
+            int testId = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"INSERT INTO Tests
+                             (
+                             	TestAppointmentID,
+                             	TestResult,
+                             	Notes,
+                             	CreatedByUserID
+                             )
+                             VALUES
+                             (
+                             	@testAppointmentId,
+                             	@testResult,
+                             	@testNotes,
+                             	@createdByUserId
+                             );
+                             
+                             UPDATE TestAppointments
+                             SET IsLocked = 1 
+                             WHERE TestAppointmentID = @testAppointmentId;
+                             
+                             SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@testAppointmentId", testAppointmentId);
+            command.Parameters.AddWithValue("@testResult", testResult);
+            command.Parameters.AddWithValue("@testNotes", testNotes);
+            command.Parameters.AddWithValue("@createdByUserId", createdByUserId);
+
+            try
+            {
+                connection.Open();
+
+                object insertedId = command.ExecuteScalar();
+                if (insertedId != null)
+                    testId = Convert.ToInt32(insertedId);
+            }
+            catch (Exception ex)
+            {
+                testId = -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return testId;
+        }
+
     }
 }

@@ -218,6 +218,13 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
             int localDrivingLicenseApplicationId = (int)dgvListLocalApplications.CurrentRow.Cells[0].Value;
             clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivinLicenseApplicationId(localDrivingLicenseApplicationId);
 
+            editApplicationToolStripMenuItem.Enabled = /*!LicenseExists &&*/ (localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.New);
+
+            deleteToolStripMenuItem.Enabled =
+                (localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.New);
+
+            cancelApplicationToolStripMenuItem.Enabled = (localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.New);
+
             _DetermineScheduleTestEnabled(localDrivingLicenseApplication);
         }
     }

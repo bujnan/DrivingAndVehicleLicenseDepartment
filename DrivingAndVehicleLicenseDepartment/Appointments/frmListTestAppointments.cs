@@ -107,6 +107,13 @@ namespace DrivingAndVehicleLicenseDepartment.Appointments.Vision
                 return;
             }
 
+            if (clsTestAppointment.DidPassActualTest(_localDrivingLicenseApplicationId, _testTypeId))
+            {
+                MessageBox.Show("You Can NOT Reserve an Appointment for a Succeessfylly Passed Test", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                takeTestToolStripMenuItem.Enabled = false;
+                return;
+            }
+
             frmScheduleTest scheduleTestForm = new frmScheduleTest(_localDrivingLicenseApplicationId, _testTypeId);
             scheduleTestForm.OnSave += _LoadData;
             scheduleTestForm.ShowDialog();
@@ -127,6 +134,14 @@ namespace DrivingAndVehicleLicenseDepartment.Appointments.Vision
             scheduleTestForm.OnSave += _LoadData;
             scheduleTestForm.ShowDialog();
 
+        }
+
+        private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int testAppointmentId = (int)dgvAppointments.CurrentRow.Cells[0].Value;
+            frmTakeTestExam takeTestForm = new frmTakeTestExam(_localDrivingLicenseApplicationId, testAppointmentId);
+            takeTestForm.OnSave += _LoadData;
+            takeTestForm.ShowDialog();
         }
     }
 }

@@ -34,12 +34,13 @@
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editAppointmentDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.takeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.lblRecord = new System.Windows.Forms.Label();
+            this.ucDrivingLicenseInfo1 = new DrivingAndVehicleLicenseDepartment.Applications.Controls.ucDrivingLicenseInfo();
             this.btnAddNewAppointment = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pbTestType = new System.Windows.Forms.PictureBox();
-            this.ucDrivingLicenseInfo1 = new DrivingAndVehicleLicenseDepartment.Applications.Controls.ucDrivingLicenseInfo();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).BeginInit();
@@ -89,9 +90,10 @@
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editAppointmentDateToolStripMenuItem});
+            this.editAppointmentDateToolStripMenuItem,
+            this.takeTestToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(237, 30);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(237, 56);
             // 
             // editAppointmentDateToolStripMenuItem
             // 
@@ -100,6 +102,14 @@
             this.editAppointmentDateToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
             this.editAppointmentDateToolStripMenuItem.Text = "Edit Appointment Date";
             this.editAppointmentDateToolStripMenuItem.Click += new System.EventHandler(this.editAppointmentDateToolStripMenuItem_Click);
+            // 
+            // takeTestToolStripMenuItem
+            // 
+            this.takeTestToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.take_test_32;
+            this.takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
+            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
+            this.takeTestToolStripMenuItem.Text = "Take Test";
+            this.takeTestToolStripMenuItem.Click += new System.EventHandler(this.takeTestToolStripMenuItem_Click);
             // 
             // label3
             // 
@@ -120,6 +130,13 @@
             this.lblRecord.Size = new System.Drawing.Size(35, 18);
             this.lblRecord.TabIndex = 3;
             this.lblRecord.Text = "???";
+            // 
+            // ucDrivingLicenseInfo1
+            // 
+            this.ucDrivingLicenseInfo1.Location = new System.Drawing.Point(26, 180);
+            this.ucDrivingLicenseInfo1.Name = "ucDrivingLicenseInfo1";
+            this.ucDrivingLicenseInfo1.Size = new System.Drawing.Size(923, 369);
+            this.ucDrivingLicenseInfo1.TabIndex = 2;
             // 
             // btnAddNewAppointment
             // 
@@ -160,13 +177,6 @@
             this.pbTestType.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbTestType.TabIndex = 0;
             this.pbTestType.TabStop = false;
-            // 
-            // ucDrivingLicenseInfo1
-            // 
-            this.ucDrivingLicenseInfo1.Location = new System.Drawing.Point(26, 180);
-            this.ucDrivingLicenseInfo1.Name = "ucDrivingLicenseInfo1";
-            this.ucDrivingLicenseInfo1.Size = new System.Drawing.Size(923, 369);
-            this.ucDrivingLicenseInfo1.TabIndex = 2;
             // 
             // frmListTestAppointments
             // 
@@ -209,5 +219,6 @@
         private System.Windows.Forms.Button btnAddNewAppointment;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editAppointmentDateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem takeTestToolStripMenuItem;
     }
 }
