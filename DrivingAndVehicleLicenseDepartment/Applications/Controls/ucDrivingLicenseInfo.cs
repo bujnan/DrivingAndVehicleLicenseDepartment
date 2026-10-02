@@ -51,7 +51,7 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Controls
 
                 lblDrivingLocalApplicationId.Text = _localDrivingLicenseApplication.LocalDrivingLicenseApplicationId.ToString();
                 lblAppliedForLicense.Text = clsLicenseInfo.Find(_localDrivingLicenseApplication.LicenseClassId).LicenseClassName;
-                lblPassedTests.Text = _localDrivingLicenseApplication.GetPassedTests().ToString() + "/3";
+                lblPassedTests.Text = _localDrivingLicenseApplication.GeTotalPassedTests().ToString() + "/3";
                 // llShowLicenseInfo.Text =; // link label (when clicked not text)
                 lblApplicationId.Text = _localDrivingLicenseApplication.ApplicationId.ToString();
                 lblApplicationFees.Text = _localDrivingLicenseApplication.PaidFees.ToString();

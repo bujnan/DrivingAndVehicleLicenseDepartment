@@ -76,6 +76,7 @@
             this.btnIssue.Text = "Issue";
             this.btnIssue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIssue.UseVisualStyleBackColor = true;
+            this.btnIssue.Click += new System.EventHandler(this.btnIssue_Click);
             // 
             // btnClose
             // 

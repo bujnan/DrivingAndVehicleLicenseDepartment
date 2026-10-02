@@ -219,7 +219,8 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
             int localDrivingLicenseApplicationId = (int)dgvListLocalApplications.CurrentRow.Cells[0].Value;
             clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivinLicenseApplicationId(localDrivingLicenseApplicationId);
 
-            editApplicationToolStripMenuItem.Enabled = /*!LicenseExists &&*/ (localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.New);
+            bool isLicenseExist = localDrivingLicenseApplication.HasObtainedLicenseClass();
+            editApplicationToolStripMenuItem.Enabled = !isLicenseExist &&(localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.New);
 
             deleteToolStripMenuItem.Enabled =
                 (localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.New);
@@ -227,6 +228,9 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
             cancelApplicationToolStripMenuItem.Enabled = (localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.New);
 
             _DetermineScheduleTestEnabled(localDrivingLicenseApplication);
+
+            int totalPassedTests = (int)dgvListLocalApplications.CurrentRow.Cells[5].Value;
+            issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (totalPassedTests == 3) && !isLicenseExist;
         }
 
         private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)

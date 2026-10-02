@@ -410,5 +410,45 @@ namespace DVLD_DataAccess
 
             return didPassedTest;
         }
+
+        public static bool HasObtainedLicenseClass(int applicantPersonId, int licenseClassId)
+        {
+            bool hasObtainedLicenseClass = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT L.LicenseID
+                             FROM Licenses L
+                             INNER JOIN Applications A
+                             	ON L.ApplicationID = A.ApplicationID
+                             INNER JOIN LocalDrivingLicenseApplications LDLA
+                             	ON A.ApplicationID = LDLA.ApplicationID
+                             WHERE 
+                             	A.ApplicantPersonID = @applicantPersonId
+                             	AND LDLA.LicenseClassID = @licenseClassId";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@applicantPersonId", applicantPersonId);
+            command.Parameters.AddWithValue("@licenseClassId", licenseClassId);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null)
+                    hasObtainedLicenseClass = true;
+            }
+            catch (Exception ex)
+            {
+                hasObtainedLicenseClass = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return hasObtainedLicenseClass;
+
+        }
     }
 }

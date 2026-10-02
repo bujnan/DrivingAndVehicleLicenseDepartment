@@ -101,7 +101,7 @@ namespace DVLD_Business
             }
         }
 
-        public byte GetPassedTests()
+        public byte GeTotalPassedTests()
         {
             return clsTest.CountPassedTests(_localDrivingLicenseApplicationId);
         }
@@ -119,6 +119,54 @@ namespace DVLD_Business
         public byte TotalTrialsPerTest(int testTypeId)
         {
             return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(_localDrivingLicenseApplicationId, testTypeId);
+        }
+
+        public bool HasObtainedLicenseClass()
+        {
+            return clsLocalDrivingLicenseApplicationData.HasObtainedLicenseClass(ApplicantPersonId, LicenseClassId);
+        }
+
+        public int IssueDrivingLicenseForFirstTime(string notes, int createdByUserId)
+        {
+            if (HasObtainedLicenseClass())
+                return -1;
+
+            int driverId = -1;
+            clsDriver driver = clsDriver.FindByPersonId(ApplicantPersonId);
+
+            if (driver == null)
+            {
+                driver = new clsDriver();
+                driver.PersonId = ApplicantPersonId;
+                driver.CreatedByUserId = createdByUserId;
+                driver.CreatedDate = DateTime.Now;
+
+                if (driver.Save())
+                    driverId = driver.DriverId;
+                else
+                    return -1;
+            }
+
+            clsLicense license = new clsLicense();
+            license.ApplicationId = ApplicationId;
+            license.DriverId = driver.DriverId;
+            license.LicenseClassId = LicenseClassId;
+            license.IssueDate = DateTime.Now;
+            license.ExpirationDate = DateTime.Now.AddYears(LicenseInfo.DefaultValidityLength);
+            license.Notes = notes;
+            license.PaidFees = PaidFees;
+            license.IsActive = true;
+            license.IssueReason = clsLicense.enIssueReason.FirstTime;
+            license.CreatedByUserId = createdByUserId;
+
+            if (license.Save())
+            {
+                MarkApplicationAsComplete();
+                return license.LicenseId;
+            }
+            else
+                return -1;
+
         }
 
         // Static Methods

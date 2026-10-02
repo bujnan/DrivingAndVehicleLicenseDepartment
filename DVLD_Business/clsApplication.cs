@@ -142,6 +142,11 @@ namespace DVLD_Business
             }
         }
 
+        protected bool MarkApplicationAsComplete()
+        {
+            return clsApplicationData.UpdateApplicationStatus(_applicationId, 3);
+        }
+
         // Static Methods
         public static int GetActiveApplicationIdForLicenseClass(int personId, int applicationTypeId, int licenseClassId)
         {

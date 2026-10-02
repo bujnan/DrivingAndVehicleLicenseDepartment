@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DrivingAndVehicleLicenseDepartment.Global;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,21 @@ namespace DrivingAndVehicleLicenseDepartment.License
             {
                 ucDrivingLicenseInfo1.LoadApplicationInfo(_localDrivingLicenseApplicationId);
             }
+        }
+
+        private void btnIssue_Click(object sender, EventArgs e)
+        {
+            if (_localDrivingLicenseApplication.GeTotalPassedTests() != 3)
+            {
+                MessageBox.Show("You Must Pass All Test!", "Error");
+                return;
+            }
+
+            int licenseId = _localDrivingLicenseApplication.IssueDrivingLicenseForFirstTime(txbNotes.Text.Trim(), clsGlobal.CurrentUser.UserId);
+            if (licenseId != -1)
+                MessageBox.Show("License Issued Successfully!", "Operation Succeed");
+            else
+                MessageBox.Show("License NOT Issued!", "Operation Faild");
         }
     }
 }

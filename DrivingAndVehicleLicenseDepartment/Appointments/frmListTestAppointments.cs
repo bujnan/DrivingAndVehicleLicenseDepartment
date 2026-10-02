@@ -138,6 +138,12 @@ namespace DrivingAndVehicleLicenseDepartment.Appointments.Vision
 
         private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if ((bool)dgvAppointments.CurrentRow.Cells[3].Value)
+            {
+                MessageBox.Show("This Test Already Done!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             int testAppointmentId = (int)dgvAppointments.CurrentRow.Cells[0].Value;
             frmTakeTestExam takeTestForm = new frmTakeTestExam(_localDrivingLicenseApplicationId, testAppointmentId);
             takeTestForm.OnSave += _LoadData;
