@@ -1,5 +1,6 @@
 ﻿using DrivingAndVehicleLicenseDepartment.Applications.Local_Driving_License;
 using DrivingAndVehicleLicenseDepartment.Appointments.Vision;
+using DrivingAndVehicleLicenseDepartment.License;
 using DVLD_Business;
 using System;
 using System.Collections.Generic;
@@ -226,6 +227,12 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
             cancelApplicationToolStripMenuItem.Enabled = (localDrivingLicenseApplication.ApplicationStatus == (int)clsApplication.enApplicationStatus.New);
 
             _DetermineScheduleTestEnabled(localDrivingLicenseApplication);
+        }
+
+        private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmIssueDrivingLicenseFirstTime issueDrivingLicenseForm = new frmIssueDrivingLicenseFirstTime(Convert.ToInt32(dgvListLocalApplications.CurrentRow.Cells[0].Value));
+            issueDrivingLicenseForm.ShowDialog();
         }
     }
 }
