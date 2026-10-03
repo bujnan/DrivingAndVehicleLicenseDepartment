@@ -52,6 +52,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.showLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListLocalApplications)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -99,9 +101,11 @@
             this.cancelApplicationToolStripMenuItem,
             this.toolStripMenuItem2,
             this.scheduleTestToolStripMenuItem,
-            this.issueDrivingLicenseFirstTimeToolStripMenuItem});
+            this.issueDrivingLicenseFirstTimeToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.showLicenseToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(297, 200);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(297, 232);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // showApplicationDetailsToolStripMenuItem
@@ -288,6 +292,19 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(293, 6);
+            // 
+            // showLicenseToolStripMenuItem
+            // 
+            this.showLicenseToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.License_Type_32;
+            this.showLicenseToolStripMenuItem.Name = "showLicenseToolStripMenuItem";
+            this.showLicenseToolStripMenuItem.Size = new System.Drawing.Size(296, 26);
+            this.showLicenseToolStripMenuItem.Text = "Show License";
+            this.showLicenseToolStripMenuItem.Click += new System.EventHandler(this.showLicenseToolStripMenuItem_Click);
+            // 
             // frmListLocalDrivingApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,5 +361,7 @@
         private System.Windows.Forms.ToolStripMenuItem scheduleWrittingTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scheduleDrivingTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem issueDrivingLicenseFirstTimeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem showLicenseToolStripMenuItem;
     }
 }

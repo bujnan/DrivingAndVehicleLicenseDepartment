@@ -238,5 +238,11 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
             frmIssueDrivingLicenseFirstTime issueDrivingLicenseForm = new frmIssueDrivingLicenseFirstTime(Convert.ToInt32(dgvListLocalApplications.CurrentRow.Cells[0].Value));
             issueDrivingLicenseForm.ShowDialog();
         }
+
+        private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowLicenseInfo showLicenseInfoForm = new frmShowLicenseInfo();
+            showLicenseInfoForm.ShowDialog();
+        }
     }
 }
