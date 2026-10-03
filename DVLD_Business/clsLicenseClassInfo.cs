@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DVLD_Business
 {
-    public class clsLicenseInfo
+    public class clsLicenseClassInfo
     {
         private int _licenseClassId = -1;
         private string _licenseClassName = "";
@@ -48,7 +48,7 @@ namespace DVLD_Business
         }
 
         // Constructors
-        private clsLicenseInfo(int licenseClassId, string licenseClassName, string licenseClassDescription, short minimumAllowedAge, short defaultValidityLength, double licenseClassFees)
+        private clsLicenseClassInfo(int licenseClassId, string licenseClassName, string licenseClassDescription, short minimumAllowedAge, short defaultValidityLength, double licenseClassFees)
         {
             _licenseClassId = licenseClassId;
             _licenseClassName = licenseClassName;
@@ -59,7 +59,7 @@ namespace DVLD_Business
         }
 
         // Static Methods
-        public static clsLicenseInfo Find(int licenseClassId)
+        public static clsLicenseClassInfo Find(int licenseClassId)
         {
             string licenseClassName = "", licenseClassDescription = "";
             short minimumAllowedAge = -1, defaultValidityLength = -1;
@@ -67,13 +67,13 @@ namespace DVLD_Business
 
             if (clsLicenseInfoData.Find(licenseClassId, ref licenseClassName, ref licenseClassDescription, ref minimumAllowedAge, ref defaultValidityLength, ref licenseClassFees))
             {
-                return new clsLicenseInfo(licenseClassId, licenseClassName, licenseClassDescription, minimumAllowedAge, defaultValidityLength, licenseClassFees);
+                return new clsLicenseClassInfo(licenseClassId, licenseClassName, licenseClassDescription, minimumAllowedAge, defaultValidityLength, licenseClassFees);
             }
             else
                 return null;
         }
 
-        public static clsLicenseInfo Find(string licenseClassName)
+        public static clsLicenseClassInfo Find(string licenseClassName)
         {
             int licenseClassId = -1;
             string licenseClassDescription = "";
@@ -82,7 +82,7 @@ namespace DVLD_Business
 
             if (clsLicenseInfoData.Find(ref licenseClassId, licenseClassName, ref licenseClassDescription, ref minimumAllowedAge, ref defaultValidityLength, ref licenseClassFees))
             {
-                return new clsLicenseInfo(licenseClassId, licenseClassName, licenseClassDescription, minimumAllowedAge, defaultValidityLength, licenseClassFees);
+                return new clsLicenseClassInfo(licenseClassId, licenseClassName, licenseClassDescription, minimumAllowedAge, defaultValidityLength, licenseClassFees);
             }
             else
                 return null;

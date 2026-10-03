@@ -11,7 +11,7 @@ namespace DVLD_Business
         private enMode _mode = enMode.AddNew;
         private int _localDrivingLicenseApplicationId = -1;
         private int _licenseClassId = -1;
-        private clsLicenseInfo _licenseInfo = null;
+        private clsLicenseClassInfo _licenseInfo = null;
 
         // Setters and Getters
         public int LocalDrivingLicenseApplicationId
@@ -25,7 +25,7 @@ namespace DVLD_Business
             get { return _licenseClassId; }
         }
 
-        public clsLicenseInfo LicenseInfo
+        public clsLicenseClassInfo LicenseInfo
         {
             get { return _licenseInfo; }
         }
@@ -42,7 +42,7 @@ namespace DVLD_Business
         {
             _localDrivingLicenseApplicationId = localDrivingLicenseApplication;
             _licenseClassId = licenseClassId;
-            _licenseInfo = clsLicenseInfo.Find(licenseClassId);
+            _licenseInfo = clsLicenseClassInfo.Find(licenseClassId);
             this.ApplicationId = applicationId;
             this.ApplicantPersonId = applicantPersonId;
             this.ApplicationDate = applicationDate;

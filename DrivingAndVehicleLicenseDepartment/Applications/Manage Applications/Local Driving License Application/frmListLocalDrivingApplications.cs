@@ -231,6 +231,8 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
 
             int totalPassedTests = (int)dgvListLocalApplications.CurrentRow.Cells[5].Value;
             issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (totalPassedTests == 3) && !isLicenseExist;
+
+            showLicenseToolStripMenuItem.Enabled = isLicenseExist;
         }
 
         private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -241,7 +243,10 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Manage_Applications.Lo
 
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowLicenseInfo showLicenseInfoForm = new frmShowLicenseInfo();
+            string nationalNo = dgvListLocalApplications.CurrentRow.Cells[2].Value.ToString().Trim();
+            int licenseClassId = clsLicenseClassInfo.Find(dgvListLocalApplications.CurrentRow.Cells[1].Value.ToString().Trim()).LicenseClassId;
+
+            frmShowLicenseInfo showLicenseInfoForm = new frmShowLicenseInfo(nationalNo, licenseClassId);
             showLicenseInfoForm.ShowDialog();
         }
     }

@@ -80,7 +80,7 @@ namespace DrivingAndVehicleLicenseDepartment.Tests.Controls
             }
 
             lblDrivingLicenseApplicationId.Text = _localDrivingLicenseApplicationId.ToString();
-            lblDrivingClass.Text = clsLicenseInfo.Find(_localDrivingLicenseApplication.LicenseClassId).LicenseClassName;
+            lblDrivingClass.Text = clsLicenseClassInfo.Find(_localDrivingLicenseApplication.LicenseClassId).LicenseClassName;
             lblFullName.Text = clsPerson.Find(_localDrivingLicenseApplication.ApplicantPersonId).FullName;
             lblTrial.Text = _localDrivingLicenseApplication.TotalTrialsPerTest(_testAppointment.TestTypeId).ToString();
             lblTestDate.Text = _testAppointment.AppointmentDate.ToString("MMM dd, yyyy");

@@ -1,4 +1,5 @@
 ﻿using DrivingAndVehicleLicenseDepartment.Global;
+using DrivingAndVehicleLicenseDepartment.License;
 using DVLD_Business;
 using System;
 using System.Collections.Generic;
@@ -50,9 +51,8 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Controls
                 _person = clsPerson.Find(_localDrivingLicenseApplication.ApplicantPersonId);
 
                 lblDrivingLocalApplicationId.Text = _localDrivingLicenseApplication.LocalDrivingLicenseApplicationId.ToString();
-                lblAppliedForLicense.Text = clsLicenseInfo.Find(_localDrivingLicenseApplication.LicenseClassId).LicenseClassName;
+                lblAppliedForLicense.Text = clsLicenseClassInfo.Find(_localDrivingLicenseApplication.LicenseClassId).LicenseClassName;
                 lblPassedTests.Text = _localDrivingLicenseApplication.GeTotalPassedTests().ToString() + "/3";
-                // llShowLicenseInfo.Text =; // link label (when clicked not text)
                 lblApplicationId.Text = _localDrivingLicenseApplication.ApplicationId.ToString();
                 lblApplicationFees.Text = _localDrivingLicenseApplication.PaidFees.ToString();
                 lblApplicationType.Text = clsApplicationsTypes.Find(_localDrivingLicenseApplication.ApplicationTypeId).Title;
@@ -75,6 +75,8 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Controls
                         lblApplicationStatus.Text = "Completed";
                         break;
                 }
+
+                llShowLicenseInfo.Enabled = _localDrivingLicenseApplication.HasObtainedLicenseClass();
             }
             else
                 _ResetDefaultValue();
@@ -87,6 +89,13 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Controls
                 frmPersonDetails personDetailsForm = new frmPersonDetails(_person.PersonId);
                 personDetailsForm.ShowDialog();
             }
+        }
+
+        private void llShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmShowLicenseInfo showLicenseInfoForm = new frmShowLicenseInfo(_person.NationalNo, _localDrivingLicenseApplication.LicenseClassId);
+
+            showLicenseInfoForm.ShowDialog();
         }
     }
 }

@@ -11,8 +11,9 @@ namespace DVLD_Business
     {
         private int _licenseId = -1; 
         private int _applicationId = -1; 
-        private int _driverId = -1; 
+        private int _driverId = -1;
         private int _licenseClassId = -1;
+        private clsLicenseClassInfo _licenseClassInfo = null;
         private DateTime _issueDate = DateTime.Now;
         private DateTime _expirationDate = DateTime.Now;
         private string _notes = "";
@@ -91,6 +92,11 @@ namespace DVLD_Business
             get { return _createdByUserId; }
         }
 
+        public clsLicenseClassInfo LicenseClassInfo
+        {
+            get { return _licenseClassInfo; }
+        }
+
         // Constructors
         public clsLicense()
         {
@@ -114,6 +120,7 @@ namespace DVLD_Business
             _applicationId = applicationId;
             _driverId = driverId;
             _licenseClassId = licenseClassId;
+            _licenseClassInfo = clsLicenseClassInfo.Find(licenseClassId);
             _issueDate = issueDate;
             _expirationDate = experationDate;
             _notes = notes;
@@ -147,6 +154,24 @@ namespace DVLD_Business
                 default:
                     return false;
             }
+        }
+
+        // Static Methods
+        public static clsLicense FindLicenseByNationalNumber(string nationalNo, int licenseClassId)
+        {
+            int licenseId = -1, applicationId = -1, driverId = -1, createdByUserId = -1;
+            DateTime issueDate = DateTime.Now, experationDate = DateTime.Now;
+            string notes = "";
+            byte issueReason = 0;
+            double paidFees = 0;
+            bool isActive = false;
+
+            if (clsLicenseData.FindByNationalNumber(nationalNo, ref licenseId, ref applicationId, ref driverId, licenseClassId, ref createdByUserId, ref issueDate, ref experationDate, ref notes, ref issueReason, ref paidFees, ref isActive))
+            {
+                return new clsLicense(licenseId, applicationId, driverId, licenseClassId, issueDate, experationDate, notes, (enIssueReason)issueReason, paidFees, isActive, createdByUserId);
+            }
+            else
+                return null;
         }
     }
 }

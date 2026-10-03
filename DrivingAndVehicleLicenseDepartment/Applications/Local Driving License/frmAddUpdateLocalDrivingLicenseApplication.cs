@@ -70,7 +70,7 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Local_Driving_License
                 return;
 
             // Check if there is already active application for this license class by this personId
-            int licenseClassId = clsLicenseInfo.Find(cbLicenseClasses.Text).LicenseClassId;
+            int licenseClassId = clsLicenseClassInfo.Find(cbLicenseClasses.Text).LicenseClassId;
             int activeApplicationId = clsApplication.GetActiveApplicationIdForLicenseClass(_selectedPerson.PersonId, (int)clsApplication.enApplicationType.NewLocalLicense, licenseClassId);
 
             if (activeApplicationId != -1)
@@ -80,7 +80,7 @@ namespace DrivingAndVehicleLicenseDepartment.Applications.Local_Driving_License
             }
 
             // Check if this personId obtained this license class before
-            if (clsLicenseInfo.IsLicenseExistByPersonID(_selectedPerson.PersonId, licenseClassId))
+            if (clsLicenseClassInfo.IsLicenseExistByPersonID(_selectedPerson.PersonId, licenseClassId))
             {
                 MessageBox.Show("Person Already Has a License with the Same Applied Driving Class, Choose Diffrent Driving Class", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
