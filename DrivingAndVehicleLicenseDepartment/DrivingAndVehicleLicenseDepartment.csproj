@@ -93,6 +93,12 @@
     </Compile>
     <Compile Include="Global\clsGlobal.cs" />
     <Compile Include="Global\clsUtil.cs" />
+    <Compile Include="License\Control\ucLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="License\Control\ucLicenseInfo.Designer.cs">
+      <DependentUpon>ucLicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="License\frmIssueDrivingLicenseFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Appointments\frmListTestAppointments.resx">
       <DependentUpon>frmListTestAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License\Control\ucLicenseInfo.resx">
+      <DependentUpon>ucLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="License\frmIssueDrivingLicenseFirstTime.resx">
       <DependentUpon>frmIssueDrivingLicenseFirstTime.cs</DependentUpon>
