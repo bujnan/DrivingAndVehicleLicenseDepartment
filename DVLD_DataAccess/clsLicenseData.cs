@@ -104,7 +104,8 @@ namespace DVLD_DataAccess
 							 	ON D.PersonID = P.PersonID
 							 WHERE 
 							 	P.NationalNo = @nationalNo
-							 	AND L.LicenseClass = @licenseClassId;";
+							 	AND L.LicenseClass = @licenseClassId
+								AND L.IsActive = 1;";
 
 			SqlCommand command = new SqlCommand(query, connection);
 			command.Parameters.AddWithValue("@nationalNo", nationalNo);
@@ -146,6 +147,87 @@ namespace DVLD_DataAccess
 			}
 
 			return isFound;
+		}
+
+        public static bool FindLicenseById(int licenseId, ref int applicationId, ref int driverId, ref int licenseClassId, ref int createdByUserId, ref DateTime issueDate, ref DateTime experationDate, ref string notes, ref byte issueReason, ref double paidFees, ref bool isActive)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT *
+							 FROM Licenses 
+							 WHERE 
+							 	LicenseID = @licenseId;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@licenseId", licenseId);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    //licenseId = Convert.ToInt32(reader["LicenseID"]);
+                    applicationId = Convert.ToInt32(reader["ApplicationID"]);
+                    driverId = Convert.ToInt32(reader["DriverID"]);
+                    licenseClassId = Convert.ToInt32(reader["LicenseClass"]);
+                    issueDate = Convert.ToDateTime(reader["IssueDate"]);
+                    experationDate = Convert.ToDateTime(reader["ExpirationDate"]);
+                    issueReason = Convert.ToByte(reader["IssueReason"]);
+                    paidFees = Convert.ToDouble(reader["PaidFees"]);
+                    isActive = Convert.ToBoolean(reader["IsActive"]);
+                    createdByUserId = Convert.ToInt32(reader["CreatedByUserID"]);
+
+                    if (reader["Notes"] != DBNull.Value)
+                        notes = Convert.ToString(reader["Notes"]);
+
+                    isFound = true;
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+		public static bool DesactivateCurrentLicense(int licenseId)
+		{
+			bool isDesactivationSucceed = false;
+
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+			string query = @"UPDATE Licenses
+							 SET IsActive = 0
+							 WHERE LicenseID = @licenseId;";
+
+			SqlCommand command = new SqlCommand(query, connection);
+			command.Parameters.AddWithValue("@licenseId", licenseId);
+
+			try
+			{
+				connection.Open();
+				if (command.ExecuteNonQuery() > 0)
+					isDesactivationSucceed = true;
+			}
+			catch (Exception ex)
+			{
+				isDesactivationSucceed = false;
+			}
+			finally
+			{
+				connection.Close();
+			}
+
+			return isDesactivationSucceed;
 		}
     }
 }

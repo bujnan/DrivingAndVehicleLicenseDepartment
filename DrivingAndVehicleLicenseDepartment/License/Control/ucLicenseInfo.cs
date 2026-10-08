@@ -68,6 +68,10 @@ namespace DrivingAndVehicleLicenseDepartment.License.Control
                         lblIssueReason.Text = "First Time";
                         break;
 
+                    case clsLicense.enIssueReason.Renew:
+                        lblIssueReason.Text = "Renew";
+                        break;
+
                         // other case needs here for other issueReason (Renew, Damage, etc)
 
                 }

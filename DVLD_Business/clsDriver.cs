@@ -11,6 +11,7 @@ namespace DVLD_Business
     {
         private int _driverId = -1;
         private int _personId = -1;
+        private clsPerson _person = null;
         private int _createdByUserId = -1;
         private DateTime _createdDate = DateTime.Now;
         private enum enMode { AddNew = 1, Update = 2};
@@ -26,6 +27,11 @@ namespace DVLD_Business
         {
             set { _personId = value; }
             get { return _personId; }
+        }
+
+        public clsPerson PersonInfo
+        {
+            get { return _person; }
         }
 
         public int CreatedByUserId
@@ -54,6 +60,7 @@ namespace DVLD_Business
         {
             _driverId = driverId;
             _personId = personId;
+            _person = clsPerson.Find(personId);
             _createdByUserId = createdByUserId;
             _createdDate = createdDate;
             _mode = enMode.Update;
@@ -92,6 +99,18 @@ namespace DVLD_Business
             DateTime createdDate = DateTime.Now;
 
             if (clsDriverData.FindByPersonId(ref driverId, personId, ref createdByUserId, ref createdDate))
+                return new clsDriver(driverId, personId, createdByUserId, createdDate);
+            else
+                return null;
+        }
+
+        public static clsDriver FindByDriverId(int driverId)
+        {
+            int personId = -1;
+            int createdByUserId = -1;
+            DateTime createdDate = DateTime.Now;
+
+            if (clsDriverData.FindByDriverId(driverId, ref personId, ref createdByUserId, ref createdDate))
                 return new clsDriver(driverId, personId, createdByUserId, createdDate);
             else
                 return null;

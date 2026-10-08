@@ -14,6 +14,8 @@ namespace DVLD_Business
         private string _title = "";
         private double _fees = 0;
 
+        public enum enApplicationType { NewLocal = 1, Renew = 2, ReplacementForLost = 3, ReplacementForDamage = 4, ReleaseDetained = 5, NewInternational = 6, RetakeTest = 7 };
+
         // Setters and Getters
         public int Id
         {

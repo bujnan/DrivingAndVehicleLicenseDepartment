@@ -5,6 +5,7 @@ using DrivingAndVehicleLicenseDepartment.Global;
 using DrivingAndVehicleLicenseDepartment.Login;
 using DrivingAndVehicleLicenseDepartment.Tests;
 using DrivingAndVehicleLicenseDepartment.User;
+using DrivingAndVehicleLicenseDepartment.License;
 using System;
 using System.Windows.Forms;
 
@@ -77,6 +78,12 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             frmListLocalDrivingApplications LocalDrivingApplicationForm = new frmListLocalDrivingApplications();
             LocalDrivingApplicationForm.ShowDialog();
+        }
+
+        private void renewLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRenewDrivingLicense renewLicenseForm = new frmRenewDrivingLicense();
+            renewLicenseForm.ShowDialog();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace DVLD_Business
         private int _licenseId = -1; 
         private int _applicationId = -1; 
         private int _driverId = -1;
+        private clsDriver _driverInfo = null;
         private int _licenseClassId = -1;
         private clsLicenseClassInfo _licenseClassInfo = null;
         private DateTime _issueDate = DateTime.Now;
@@ -23,7 +24,7 @@ namespace DVLD_Business
         private int _createdByUserId = -1;
         private enum enMode { AddNew = 1, Update = 2};
         private enMode _mode = enMode.AddNew;
-        public enum enIssueReason { FirstTime = 1};
+        public enum enIssueReason { FirstTime = 1, Renew = 2};
 
 
         // Setters and Getters
@@ -42,6 +43,11 @@ namespace DVLD_Business
         {
             set { _driverId = value; }
             get { return _driverId; }
+        }
+
+        public clsDriver DriverInfo
+        {
+            get { return _driverInfo; }
         }
 
         public int LicenseClassId
@@ -119,6 +125,7 @@ namespace DVLD_Business
             _licenseId = licenseId;
             _applicationId = applicationId;
             _driverId = driverId;
+            _driverInfo = clsDriver.FindByDriverId(_driverId);
             _licenseClassId = licenseClassId;
             _licenseClassInfo = clsLicenseClassInfo.Find(licenseClassId);
             _issueDate = issueDate;
@@ -156,6 +163,57 @@ namespace DVLD_Business
             }
         }
 
+        private int CreateNewApplication(int createdByUserId)
+        {
+            clsApplication application = new clsApplication();
+            application.ApplicantPersonId = DriverInfo.PersonId;
+            application.ApplicationDate = DateTime.Now;
+            application.LastStatusDate = DateTime.Now;
+            application.ApplicationTypeId = (int)clsApplication.enApplicationType.RenewLicense;
+            application.ApplicationStatus = (int)clsApplication.enApplicationStatus.Completed;
+            application.PaidFees = clsApplicationsTypes.Find((int)clsApplicationsTypes.enApplicationType.Renew).Fees;
+            application.CreatedByUserId = createdByUserId;
+
+            if (!application.Save())
+                return -1;
+
+            return application.ApplicationId;
+        }
+
+        public bool DesactivateCurrentLicense()
+        {
+            return clsLicenseData.DesactivateCurrentLicense(_licenseId);
+        }
+
+        public clsLicense RenewLicense(string notes, int createdByUserId)
+        {
+
+            int applicationId = CreateNewApplication(createdByUserId);
+            if (applicationId == -1)
+                return null;
+
+            clsLicense newLicense = new clsLicense();
+            newLicense.ApplicationId = applicationId;
+            newLicense.DriverId = _driverId;
+            newLicense._driverInfo = clsDriver.FindByDriverId(_driverId);
+            newLicense.LicenseClassId = _licenseClassId;
+            newLicense._licenseClassInfo = clsLicenseClassInfo.Find(_licenseClassId);
+            newLicense.IssueDate = DateTime.Now;
+            newLicense.ExpirationDate = DateTime.Now.AddYears(_licenseClassInfo.DefaultValidityLength);
+            newLicense.Notes = notes;
+            newLicense.IsActive = true;
+            newLicense.PaidFees = _licenseClassInfo.LicenseClassFees;
+            newLicense.IssueReason = clsLicense.enIssueReason.Renew;
+            newLicense.CreatedByUserId = createdByUserId;
+
+            if (!newLicense.Save())
+                return null;
+
+            DesactivateCurrentLicense();
+            return newLicense;
+
+        }
+
         // Static Methods
         public static clsLicense FindLicenseByNationalNumber(string nationalNo, int licenseClassId)
         {
@@ -167,6 +225,23 @@ namespace DVLD_Business
             bool isActive = false;
 
             if (clsLicenseData.FindByNationalNumber(nationalNo, ref licenseId, ref applicationId, ref driverId, licenseClassId, ref createdByUserId, ref issueDate, ref experationDate, ref notes, ref issueReason, ref paidFees, ref isActive))
+            {
+                return new clsLicense(licenseId, applicationId, driverId, licenseClassId, issueDate, experationDate, notes, (enIssueReason)issueReason, paidFees, isActive, createdByUserId);
+            }
+            else
+                return null;
+        }
+
+        public static clsLicense FindLicenseById(int licenseId)
+        {
+            int licenseClassId = -1, applicationId = -1, driverId = -1, createdByUserId = -1;
+            DateTime issueDate = DateTime.Now, experationDate = DateTime.Now;
+            string notes = "";
+            byte issueReason = 0;
+            double paidFees = 0;
+            bool isActive = false;
+
+            if (clsLicenseData.FindLicenseById(licenseId, ref applicationId, ref driverId, ref licenseClassId, ref createdByUserId, ref issueDate, ref experationDate, ref notes, ref issueReason, ref paidFees, ref isActive))
             {
                 return new clsLicense(licenseId, applicationId, driverId, licenseClassId, issueDate, experationDate, notes, (enIssueReason)issueReason, paidFees, isActive, createdByUserId);
             }

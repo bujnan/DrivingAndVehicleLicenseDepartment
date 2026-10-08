@@ -46,9 +46,12 @@ namespace DVLD_DataAccess
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
-            string query = "SELECT * FROM ApplicationTypes;";
+            string query = @"SELECT * FROM ApplicationTypes 
+                             WHERE ApplicationTypeID = @applicationTypeId;";
 
             SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@applicationTypeId", applicationTypeId);
+
             try
             {
                 connection.Open();

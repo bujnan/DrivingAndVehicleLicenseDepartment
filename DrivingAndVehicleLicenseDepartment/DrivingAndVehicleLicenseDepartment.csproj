@@ -99,11 +99,23 @@
     <Compile Include="License\Control\ucLicenseInfo.Designer.cs">
       <DependentUpon>ucLicenseInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="License\Control\ucLicenseInfoWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="License\Control\ucLicenseInfoWithFilter.Designer.cs">
+      <DependentUpon>ucLicenseInfoWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="License\frmIssueDrivingLicenseFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="License\frmIssueDrivingLicenseFirstTime.Designer.cs">
       <DependentUpon>frmIssueDrivingLicenseFirstTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="License\frmRenewDrivingLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="License\frmRenewDrivingLicense.Designer.cs">
+      <DependentUpon>frmRenewDrivingLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="License\frmShowLicenseInfo.cs">
       <SubType>Form</SubType>
@@ -245,8 +257,14 @@
     <EmbeddedResource Include="License\Control\ucLicenseInfo.resx">
       <DependentUpon>ucLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="License\Control\ucLicenseInfoWithFilter.resx">
+      <DependentUpon>ucLicenseInfoWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="License\frmIssueDrivingLicenseFirstTime.resx">
       <DependentUpon>frmIssueDrivingLicenseFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License\frmRenewDrivingLicense.resx">
+      <DependentUpon>frmRenewDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="License\frmShowLicenseInfo.resx">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
