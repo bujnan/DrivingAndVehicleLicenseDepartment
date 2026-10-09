@@ -96,23 +96,35 @@
             // 
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterBy.FormattingEnabled = true;
+            this.cbFilterBy.Items.AddRange(new object[] {
+            "None",
+            "Driver Id",
+            "Person Id",
+            "National No",
+            "Full Name",
+            "Creation Date",
+            "Active Licenses"});
             this.cbFilterBy.Location = new System.Drawing.Point(94, 214);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(188, 24);
             this.cbFilterBy.TabIndex = 3;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // dgvDriversList
             // 
             this.dgvDriversList.AllowUserToAddRows = false;
             this.dgvDriversList.AllowUserToDeleteRows = false;
             this.dgvDriversList.AllowUserToOrderColumns = true;
+            this.dgvDriversList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDriversList.BackgroundColor = System.Drawing.Color.White;
             this.dgvDriversList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDriversList.Location = new System.Drawing.Point(15, 257);
             this.dgvDriversList.Name = "dgvDriversList";
             this.dgvDriversList.ReadOnly = true;
+            this.dgvDriversList.RowHeadersVisible = false;
             this.dgvDriversList.RowHeadersWidth = 51;
             this.dgvDriversList.RowTemplate.Height = 24;
+            this.dgvDriversList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDriversList.Size = new System.Drawing.Size(893, 202);
             this.dgvDriversList.TabIndex = 4;
             // 
@@ -128,6 +140,7 @@
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // txbFilterBy
             // 
@@ -135,6 +148,8 @@
             this.txbFilterBy.Name = "txbFilterBy";
             this.txbFilterBy.Size = new System.Drawing.Size(209, 22);
             this.txbFilterBy.TabIndex = 6;
+            this.txbFilterBy.TextChanged += new System.EventHandler(this.txbFilterBy_TextChanged);
+            this.txbFilterBy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbFilterBy_KeyPress);
             // 
             // frmManageDrivers
             // 
@@ -155,6 +170,7 @@
             this.Name = "frmManageDrivers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Manage Drivers";
+            this.Load += new System.EventHandler(this.frmManageDrivers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDriversList)).EndInit();
             this.ResumeLayout(false);

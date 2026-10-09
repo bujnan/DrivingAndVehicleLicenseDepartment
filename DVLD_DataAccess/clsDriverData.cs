@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -128,6 +129,55 @@ namespace DVLD_DataAccess
             }
 
             return isFound;
+        }
+
+        public static DataTable GetAllDrivers()
+        {
+            DataTable driversTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT 
+                                 D.DriverID,
+                                 D.PersonID,
+                                 P.NationalNO,
+                                 FullName = 
+                                     P.FirstName + ' ' + 
+                                     ISNULL(P.SecondName, '') + ' ' + 
+                                     ISNULL(P.ThirdName, '') + ' ' + 
+                                     P.LastName,
+                                 CreatedDate = CAST(D.CreatedDate AS DATE),
+                                 ActiveLicenses = 
+                                     ( 
+                                         SELECT COUNT(*) 
+                                         FROM Licenses L
+                                         WHERE L.DriverID = D.DriverID
+                                     )
+                             FROM Drivers D
+                             INNER JOIN People P
+                                 ON D.PersonID = P.PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                    driversTable.Load(reader);
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return driversTable;
         }
     }
 }
