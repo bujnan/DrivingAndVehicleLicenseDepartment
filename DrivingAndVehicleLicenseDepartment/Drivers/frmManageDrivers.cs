@@ -132,5 +132,11 @@ namespace DrivingAndVehicleLicenseDepartment.Drivers
         {
             this.Close();
         }
+
+        private void showPersonInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPersonDetails personDetailsForm = new frmPersonDetails((int)dgvDriversList.CurrentRow.Cells[1].Value);
+            personDetailsForm.ShowDialog();
+        }
     }
 }
