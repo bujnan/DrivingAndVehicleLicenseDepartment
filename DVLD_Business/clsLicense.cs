@@ -24,7 +24,7 @@ namespace DVLD_Business
         private int _createdByUserId = -1;
         private enum enMode { AddNew = 1, Update = 2};
         private enMode _mode = enMode.AddNew;
-        public enum enIssueReason { FirstTime = 1, Renew = 2};
+        public enum enIssueReason { FirstTime = 1, Renew = 2, Lost = 3, Damaged = 4};
 
 
         // Setters and Getters
@@ -163,15 +163,15 @@ namespace DVLD_Business
             }
         }
 
-        private int CreateNewApplication(int createdByUserId)
+        private int CreateNewApplication(clsApplicationsTypes.enApplicationType reason, int createdByUserId)
         {
             clsApplication application = new clsApplication();
             application.ApplicantPersonId = DriverInfo.PersonId;
             application.ApplicationDate = DateTime.Now;
             application.LastStatusDate = DateTime.Now;
-            application.ApplicationTypeId = (int)clsApplication.enApplicationType.RenewLicense;
+            application.ApplicationTypeId = (int)reason;
             application.ApplicationStatus = (int)clsApplication.enApplicationStatus.Completed;
-            application.PaidFees = clsApplicationsTypes.Find((int)clsApplicationsTypes.enApplicationType.Renew).Fees;
+            application.PaidFees = clsApplicationsTypes.Find((int)reason).Fees;
             application.CreatedByUserId = createdByUserId;
 
             if (!application.Save())
@@ -188,7 +188,7 @@ namespace DVLD_Business
         public clsLicense RenewLicense(string notes, int createdByUserId)
         {
 
-            int applicationId = CreateNewApplication(createdByUserId);
+            int applicationId = CreateNewApplication(clsApplicationsTypes.enApplicationType.Renew, createdByUserId);
             if (applicationId == -1)
                 return null;
 
@@ -212,6 +212,37 @@ namespace DVLD_Business
             DesactivateCurrentLicense();
             return newLicense;
 
+        }
+
+        public clsLicense ReplaceLicense(int replacementReason, int createdByUserId)
+        {
+            int applicationId = CreateNewApplication((clsApplicationsTypes.enApplicationType)replacementReason, createdByUserId);
+            if (applicationId == -1)
+                return null;
+
+            clsLicense newLicense = new clsLicense();
+            newLicense.ApplicationId = applicationId;
+            newLicense.DriverId = _driverId;
+            newLicense._driverInfo = clsDriver.FindByDriverId(_driverId);
+            newLicense.LicenseClassId = _licenseClassId;
+            newLicense._licenseClassInfo = clsLicenseClassInfo.Find(_licenseClassId);
+            newLicense.IssueDate = _issueDate;
+            newLicense.ExpirationDate = _expirationDate;
+            newLicense.Notes = _notes;
+            newLicense.IsActive = true;
+            newLicense.PaidFees = 0;
+            newLicense.CreatedByUserId = createdByUserId;
+            if (replacementReason == (int)clsApplicationsTypes.enApplicationType.ReplacementForDamage)
+                newLicense.IssueReason = clsLicense.enIssueReason.Damaged; 
+            else
+                newLicense.IssueReason = clsLicense.enIssueReason.Lost; 
+
+
+            if (!newLicense.Save())
+                return null;
+
+            DesactivateCurrentLicense();
+            return newLicense;
         }
 
         // Static Methods

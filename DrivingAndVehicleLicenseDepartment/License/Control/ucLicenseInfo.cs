@@ -72,6 +72,14 @@ namespace DrivingAndVehicleLicenseDepartment.License.Control
                         lblIssueReason.Text = "Renew";
                         break;
 
+                    case clsLicense.enIssueReason.Lost:
+                        lblIssueReason.Text = "Lost";
+                        break;
+
+                    case clsLicense.enIssueReason.Damaged:
+                        lblIssueReason.Text = "Damaged";
+                        break;
+
                         // other case needs here for other issueReason (Renew, Damage, etc)
 
                 }

@@ -38,19 +38,18 @@ namespace DrivingAndVehicleLicenseDepartment.License.Control
             InitializeComponent();
         }
 
-        public void LoadLicenseInfo(int licenseId)
+        public void LoadLicenseInfo()
         {
-            clsLicense license = clsLicense.FindLicenseById(licenseId);
+            clsLicense license = clsLicense.FindLicenseById(_licenseId);
             if ( license == null)
             {
-                MessageBox.Show($"No License Found with the Id: {licenseId}");
+                MessageBox.Show($"No License Found with the Id: {_licenseId}");
                 return;
             }
 
             string nationalNo = license.DriverInfo.PersonInfo.NationalNo;
             int licenseClassId = license.LicenseClassId;
             ucLicenseInfo1.LoadInfo(nationalNo, licenseClassId);
-            _licenseId = licenseId;
         }
 
         private void btnFindLicense_Click(object sender, EventArgs e)
@@ -64,7 +63,7 @@ namespace DrivingAndVehicleLicenseDepartment.License.Control
             }
 
             _licenseId = Convert.ToInt32(txbLicenseId.Text);
-            LoadLicenseInfo(_licenseId);
+            LoadLicenseInfo();
             OnSelect?.Invoke();
         }
         public void txbLicenseIdFocus()

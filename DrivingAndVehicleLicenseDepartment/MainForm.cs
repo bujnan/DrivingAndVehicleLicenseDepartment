@@ -85,5 +85,11 @@ namespace DrivingAndVehicleLicenseDepartment
             frmRenewDrivingLicense renewLicenseForm = new frmRenewDrivingLicense();
             renewLicenseForm.ShowDialog();
         }
+
+        private void replaceDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReplaceDrivingLicense replaceLicenseForm = new frmReplaceDrivingLicense();
+            replaceLicenseForm.ShowDialog();
+        }
     }
 }
