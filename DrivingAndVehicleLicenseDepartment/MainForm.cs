@@ -8,6 +8,7 @@ using DrivingAndVehicleLicenseDepartment.User;
 using DrivingAndVehicleLicenseDepartment.License;
 using System;
 using System.Windows.Forms;
+using DrivingAndVehicleLicenseDepartment.Drivers;
 
 namespace DrivingAndVehicleLicenseDepartment
 {
@@ -90,6 +91,12 @@ namespace DrivingAndVehicleLicenseDepartment
         {
             frmReplaceDrivingLicense replaceLicenseForm = new frmReplaceDrivingLicense();
             replaceLicenseForm.ShowDialog();
+        }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageDrivers manageDriversForm = new frmManageDrivers();
+            manageDriversForm.ShowDialog();
         }
     }
 }

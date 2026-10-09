@@ -91,6 +91,12 @@
     <Compile Include="Appointments\frmListTestAppointments.Designer.cs">
       <DependentUpon>frmListTestAppointments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drivers\frmManageDrivers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drivers\frmManageDrivers.Designer.cs">
+      <DependentUpon>frmManageDrivers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global\clsGlobal.cs" />
     <Compile Include="Global\clsUtil.cs" />
     <Compile Include="License\Control\ucLicenseInfo.cs">
@@ -259,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Appointments\frmListTestAppointments.resx">
       <DependentUpon>frmListTestAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\frmManageDrivers.resx">
+      <DependentUpon>frmManageDrivers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="License\Control\ucLicenseInfo.resx">
       <DependentUpon>ucLicenseInfo.cs</DependentUpon>
@@ -565,6 +574,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Renew Driving License 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Drivers 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Local Driving License 512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

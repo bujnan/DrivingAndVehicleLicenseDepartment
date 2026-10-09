@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.msPeople = new System.Windows.Forms.MenuStrip();
+            this.pbMainFormBackgound = new System.Windows.Forms.PictureBox();
             this.applicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drivingLicensesServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,12 +46,12 @@
             this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.driversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbMainFormBackgound = new System.Windows.Forms.PictureBox();
             this.msPeople.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMainFormBackgound)).BeginInit();
             this.SuspendLayout();
@@ -63,12 +64,25 @@
             this.applicationsToolStripMenuItem,
             this.peopleToolStripMenuItem,
             this.usersToolStripMenuItem,
+            this.driversToolStripMenuItem,
             this.accountSettingsToolStripMenuItem});
             this.msPeople.Location = new System.Drawing.Point(0, 0);
             this.msPeople.Name = "msPeople";
             this.msPeople.Size = new System.Drawing.Size(1112, 72);
             this.msPeople.TabIndex = 1;
             this.msPeople.Text = "menuStrip1";
+            // 
+            // pbMainFormBackgound
+            // 
+            this.pbMainFormBackgound.BackColor = System.Drawing.Color.Black;
+            this.pbMainFormBackgound.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbMainFormBackgound.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Logo_Final;
+            this.pbMainFormBackgound.Location = new System.Drawing.Point(0, 72);
+            this.pbMainFormBackgound.Name = "pbMainFormBackgound";
+            this.pbMainFormBackgound.Size = new System.Drawing.Size(1112, 572);
+            this.pbMainFormBackgound.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbMainFormBackgound.TabIndex = 0;
+            this.pbMainFormBackgound.TabStop = false;
             // 
             // applicationsToolStripMenuItem
             // 
@@ -220,6 +234,15 @@
             this.usersToolStripMenuItem.Text = "Users ";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
+            // driversToolStripMenuItem
+            // 
+            this.driversToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.driversToolStripMenuItem.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Drivers_64;
+            this.driversToolStripMenuItem.Name = "driversToolStripMenuItem";
+            this.driversToolStripMenuItem.Size = new System.Drawing.Size(141, 68);
+            this.driversToolStripMenuItem.Text = "Drivers";
+            this.driversToolStripMenuItem.Click += new System.EventHandler(this.driversToolStripMenuItem_Click);
+            // 
             // accountSettingsToolStripMenuItem
             // 
             this.accountSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -268,18 +291,6 @@
             this.signOutToolStripMenuItem.Text = "Sign Out";
             this.signOutToolStripMenuItem.Click += new System.EventHandler(this.signOutToolStripMenuItem_Click);
             // 
-            // pbMainFormBackgound
-            // 
-            this.pbMainFormBackgound.BackColor = System.Drawing.Color.Black;
-            this.pbMainFormBackgound.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbMainFormBackgound.Image = global::DrivingAndVehicleLicenseDepartment.Properties.Resources.Logo_Final;
-            this.pbMainFormBackgound.Location = new System.Drawing.Point(0, 72);
-            this.pbMainFormBackgound.Name = "pbMainFormBackgound";
-            this.pbMainFormBackgound.Size = new System.Drawing.Size(1112, 572);
-            this.pbMainFormBackgound.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbMainFormBackgound.TabIndex = 0;
-            this.pbMainFormBackgound.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -326,6 +337,7 @@
         private System.Windows.Forms.ToolStripMenuItem retakeTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renewLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem replaceDrivingLicenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem driversToolStripMenuItem;
     }
 }
 

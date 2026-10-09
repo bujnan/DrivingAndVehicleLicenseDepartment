@@ -273,6 +273,16 @@ namespace DrivingAndVehicleLicenseDepartment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Drivers_64 {
+            get {
+                object obj = ResourceManager.GetObject("Drivers 64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap driving_test_32 {
             get {
                 object obj = ResourceManager.GetObject("driving test 32", resourceCulture);
@@ -366,6 +376,16 @@ namespace DrivingAndVehicleLicenseDepartment.Properties {
         internal static System.Drawing.Bitmap Local_32 {
             get {
                 object obj = ResourceManager.GetObject("Local 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Local_Driving_License_512 {
+            get {
+                object obj = ResourceManager.GetObject("Local Driving License 512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
