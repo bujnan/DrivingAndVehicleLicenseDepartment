@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DrivingAndVehicleLicenseDepartment.License;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -137,6 +138,12 @@ namespace DrivingAndVehicleLicenseDepartment.Drivers
         {
             frmPersonDetails personDetailsForm = new frmPersonDetails((int)dgvDriversList.CurrentRow.Cells[1].Value);
             personDetailsForm.ShowDialog();
+        }
+
+        private void showLicensesHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLicensesHistory licensesHistoryForm = new frmLicensesHistory((int)dgvDriversList.CurrentRow.Cells[0].Value);
+            licensesHistoryForm.ShowDialog();
         }
     }
 }

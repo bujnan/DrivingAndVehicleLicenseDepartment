@@ -122,5 +122,15 @@ namespace DVLD_Business
             return clsDriverData.GetAllDrivers();
         }
 
+        public static DataTable GetAllLocalDrivingLicenses(int driverId)
+        {
+            return clsDriverData.GetAllLocalDrivingLicenses(driverId);
+        }
+
+        public static DataTable GetAllInternationalDrivingLicenses(int driverId)
+        {
+            return clsDriverData.GetAllInternationalDrivingLicenses(driverId);
+        }
+
     }
 }

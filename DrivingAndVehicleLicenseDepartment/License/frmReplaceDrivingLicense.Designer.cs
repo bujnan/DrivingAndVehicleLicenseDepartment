@@ -318,7 +318,6 @@
             // llShowNewLicenseInfo
             // 
             this.llShowNewLicenseInfo.AutoSize = true;
-            this.llShowNewLicenseInfo.Enabled = false;
             this.llShowNewLicenseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llShowNewLicenseInfo.Location = new System.Drawing.Point(310, 614);
             this.llShowNewLicenseInfo.Name = "llShowNewLicenseInfo";

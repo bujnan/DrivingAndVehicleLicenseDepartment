@@ -179,5 +179,98 @@ namespace DVLD_DataAccess
 
             return driversTable;
         }
+
+        public static DataTable GetAllLocalDrivingLicenses(int driverId)
+        {
+            DataTable allLocalDrivingLicensesTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT
+                             	L.LicenseID,
+                             	L.ApplicationID,
+                             	LC.ClassName,
+                             	IssueDate = CAST(L.IssueDate AS DATE),
+                             	ExpirationDate = CAST(L.ExpirationDate AS DATE),
+                             	L.IsActive
+                             FROM Licenses L
+                             INNER JOIN LicenseClasses LC
+                             	ON L.LicenseClass = LC.LicenseClassID
+                             INNER JOIN Applications A
+                             	ON L.ApplicationID = A.ApplicationID
+                             INNER JOIN ApplicationTypes AT
+                             	ON A.ApplicationTypeID = AT.ApplicationTypeID
+                             WHERE L.DriverID = @driverId;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@driverId", driverId);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                    allLocalDrivingLicensesTable.Load(reader);
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return allLocalDrivingLicensesTable;
+        }
+
+        public static DataTable GetAllInternationalDrivingLicenses(int driverId)
+        {
+            DataTable allLocalDrivingLicensesTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            string query = @"SELECT
+                             	L.LicenseID,
+                             	L.ApplicationID,
+                             	LC.ClassName,
+                             	IssueDate = CAST(L.IssueDate AS DATE),
+                             	ExpirationDate = CAST(L.ExpirationDate AS DATE),
+                             	L.IsActive
+                             FROM Licenses L
+                             INNER JOIN LicenseClasses LC
+                             	ON L.LicenseClass = LC.LicenseClassID
+                             INNER JOIN Applications A
+                             	ON L.ApplicationID = A.ApplicationID
+                             INNER JOIN ApplicationTypes AT
+                             	ON A.ApplicationTypeID = AT.ApplicationTypeID
+                             WHERE L.DriverID = @driverId
+                             AND AT.ApplicationTypeID = 6;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@driverId", driverId);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                    allLocalDrivingLicensesTable.Load(reader);
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return allLocalDrivingLicensesTable;
+        }
     }
 }

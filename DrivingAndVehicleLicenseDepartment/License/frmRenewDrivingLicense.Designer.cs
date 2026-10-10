@@ -110,7 +110,6 @@
             // llShowLicensesHistory
             // 
             this.llShowLicensesHistory.AutoSize = true;
-            this.llShowLicensesHistory.Enabled = false;
             this.llShowLicensesHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llShowLicensesHistory.Location = new System.Drawing.Point(59, 743);
             this.llShowLicensesHistory.Name = "llShowLicensesHistory";
@@ -123,7 +122,6 @@
             // llShowNewLicenseInfo
             // 
             this.llShowNewLicenseInfo.AutoSize = true;
-            this.llShowNewLicenseInfo.Enabled = false;
             this.llShowNewLicenseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llShowNewLicenseInfo.Location = new System.Drawing.Point(312, 743);
             this.llShowNewLicenseInfo.Name = "llShowNewLicenseInfo";

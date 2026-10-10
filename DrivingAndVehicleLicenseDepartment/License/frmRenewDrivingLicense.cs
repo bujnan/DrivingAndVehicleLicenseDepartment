@@ -76,13 +76,16 @@ namespace DrivingAndVehicleLicenseDepartment.License
 
         private void llShowNewLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            llShowNewLicenseInfo.Enabled = (_license != null);
             frmShowLicenseInfo licenseInfoForm = new frmShowLicenseInfo(_license.DriverInfo.PersonInfo.NationalNo, _license.LicenseClassId);
             licenseInfoForm.ShowDialog();
         }
 
         private void llShowLicensesHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            llShowLicensesHistory.Enabled = false; // Temporal
+            llShowLicensesHistory.Enabled = (_license != null);
+            frmLicensesHistory licensesHistoryForm = new frmLicensesHistory(_license.DriverId);
+            licensesHistoryForm.ShowDialog();
         }
     }
 }
